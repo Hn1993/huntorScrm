@@ -34,4 +34,8 @@
     <color name="material_error_color">#FFBF432F</color>
     <color name="input_barcode_bacground">#1A1A1A</color>
     <color name="left_drawer_bottom_text">#ff9b9b9b</color>
+
+    <!-- IMEI  is True -->
+    <color name="imei_true">#00ff00</color>
+    <color name="imei_false">#e60012</color>
 </resources>

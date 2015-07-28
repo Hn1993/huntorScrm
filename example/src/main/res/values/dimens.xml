@@ -83,4 +83,13 @@
     <dimen name="zxing_input_barcode_text_height">40dp</dimen>
     <dimen name="zxing_net_textsize">14sp</dimen>
 
+    <!-- Activity Interaction -->
+    <dimen name="activity_interaction_text_size">15sp</dimen>
+    <dimen name="activity_interaction_text_margin_top">70dp</dimen>
+    <dimen name="activity_interaction_img_margin_top">25dp</dimen>
+    <dimen name="activity_interaction_img_size">300dp</dimen>
+    <dimen name="activity_interaction_code_margin_top">50dp</dimen>
+    <dimen name="base_title_text_size">18sp</dimen>
+    <dimen name="base_title_height">56dp</dimen>
+
 </resources>

@@ -28,4 +28,11 @@
     <string name="xlistview_header_last_time">上次更新时间：</string>
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+    <!--购买入会-->
+    <string name="interaction_locale_remind">亲!扫码关注后,我就是您的私人手机顾问哦。</string>
+    <string name="buyed_user">已购用户</string>
+    <string name="icon_text_plus">{fa-plus}</string>
+    <string name="icon_imei_true">{fa-check}</string>
+    <string name="icon_imei_false">{fa-times}</string>
 </resources>

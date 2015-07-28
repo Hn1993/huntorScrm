@@ -142,4 +142,43 @@
         <item name="android:layout_marginBottom">@dimen/fragment_fansinfo_time_marginbuttom</item>
     </style>
 
+
+    <!-- 标题左侧title样式 -->
+    <style name="text_title_left_commom_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">63dp</item>
+        <item name="android:textSize">@dimen/base_title_text_size</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- 标题中左边img_left_corner样式 -->
+    <style name="img_title_common_style">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">18dp</item>
+        <item name="android:src">@drawable/left_corner</item>
+    </style>
+    <!-- 点击Layout返回 img_left_corner的layout样式-->
+    <style name="layout_left_corner">
+        <item name="android:layout_width">63dp</item>
+        <item name="android:layout_height">56dp</item>
+    </style>
+
+    <!-- IMEI码右侧的判断是否正确  -->
+    <style name="icon_imei_title_right_common_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textSize">@dimen/base_title_text_size</item>
+        <item name="android:textColor">@color/lighter_gray</item>
+        <item name="android:layout_marginRight">40dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_toRightOf">@id/text_interaction_code_two_dimension</item>
+        <item name="android:paddingLeft">10dp</item>
+
+    </style>
 </resources>
