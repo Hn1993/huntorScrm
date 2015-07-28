@@ -4,13 +4,13 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.net.TrafficStats;
+
 import android.net.Uri;
 import android.util.Log;
-import com.huntor.mscrm.app.model.MessageRecordModel;
-import com.huntor.mscrm.app.provider.MSCRMContract;
-import com.huntor.mscrm.app.utils.Constant;
-import com.huntor.mscrm.app.utils.PreferenceUtils;
+import com.huntor.scrm.model.MessageRecordModel;
+import com.huntor.scrm.provider.MSCRMContract;
+import com.huntor.scrm.utils.Constant;
+import com.huntor.scrm.utils.PreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

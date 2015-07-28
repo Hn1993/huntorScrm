@@ -24,18 +24,17 @@
             android:layout_marginTop="@dimen/activity_login_text_marginLeft"
             android:id="@+id/activity_login_input"/>
 
-    <scrm.view.EditText.ColorUnderLineEditText
+    <com.huntor.scrm.view.EditText.ColorUnderLineEditText
             style="@style/Login_edit_input"
             android:hint="请输入用户名"
             android:id="@+id/activity_login_name"
             android:layout_centerVertical="true" />
-    <scrm.view.EditText.ColorUnderLineEditText
+    <com.huntor.scrm.view.EditText.ColorUnderLineEditText
             android:inputType="textPassword"
             style="@style/Login_edit_input"
             android:id="@+id/activity_login_pwd"
             android:layout_marginTop="@dimen/activity_login_edit_top"
             android:hint="请输入密码"
-
             android:layout_below="@+id/activity_login_name"/>
     <TextView
             android:layout_width="wrap_content"

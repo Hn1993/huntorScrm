@@ -5,14 +5,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import com.huntor.mscrm.app.model.Data;
-import com.huntor.mscrm.app.model.DealResult;
-import com.huntor.mscrm.app.model.FanInfo;
-import com.huntor.mscrm.app.provider.MSCRMContract;
-import com.huntor.mscrm.app.utils.Constant;
+import com.huntor.scrm.model.FanInfo;
+import com.huntor.scrm.provider.MSCRMContract;
+import com.huntor.scrm.utils.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by cao on 2015/5/26.

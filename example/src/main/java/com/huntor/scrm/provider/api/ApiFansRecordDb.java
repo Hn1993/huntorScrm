@@ -6,14 +6,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
-import com.huntor.mscrm.app.model.FansRecordModel;
-import com.huntor.mscrm.app.provider.MSCRMContract;
-import com.huntor.mscrm.app.utils.Constant;
-import com.huntor.mscrm.app.utils.PreferenceUtils;
+import com.huntor.scrm.model.FansRecordModel;
+import com.huntor.scrm.provider.MSCRMContract;
+import com.huntor.scrm.utils.Constant;
+import com.huntor.scrm.utils.PreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * 消息表的数据库接口

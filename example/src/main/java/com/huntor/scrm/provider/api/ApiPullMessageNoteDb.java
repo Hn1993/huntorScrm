@@ -5,12 +5,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import com.huntor.mscrm.app.model.MessageContext;
-import com.huntor.mscrm.app.model.PullMessageNote;
-import com.huntor.mscrm.app.provider.MSCRMContract;
+import com.huntor.scrm.model.PullMessageNote;
+import com.huntor.scrm.provider.MSCRMContract;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * 推送的站内信消息表的数据库接口

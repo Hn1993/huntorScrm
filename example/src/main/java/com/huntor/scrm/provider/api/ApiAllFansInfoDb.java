@@ -5,17 +5,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.util.Log;
-import com.huntor.mscrm.app.model.FanInfo;
-import com.huntor.mscrm.app.model.Fans;
-import com.huntor.mscrm.app.provider.MSCRMContract;
-import com.huntor.mscrm.app.utils.Constant;
-import com.huntor.mscrm.app.utils.MyLogger;
-import com.huntor.mscrm.app.utils.PinYinUtils;
+import com.huntor.scrm.model.Fans;
+import com.huntor.scrm.provider.MSCRMContract;
+import com.huntor.scrm.utils.MyLogger;
+import com.huntor.scrm.utils.PinYinUtils;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by cao on 2015/5/26.
@@ -23,6 +20,7 @@ import java.util.List;
 public class ApiAllFansInfoDb {
     private static final String TAG = "ApiAllFansInfoDb";
     private Context mContext;
+
     public ApiAllFansInfoDb(Context context) {
         mContext = context;
     }
@@ -31,8 +29,7 @@ public class ApiAllFansInfoDb {
     /**
      * 批量插入粉丝
      *
-     * @param fansList
-     *            粉丝列表
+     * @param fansList 粉丝列表
      * @return 插入数据的条数
      */
     public static int bulkInsert(Context context, List<Fans> fansList) {
@@ -59,11 +56,11 @@ public class ApiAllFansInfoDb {
             value.put(MSCRMContract.FansInfo.AVATAR, fans.avatar);
             value.put(MSCRMContract.FansInfo.REGIST_TIME, fans.registTime);
             value.put(MSCRMContract.FansInfo.SUBSCRIBE_TIME, fans.subscribeTime);
-            value.put(MSCRMContract.FansInfo.ISCHECK, fans.isCheck?1:0);
-            value.put(MSCRMContract.FansInfo.NICKNAME_PINYIN_FULL_SPELL, PinYinUtils.getFullSpell(fans.nickName==null?"":fans.nickName));
-            value.put(MSCRMContract.FansInfo.NICKNAME_PINYIN_INITIAL_SPELL, PinYinUtils.getInitialSpell(fans.nickName==null?"":fans.nickName));
-            value.put(MSCRMContract.FansInfo.NAME_PINYIN_FULL_SPELL, PinYinUtils.getFullSpell(fans.name==null?"":fans.name));
-            value.put(MSCRMContract.FansInfo.NAME_PINYIN_INITIAL_SPELL, PinYinUtils.getInitialSpell(fans.name==null?"":fans.name));
+            value.put(MSCRMContract.FansInfo.ISCHECK, fans.isCheck ? 1 : 0);
+            value.put(MSCRMContract.FansInfo.NICKNAME_PINYIN_FULL_SPELL, PinYinUtils.getFullSpell(fans.nickName == null ? "" : fans.nickName));
+            value.put(MSCRMContract.FansInfo.NICKNAME_PINYIN_INITIAL_SPELL, PinYinUtils.getInitialSpell(fans.nickName == null ? "" : fans.nickName));
+            value.put(MSCRMContract.FansInfo.NAME_PINYIN_FULL_SPELL, PinYinUtils.getFullSpell(fans.name == null ? "" : fans.name));
+            value.put(MSCRMContract.FansInfo.NAME_PINYIN_INITIAL_SPELL, PinYinUtils.getInitialSpell(fans.name == null ? "" : fans.name));
             values[i] = value;
         }
 
@@ -74,8 +71,7 @@ public class ApiAllFansInfoDb {
     /**
      * 插入一条粉丝数据
      *
-     * @param fans
-     *            粉丝信息
+     * @param fans 粉丝信息
      * @return 返回该数据插入后的uri
      */
     public Uri insert(Fans fans) {
@@ -94,7 +90,7 @@ public class ApiAllFansInfoDb {
         value.put(MSCRMContract.FansInfo.AVATAR, fans.avatar);
         value.put(MSCRMContract.FansInfo.REGIST_TIME, fans.registTime);
         value.put(MSCRMContract.FansInfo.SUBSCRIBE_TIME, fans.subscribeTime);
-        value.put(MSCRMContract.FansInfo.ISCHECK, fans.isCheck?0:1);
+        value.put(MSCRMContract.FansInfo.ISCHECK, fans.isCheck ? 0 : 1);
         value.put(MSCRMContract.FansInfo.NICKNAME_PINYIN_FULL_SPELL, PinYinUtils.getFullSpell(fans.nickName));
         value.put(MSCRMContract.FansInfo.NICKNAME_PINYIN_INITIAL_SPELL, PinYinUtils.getInitialSpell(fans.nickName));
         value.put(MSCRMContract.FansInfo.NAME_PINYIN_FULL_SPELL, PinYinUtils.getFullSpell(fans.name));
@@ -107,15 +103,14 @@ public class ApiAllFansInfoDb {
     /**
      * 获取粉丝列表
      *
-     * @param context
-     *            上下文
+     * @param context 上下文
      * @return
      */
     public static List<Fans> getFansList(Context context, String searchKey) {
         ContentResolver resolver = context.getContentResolver();
 
         Uri uri = Uri.parse(MSCRMContract.FansInfo.CONTENT_URI.toString() + "/search/" + searchKey);
-        MyLogger.i(TAG,"uri:"+uri.toString());
+        MyLogger.i(TAG, "uri:" + uri.toString());
         Cursor cursor = resolver.query(uri, null, null, null, null);
         List<Fans> fansList = new ArrayList<Fans>();
 
@@ -141,6 +136,7 @@ public class ApiAllFansInfoDb {
 
     /**
      * 搜索关键字返回一个Cursor
+     *
      * @param context
      * @param searchKey
      * @return
@@ -153,6 +149,7 @@ public class ApiAllFansInfoDb {
 
     /**
      * 查询所有本地缓存粉丝
+     *
      * @param context
      * @return
      */
@@ -182,13 +179,14 @@ public class ApiAllFansInfoDb {
 
     /**
      * 根据粉丝ID获取指定粉丝信息
+     *
      * @param context
      * @param fanId
      * @return
      */
-    public  Fans getFansById(Context context, int fanId) {
+    public Fans getFansById(Context context, int fanId) {
         ContentResolver resolver = context.getContentResolver();
-        Cursor cursor = resolver.query(MSCRMContract.FansInfo.CONTENT_URI, null, MSCRMContract.FansInfo.ID+"=?", new String[]{""+fanId}, null);
+        Cursor cursor = resolver.query(MSCRMContract.FansInfo.CONTENT_URI, null, MSCRMContract.FansInfo.ID + "=?", new String[]{"" + fanId}, null);
         Fans fans = null;
         if (cursor != null && cursor.moveToFirst()) {
             fans = new Fans();
@@ -205,6 +203,7 @@ public class ApiAllFansInfoDb {
         }
         return fans;
     }
+
     /**
      * 删除所有本地缓存粉丝
      *
@@ -218,13 +217,14 @@ public class ApiAllFansInfoDb {
 
     /**
      * 根据粉丝id删除本地缓存粉丝
+     *
      * @param id
      * @return
      */
     public int delete(int id) {
         ContentResolver resolver = mContext.getContentResolver();
         return resolver.delete(MSCRMContract.FansInfo.CONTENT_URI,
-                MSCRMContract.FansInfo.ID + "=?", new String[] { "" + id });
+                MSCRMContract.FansInfo.ID + "=?", new String[]{"" + id});
     }
 
 }
