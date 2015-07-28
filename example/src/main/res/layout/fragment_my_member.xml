@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_bacground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/member_online"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawerlayout_mian_item_height"
+            android:background="@drawable/selector_mymember"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/member_header"
+                android:src="@drawable/online_member_header"/>
+            <TextView
+                style="@style/member_text"
+                android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
+                android:text="在线交互粉丝"
+                />
+            <ImageView
+                style="@style/member_go" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/lighter_gray"/>
+
+        <LinearLayout
+            android:id="@+id/member_high_user"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawerlayout_mian_item_height"
+            android:background="@drawable/selector_mymember"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/member_header"
+                android:src="@drawable/high_user_header"/>
+            <TextView
+                style="@style/member_text"
+                android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
+                android:text="高潜会员"
+                />
+            <ImageView
+                style="@style/member_go" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/lighter_gray"/>
+
+        <LinearLayout
+            android:id="@+id/member_normal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawerlayout_mian_item_height"
+            android:background="@drawable/selector_mymember"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/member_header"
+                android:src="@drawable/member_normal_header"/>
+            <TextView
+                style="@style/member_text"
+                android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
+                android:text="普通粉丝"
+                />
+            <ImageView
+                style="@style/member_go" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/lighter_gray"/>
+
+        <LinearLayout
+            android:id="@+id/member_buyed_user"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawerlayout_mian_item_height"
+            android:background="@drawable/selector_mymember"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/member_header"
+                android:src="@drawable/buyed_user_header"/>
+            <TextView
+                style="@style/member_text"
+                android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
+                android:text="已购用户"
+                />
+            <ImageView
+                style="@style/member_go" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/lighter_gray"/>
+
+        <LinearLayout
+            android:id="@+id/member_my_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawerlayout_mian_item_height"
+            android:background="@drawable/selector_mymember"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/member_header"
+                android:src="@drawable/my_group_header"/>
+            <TextView
+                style="@style/member_text"
+                android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
+                android:text="我的分组"
+                />
+            <ImageView
+                style="@style/member_go" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/lighter_gray"/>
+        <LinearLayout
+            android:id="@+id/member_other_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawerlayout_mian_item_height"
+            android:background="@drawable/selector_mymember"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/member_header"
+                android:src="@drawable/other_group_header"/>
+            <TextView
+                style="@style/member_text"
+                android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
+                android:text="其他分组"
+                />
+            <ImageView
+                style="@style/member_go" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/lighter_gray"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/drawerlayout_mian_image_marginLeft"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/drawerlayout_mian_image_marginLeft"
+            android:id="@+id/linearLayout">
+            <ImageView
+
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:id="@+id/image_second_wave"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/load_more"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="#99ffffff"
+        android:id="@+id/layout_finish"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/drawerlayout_mian_image_marginLeft"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/linear_image"
+            android:layout_marginBottom="@dimen/drawerlayout_mian_image_marginLeft" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
+                <Button
+                    android:text="发消息"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/send_message"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
+                <Button
+                    android:text="加入分组"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/join_group"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:text="完成"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/second_wave"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>
