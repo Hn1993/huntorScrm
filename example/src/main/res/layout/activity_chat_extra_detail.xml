@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="com.huntor.mscrm.app.ui.ChatExtraDetailActivity"
+              android:background="@color/white"
+              android:orientation="vertical"
+        >
+
+    <include
+            android:id="@+id/include_chat_extra_detail_title"
+            layout="@layout/activity_base"/>
+
+    <TextView
+            android:id="@+id/text_chat_extra_detail_to_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base_title_height"
+            android:text="返回"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            />
+
+    <TextView
+            android:id="@+id/text_chat_extra_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_chat_detail_title_margin_top"
+            android:layout_marginLeft="@dimen/activity_chat_detail_title_margin_left_right"
+            android:layout_marginRight="@dimen/activity_chat_detail_title_margin_left_right"
+            android:text="@string/chat_extra_test"
+            android:textSize="@dimen/activity_chat_detail_title_text_size"
+            android:textColor="@color/chat_extra_text_two"
+            android:layout_below="@+id/include_chat_extra_detail_title"
+            />
+
+    <WebView
+            android:id="@+id/web_chat_extra_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_chat_detail_web_margin"
+            android:layout_marginLeft="@dimen/activity_chat_detail_web_margin"
+            android:layout_marginRight="@dimen/activity_chat_detail_web_margin"
+            android:layout_below="@id/text_chat_extra_detail_title"
+            />
+
+</RelativeLayout>

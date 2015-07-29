@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ebebeb"
+        >
+
+    <!--<include layout="@layout/activity_base" />-->
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="@color/login_bg"
+            >
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/base_title_height"
+                android:background="@color/login_bg"
+                >
+
+            <RelativeLayout
+                    style="@style/layout_left_corner"
+                    android:id="@+id/img_left_corner">
+                <ImageView
+                        style="@style/img_title_common_style"
+                        />
+            </RelativeLayout>
+
+            <TextView
+                    android:id="@+id/text_base_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="会员详情"
+                    android:textSize="@dimen/base_title_text_size"
+                    android:layout_marginLeft="@dimen/base_title_height"
+                    android:layout_centerVertical="true"
+
+                    />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/login_bg"
+
+            >
+
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="社交信息"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/detaileinfo_social"
+                android:textSize="@dimen/activity_detailinfomation1_text2_size"
+                android:textColor="#FFFFFF"
+                />
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="账户信息"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/detaileinfo_details"
+                android:textSize="@dimen/activity_detailinfomation1_text2_size"
+                android:textColor="#FFFFFF"
+                />
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="交易信息"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/detaileinfo_deal"
+                android:textSize="@dimen/activity_detailinfomation1_text2_size"
+                android:textColor="#FFFFFF"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/login_bg">
+
+        <View
+                android:id="@+id/detaileinfo_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#FFFFFF"
+                />
+
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+
+
+        <!-- 将viewpager替换成自定义的-->
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/detailte_viewpager"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"/>
+
+
+        <!--
+        <com.huntor.mscrm.app.ui.component.MyViewPager
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/detailte_viewpager"
+                android:layout_alignParentBottom="true">
+
+        </com.huntor.mscrm.app.ui.component.MyViewPager>
+        -->
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

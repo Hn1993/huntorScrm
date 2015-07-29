@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.huntor.mscrm.app.ui.fragment.member.NewFansFragment"
+              android:background="@color/white"
+        >
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_title_height"
+            android:background="@color/login_bg"
+            >
+
+        <RelativeLayout
+                style="@style/layout_left_corner"
+                android:id="@+id/img_left_corner">
+            <ImageView
+                    style="@style/img_title_common_style"
+                    />
+        </RelativeLayout>
+
+        <TextView
+                android:id="@+id/text_base_title"
+                style="@style/text_title_left_commom_style"
+                android:text="@string/new_fans"
+                />
+    </RelativeLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.huntor.mscrm.app.ui.component.XListView
+            android:id="@+id/new_fans_list"
+            android:layout_width="match_parent"
+            android:divider="@null"
+            android:layout_height="match_parent"/>
+
+</LinearLayout>

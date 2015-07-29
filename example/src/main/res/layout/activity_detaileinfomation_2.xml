@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/detaileinfo_layout"
+
+        >
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <!--android:layout_width="@dimen/activity_detailinfomation1_image_height"-->
+            <!--android:layout_height="@dimen/activity_detailinfomation1_image_height"-->
+            <ImageView
+
+                    android:layout_width="@dimen/activity_detailinfomation1_image_height"
+                    android:layout_height="@dimen/activity_detailinfomation1_image_height"
+                    android:id="@+id/image_people_head_2"
+                    android:src="@drawable/chat_contact_list_default_head"
+                    android:scaleType="fitXY"
+                    android:layout_marginLeft="@dimen/activity_detailinfomation1_image_margin_left"
+                    android:layout_marginTop="@dimen/activity_detailinfomation1_image_margin_top"
+                    />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="@dimen/activity_detailinfomation1_text_size"
+                      android:id="@+id/menber_address_name_2"
+                      android:layout_marginLeft="@dimen/activity_detailinfomation1_text_margin_lefte"
+                      android:layout_marginTop="@dimen/activity_detailinfomation1_text1_margin_top"
+                      android:textColor="#000000"
+                      android:drawablePadding="10dp"
+
+
+                    />
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="17sp"
+                      android:id="@+id/people_time"
+
+                      android:layout_marginLeft="@dimen/activity_detailinfomation1_text_margin_lefte"
+                      android:layout_marginTop="@dimen/activity_detailinfomation1_text1_totext_top"
+                    />
+        </LinearLayout>
+        <IconTextView
+                style="@style/account_information_to_compile"
+                android:id="@+id/account_information_compile_name"
+                />
+
+    </LinearLayout>
+    <!--<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">-->
+        <!--<ImageView-->
+                <!--android:layout_width="@dimen/activity_detailinfomation1_image_height"-->
+                <!--android:layout_height="@dimen/activity_detailinfomation1_image_height"-->
+                <!--android:id="@+id/image_people_head_2"-->
+                <!--android:layout_marginLeft="@dimen/activity_detailinfomation1_image_margin_left"-->
+                <!--android:layout_marginTop="@dimen/activity_detailinfomation1_image_margin_left"-->
+                <!--/>-->
+        <!--<TextView-->
+                <!--android:textColor="#000000"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/menber_address_name_2"-->
+                <!--android:textSize="@dimen/activity_detailinfomation1_text_size"-->
+                <!--android:text="11"-->
+                <!--android:layout_marginLeft="@dimen/activity_detailinfomation1_text_margin_lefte"-->
+                <!--android:layout_alignTop="@+id/image_people_head_2" android:layout_toEndOf="@+id/image_people_head_2"/>-->
+
+    <!--</RelativeLayout>-->
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="30dp"
+            >
+
+        <View
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/layout_name"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/activity_detailinfomation_layout_height" >
+        <ImageView
+                android:layout_marginLeft="@dimen/activity_detailinfomation2_image_margin_left"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/activity_detailinfomation2_image_height"
+                android:layout_height="@dimen/activity_detailinfomation2_image_height"
+                android:id="@+id/member_address_image_2"
+                android:src="@drawable/detailinfo2_gender_image"/>
+        <TextView
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_detailinfomation2_image_margin_left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_detailinfomation1_text2_size"
+                android:id="@+id/menber_address_text_2"
+                />
+        <!---->
+            <IconTextView
+                style="@style/account_information_to_compile"
+                android:id="@+id/account_information_compile_gender"
+                />
+
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+
+        <View
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/layout_age"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/activity_detailinfomation_layout_height" >
+        <ImageView
+                android:layout_marginLeft="@dimen/activity_detailinfomation2_image_margin_left"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/activity_detailinfomation2_image_height"
+                android:layout_height="@dimen/activity_detailinfomation2_image_height"
+                android:id="@+id/member_age_image_2"
+                android:src="@drawable/detailinfo2_age_image"/>
+        <TextView
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_detailinfomation2_image_margin_left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_detailinfomation1_text2_size"
+                android:id="@+id/menber_age_text_2"
+
+                />
+        <!---->
+        <IconTextView
+                style="@style/account_information_to_compile"
+                android:id="@+id/account_information_compile_age"
+                />
+
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+
+    <View
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider"
+            android:background="@color/view_line"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout  android:orientation="horizontal"
+                   android:layout_width="fill_parent"
+                   android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                   android:background="#FFFFFF">
+        <ImageView android:layout_marginLeft="@dimen/activity_detailinfomation2_image_margin_left"
+                   android:layout_gravity="center"
+                   android:layout_width="@dimen/activity_detailinfomation2_image_height"
+                   android:layout_height="@dimen/activity_detailinfomation2_image_height"
+                   android:id="@+id/member_mail_image_2"
+                   android:src="@drawable/detailinfo2_job_image"/>
+        <TextView android:layout_marginLeft="@dimen/activity_detailinfomation2_image_margin_left"
+                  android:layout_gravity="center"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="@dimen/activity_detailinfomation1_text2_size"
+
+
+                  android:id="@+id/menber_mail_text_2"/>
+        <!---->
+            <IconTextView
+                style="@style/account_information_to_compile"
+                android:id="@+id/account_information_compile_job"
+                />
+
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+
+        <View
+
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+                  android:background="@drawable/selector_join_group"
+                  android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                  android:id="@+id/detailinfo2_phone_call">
+        <ImageView android:layout_marginLeft="@dimen/activity_detailinfomation2_image_margin_left"
+                   android:layout_gravity="center"
+                   android:layout_width="@dimen/activity_detailinfomation2_image_height"
+                   android:layout_height="@dimen/activity_detailinfomation2_image_height"
+                   android:id="@+id/member_phone__image_2"
+                   android:src="@drawable/detailinfo2_phone_image"/>
+        <TextView android:layout_marginLeft="@dimen/activity_detailinfomation2_image_margin_left"
+                  android:layout_gravity="center"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="@dimen/activity_detailinfomation1_text2_size"
+                  android:id="@+id/menber_phone_text_2"/>
+        <!---->
+            <IconTextView
+                style="@style/account_information_to_compile"
+                android:id="@+id/account_information_compile_tel"
+                />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,224 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="com.huntor.mscrm.app.ui.fragment.member.MyMemberFragment"
+              android:orientation="vertical"
+              android:background="@color/white"
+        >
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_title_height"
+            android:background="@color/login_bg"
+            >
+
+        <TextView
+                android:id="@+id/text_base_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/main_mymember"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/base_title_text_size"
+                />
+        <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/base_title_height"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/back"
+                android:scaleType="centerInside"
+                />
+        <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/search"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/layout_fragment_mymember_new_fans"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_mymember_layout_height"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:background="@drawable/selector_interaction_click"
+            >
+
+        <ImageView
+                android:id="@+id/iv_1"
+                style="@style/member_head_icon_style"
+                android:src="@drawable/fragment_mymember_new_fans"
+                />
+
+        <TextView
+                android:text="@string/new_fans"
+                android:layout_toRightOf="@+id/iv_1"
+                style="@style/item_title_common_style"
+                />
+
+        <TextView
+                android:id="@+id/text_number_people_new_fans"
+                android:layout_toLeftOf="@+id/img_item_right_corner_1"
+                style="@style/item_count_common_style"
+                android:textColor="@color/login_bg"
+                />
+
+        <ImageView
+                android:id="@+id/img_item_right_corner_1"
+                style="@style/item_arrow_common_style"/>
+
+        <View
+                style="@style/item_divider_common_style"
+                />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/layout_fragment_mymember_normal_fans"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_mymember_layout_height"
+            android:clickable="true"
+            android:background="@drawable/selector_interaction_click"
+            >
+
+        <ImageView
+                android:id="@+id/iv_normal_fans"
+                style="@style/member_head_icon_style"
+                android:src="@drawable/fragment_mymember_normal_fans"
+                />
+
+
+        <TextView
+                android:text="@string/normal_fans"
+                android:layout_toRightOf="@id/iv_normal_fans"
+                style="@style/item_title_common_style"
+                />
+
+        <TextView
+                android:id="@+id/text_number_people_normal_fans"
+                style="@style/item_count_common_style"
+                android:layout_toLeftOf="@+id/img_item_right_corner_2"
+                />
+
+        <ImageView
+                android:id="@+id/img_item_right_corner_2"
+                style="@style/item_arrow_common_style"/>
+
+        <View
+                style="@style/item_divider_common_style"
+                />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/layout_fragment_mymember_high_user"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_mymember_layout_height"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:background="@drawable/selector_interaction_click"
+            >
+
+        <ImageView
+                android:id="@+id/iv_3"
+                style="@style/member_head_icon_style"
+                android:src="@drawable/fragment_mymember_high_user"
+                />
+
+
+        <TextView
+                android:text="@string/high_user"
+                style="@style/item_title_common_style"
+                android:layout_toRightOf="@+id/iv_3"
+                />
+
+        <TextView
+                android:id="@+id/text_number_people_high_user"
+                style="@style/item_count_common_style"
+                android:layout_toLeftOf="@+id/img_item_right_corner_3"
+                />
+
+        <ImageView
+                android:id="@+id/img_item_right_corner_3"
+                style="@style/item_arrow_common_style"
+                />
+
+        <View
+                style="@style/item_divider_common_style"
+                />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/layout_fragment_mymember_buyed_user"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_mymember_layout_height"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:background="@drawable/selector_interaction_click"
+            >
+
+        <ImageView
+                android:id="@+id/iv_4"
+                style="@style/member_head_icon_style"
+                android:src="@drawable/fragment_mymember_buyed_user"
+                />
+
+
+        <TextView
+                android:text="@string/buyed_user"
+                android:layout_toRightOf="@+id/iv_4"
+                style="@style/item_title_common_style"
+                />
+
+        <TextView
+                android:id="@+id/text_number_people_buyed_user"
+                style="@style/item_count_common_style"
+                android:layout_toLeftOf="@+id/img_item_right_corner_4"
+                />
+
+        <ImageView
+                android:id="@+id/img_item_right_corner_4"
+                style="@style/item_arrow_common_style"
+                />
+
+        <View
+                style="@style/item_divider_common_style"
+                />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/layout_fragment_mymember_my_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_mymember_layout_height"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:background="@drawable/selector_interaction_click"
+            >
+
+        <ImageView
+                android:id="@+id/iv_5"
+                style="@style/member_head_icon_style"
+                android:src="@drawable/fragment_mymember_my_group"/>
+
+
+        <TextView
+                android:text="@string/my_group"
+                android:layout_toRightOf="@id/iv_5"
+                style="@style/item_title_common_style"/>
+
+        <ImageView
+                android:id="@+id/img_item_right_corner_5"
+                style="@style/item_arrow_common_style"/>
+
+        <View
+                style="@style/item_divider_common_style"
+                />
+
+    </RelativeLayout>
+
+</LinearLayout>

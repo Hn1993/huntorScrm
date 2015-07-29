@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:padding="11dp"
+              android:gravity="center"
+              android:background="@drawable/shape_view_backround_record"
+              android:orientation="vertical">
+    <RelativeLayout
+            android:id="@+id/layout_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/ic_chat_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_chat_phone"/>
+
+        <ImageView
+                android:id="@+id/volume"
+                android:layout_width="wrap_content"
+                android:layout_alignBottom="@+id/ic_chat_phone"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/ic_chat_phone"
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_chat_amp1"/>
+    </RelativeLayout>
+
+    <Chronometer
+            android:id="@+id/timedown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="05:00"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:visibility="gone"/>
+    <TextView
+            android:id="@+id/tv_cancel_send_record"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手指上滑，取消发送"
+            android:includeFontPadding="false"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"/>
+</LinearLayout>
