@@ -40,9 +40,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 在线交互列表（粉丝列表）
+ * <p/>
  * Created by Admin on 2015/7/16.
  */
-public class OnlineInteractionFragment extends BaseFragment   implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener{
+public class OnlineInteractionFragment extends BaseFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
 
     private static final String TAG = "InteractionOnline";
