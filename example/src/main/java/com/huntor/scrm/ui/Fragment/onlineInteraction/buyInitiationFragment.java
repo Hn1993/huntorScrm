@@ -13,7 +13,7 @@ import com.huntor.scrm.ui.Fragment.BaseFragment;
 
 /**
  * Created by Admin on 2015/7/20.
- *
+ * 购买入会
  */
 public class buyInitiationFragment extends BaseFragment {
     @Nullable

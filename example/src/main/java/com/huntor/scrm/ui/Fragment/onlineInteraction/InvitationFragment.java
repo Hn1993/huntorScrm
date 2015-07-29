@@ -11,7 +11,7 @@ import com.huntor.scrm.ui.Fragment.BaseFragment;
 
 /**
  * Created by Admin on 2015/7/20.
- * 
+ * 入会邀请
  */
 public class InvitationFragment extends BaseFragment {
     @Nullable
