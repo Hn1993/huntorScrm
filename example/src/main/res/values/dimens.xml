@@ -3,6 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="base_title_text_size">18sp</dimen>
+    <dimen name="base_title_height">56dp</dimen>
+    <dimen name="base_title_img_padding">10dp</dimen>
 
     <!--fab button-->
     <dimen name="fab_size_normal">56dp</dimen>

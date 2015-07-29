@@ -35,7 +35,6 @@
             android:id="@+id/activity_login_pwd"
             android:layout_marginTop="@dimen/activity_login_edit_top"
             android:hint="请输入密码"
-
             android:layout_below="@+id/activity_login_name"/>
     <TextView
             android:layout_width="wrap_content"
