@@ -106,7 +106,6 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
 
     private void updateUserGrade() {
         setFanIds();
-        MyLogger.w(TAG, "¸üÐÂÓÃ»§µÈ¼¶");
         MyLogger.w(TAG, "fanIds.length = " + fanIds.length);
         MyLogger.w(TAG, "fanIds = " + Arrays.toString(fanIds));
 
@@ -122,7 +121,7 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
                             int empID = PreferenceUtils.getInt(context, Constant.PREFERENCE_EMP_ID, 0);
                             int size = response.fansList.size();
                             if (size == fanIds.length) {
-                                for (int position = 0; position < size; position++) {//±éÀú²éÑ¯µ½µÄÊý¾Ý
+                                for (int position = 0; position < size; position++) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                                     BatchQueryFansResult.Fans fans = response.fansList.get(position);
                                     int fanId = fans.id;
                                     for (int i = 0; i < data.size(); i++) {
@@ -140,9 +139,9 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
                                     }
                                 }
                                 setContactList();
-                                MyLogger.w(TAG, "adapter¸üÐÂ2");
+                                MyLogger.w(TAG, "adapterï¿½ï¿½ï¿½ï¿½2");
                             } else {
-                                MyLogger.w(TAG, "Êý¾Ý´íÎó,±¾µØÁÐ±íÊý¾ÝÓëÉÏ´«Êý¾Ý³¤¶È²»Ò»ÖÂ");
+                                MyLogger.w(TAG, "ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½È²ï¿½Ò»ï¿½ï¿½");
                             }
                         } else {
                             //Utils.toast(context, response.getRetInfo() + "");
@@ -169,7 +168,7 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
 
 
     /**
-     * ÔÚÊý¾Ý¿âÖÐÖØÐÂ»ñÈ¡ÁÐ±íÊý¾Ý
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½È¡ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     private void setContactList() {
         List<FansRecordModel> fansList = ApiFansRecordDb.getFansList(context);
@@ -236,13 +235,13 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
     }
 
     /**
-     * ºóÌ¨½ÓÊÕÏûÏ¢
+     * ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
      */
     private PushMessageManager.OnReceivedPushMessageListener opl = new PushMessageManager.OnReceivedPushMessageListener() {
 
         @Override
         public void onReceivedFansMessage(Object message) {
-            MyLogger.e(TAG, "½ÓÊÕµ½µÄÏûÏ¢");
+            MyLogger.e(TAG, "ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢");
             MessageRecordModel pushMessage = (MessageRecordModel) message;
             manageReceiveMessage(pushMessage);
         }
@@ -252,16 +251,16 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
         int fan_id = pushMessage.fid;
         FansRecordModel fansRecordModel = ApiFansRecordDb.getFansInfoById(context, fan_id);
         if (fansRecordModel == null) {
-            MyLogger.e(TAG, "·ÛË¿ÁÐ±íÖÐÃ»ÓÐ¸Ã·ÛË¿ÐÅÏ¢");
-            getFansDetail(fan_id);//ÁªÍø»ñÈ¡·ÛË¿ÐÅÏ¢£¬²¢Ìí¼Óµ½Êý¾Ý¿âÖÐ
+            MyLogger.e(TAG, "ï¿½ï¿½Ë¿ï¿½Ð±ï¿½ï¿½ï¿½Ã»ï¿½Ð¸Ã·ï¿½Ë¿ï¿½ï¿½Ï¢");
+            getFansDetail(fan_id);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ë¿ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½
         } else {
             setContactList();
         }
     }
 
     /**
-     * »ñÈ¡·ÛË¿¼ÇÂ¼
-     * µ±·ÛË¿µÄ accountId Îª -1 Ê±£¬±íÊ¾ÁªÍø»ñÈ¡Ê§°Ü
+     * ï¿½ï¿½È¡ï¿½ï¿½Ë¿ï¿½ï¿½Â¼
+     * ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ accountId Îª -1 Ê±ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Ê§ï¿½ï¿½
      *
      * @param fan_id
      * @return
@@ -289,8 +288,8 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
                                 fanModel.subscribeTime = response.fanInfo.subscribeTime;
                                 Uri fansRecordModelUrl = new ApiFansRecordDb(context).insert(fanModel);
                                 if (fansRecordModelUrl == null) {
-                                    //TODO ¸Ã·ÛË¿²åÈë²»³É¹¦
-                                    MyLogger.e(TAG, "·ÛË¿id" + fan_id + "Î´Ìí¼Óµ½Êý¾Ý¿âÖÐ");
+                                    //TODO ï¿½Ã·ï¿½Ë¿ï¿½ï¿½ï¿½ë²»ï¿½É¹ï¿½
+                                    MyLogger.e(TAG, "ï¿½ï¿½Ë¿id" + fan_id + "Î´ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½");
                                 }
                                 setContactList();
                             }
@@ -322,7 +321,7 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
                     break;
                 case 2:
                     adapter.notifyDataSetChanged();
-                    MyLogger.w(TAG, "adapter¸üÐÂ1");
+                    MyLogger.w(TAG, "adapterï¿½ï¿½ï¿½ï¿½1");
                     listContactList.smoothScrollToPosition(0);
                     updateUserGrade();
                     break;
@@ -360,11 +359,11 @@ public class OnlineInteractionFragment extends BaseFragment   implements Adapter
                 Contact contact = data.get(position);
                 int delResult = fansDb.delete(contact.fan_id);
                 if (delResult > 0) {
-                    Log.w(TAG, "É¾³ý " + contact.fan_id + "³É¹¦");
+                    Log.w(TAG, "É¾ï¿½ï¿½ " + contact.fan_id + "ï¿½É¹ï¿½");
                     data.remove(position);
                     setFanIds();
                 } else {
-                    Log.w(TAG, "É¾³ý " + contact.fan_id + " Ê§°Ü");
+                    Log.w(TAG, "É¾ï¿½ï¿½ " + contact.fan_id + " Ê§ï¿½ï¿½");
                 }
                 if (popupWindow.isShowing()) {
                     popupWindow.dismiss();
