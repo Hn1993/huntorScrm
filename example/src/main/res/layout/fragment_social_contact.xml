@@ -2,7 +2,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.huntor.mscrm.app.ui.fragment.SocialContactFragment">
+             tools:context="com.huntor.mscrm.app2.ui.fragment.SocialContactFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

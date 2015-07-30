@@ -2,7 +2,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base_title_height"
-                tools:context="com.huntor.mscrm.app.ui.component.BaseActivity"
+                tools:context="com.huntor.mscrm.app2.ui.component.BaseActivity"
                 android:background="@color/login_bg"
         >
 

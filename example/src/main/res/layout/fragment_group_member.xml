@@ -45,7 +45,7 @@
 
         </RelativeLayout>
 
-        <com.huntor.mscrm.app.ui.component.XListView
+        <com.huntor.mscrm.app2.ui.component.XListView
                 android:id="@+id/group_member_listview"
                 android:divider="@null"
                 android:clickable="true"

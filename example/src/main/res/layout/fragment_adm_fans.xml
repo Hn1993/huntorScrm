@@ -58,7 +58,7 @@
             android:gravity="center_horizontal"
             android:visibility="gone"/>
 
-    <com.huntor.mscrm.app.ui.component.XListView
+    <com.huntor.mscrm.app2.ui.component.XListView
             android:id="@+id/listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
