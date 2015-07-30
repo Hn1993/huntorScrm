@@ -10,6 +10,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/base_title_height"
+            android:visibility="gone"
             android:background="@color/login_bg"
             >
 

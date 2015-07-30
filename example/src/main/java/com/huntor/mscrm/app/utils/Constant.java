@@ -77,7 +77,7 @@ public final class Constant {
      * 192.168.1.61
      */
   //public static final String SOCKET_TCP_LONG_HOST_URL = "http://scrmapp.vivo.com.cn:83"; //	生产域名
-   // public static final String SOCKET_TCP_LONG_HOST_URL = "http://58.67.204.13:29092"; //	生产chatter外网ip
+    //public static final String SOCKET_TCP_LONG_HOST_URL = "http://58.67.204.13:29092"; //	生产chatter外网ip
      public static final String SOCKET_TCP_LONG_HOST_URL = "http://58.67.199.171:29092"; //测试地址
 
 
@@ -87,7 +87,7 @@ public final class Constant {
      * http://192.168.1.126:8085/MobileBusiness
      * http://192.168.1.169:8085/MobileBusiness
      */
-    //public static final String HTTP_ROOT_URL = "http://scrmapp.vivo.com.cn:82/MobileBusiness"; // 服务器地址
+   // public static final String HTTP_ROOT_URL = "http://scrmapp.vivo.com.cn:82/MobileBusiness"; // 服务器地址
      public static final String HTTP_ROOT_URL = "http://58.67.199.171:86/MobileBusiness"; // 测试服务器地址
 
 
