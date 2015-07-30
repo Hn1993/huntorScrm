@@ -54,7 +54,7 @@
 
     </LinearLayout>
 
-    <com.huntor.mscrm.app.ui.component.XListView
+    <com.huntor.mscrm.app2.ui.component.XListView
             android:id="@+id/list_search_fans"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

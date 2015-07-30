@@ -3,11 +3,12 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context="com.huntor.mscrm.app.ui.fragment.member.HighUserFragment"
+              tools:context="com.huntor.mscrm.app2.ui.fragment.member.HighUserFragment"
               android:background="@color/white"
         >
 
     <RelativeLayout
+        android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base_title_height"
             android:background="@color/login_bg"
@@ -37,7 +38,7 @@
             android:text="网络差，稍后加载"/>
 
     <!-- TODO: Update blank fragment layout -->
-    <com.huntor.mscrm.app.ui.component.XListView
+    <com.huntor.mscrm.app2.ui.component.XListView
             android:id="@+id/high_user_list"
             android:layout_width="match_parent"
             android:divider="@null"

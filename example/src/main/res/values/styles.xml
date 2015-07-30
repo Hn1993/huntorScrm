@@ -163,7 +163,7 @@
         <item name="android:layout_marginRight">40dp</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_toRightOf">@id/text_interaction_code_two_dimension</item>
+        <item name="android:layout_toRightOf">@+id/text_interaction_code_two_dimension</item>
         <item name="android:paddingLeft">10dp</item>
 
     </style>
@@ -274,4 +274,56 @@
         <item name="android:text">@string/account_information_to_compile</item>
     </style>
 
+
+    <!--my member new -->
+    <style name="member_header" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/drawerlayout_mian_image_marginLeft</item>
+    </style>
+    <style name="member_text" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="member_go" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">-50dp</item>
+        <item name="android:src">@drawable/member_go</item>
+    </style>
+
+    <style name="member_text2" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!--会员列表的样式-->
+    <style name="member_item_text_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/fragment_mymember_item_name_size</item>
+        <item name="android:layout_marginLeft">@dimen/fragment_mymember_img_margin_left_right</item>
+        <item name="android:layout_marginTop">@dimen/fragment_mymember_img_margin_left_right</item>
+    </style>
+
+    <style name="member_item_text_time">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/fragment_mymember_item_time_size</item>
+        <item name="android:layout_marginLeft">@dimen/fragment_mymember_img_margin_left_right</item>
+        <item name="android:layout_marginTop">@dimen/fragment_mymember_item_time_margintop</item>
+        <item name="android:layout_alignParentStart">true</item>
+    </style>
+
+    <style name="item_divider_member_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider</item>
+        <item name="android:background">@color/huntor_bacground</item>
+        <item name="android:layout_marginLeft">@dimen/fragment_mymember_img_margin_left_right</item>
+        <item name="android:layout_marginRight">@dimen/fragment_mymember_img_margin_left_right</item>
+    </style>
 </resources>
