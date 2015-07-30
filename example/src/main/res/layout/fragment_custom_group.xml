@@ -12,6 +12,7 @@
             android:layout_height="@dimen/base_title_height"
             android:background="#1779d0"
             android:gravity="center_vertical"
+            android:visibility="gone"
             android:orientation="horizontal"
             >
 
