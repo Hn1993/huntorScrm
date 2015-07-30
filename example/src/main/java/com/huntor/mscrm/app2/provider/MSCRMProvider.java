@@ -121,6 +121,12 @@ public class MSCRMProvider extends ContentProvider {
     private static final int PULL_NOTE = 28;
     private static final int PULL_NOTE_ID = 29;
 
+    /**
+     * 站内信消息
+     */
+    private static final int SHAKE = 30;
+    private static final int SHAKE_ID = 31;
+
     private static final UriMatcher mUriMatcher;
 
     private static HashMap<String, String> mMessageMap; // 聊天记录的投影字段
@@ -140,7 +146,7 @@ public class MSCRMProvider extends ContentProvider {
 
     private static HashMap<String, String> mPULLNOTEMap;//站内信记录的投影字段
 
-
+    private static HashMap<String, String> mSHAKEMap;//摇一摇记录的投影字段
 
     /**
      * 该静态代码块用来将各Uri装入UriMatcher并初始化要查询表的投影投影字段
@@ -188,6 +194,30 @@ public class MSCRMProvider extends ContentProvider {
         mPULLNOTEMap.put(MSCRMContract.MessageNote.TYPE, MSCRMContract.MessageNote.TYPE);
         mPULLNOTEMap.put(MSCRMContract.MessageNote.CONTENT, MSCRMContract.MessageNote.CONTENT);
         mPULLNOTEMap.put(MSCRMContract.MessageNote.TIME, MSCRMContract.MessageNote.TIME);
+
+        /**
+         *摇一摇记录
+         */
+        mUriMatcher.addURI(MSCRMContract.AUTHORITY, MSCRMContract.Shake.TABLE_NAME,
+                SHAKE);
+        mUriMatcher.addURI(MSCRMContract.AUTHORITY, MSCRMContract.Shake.TABLE_NAME
+                + "/#", SHAKE_ID);
+
+        /**
+         * 摇一摇投影字段
+         */
+        mSHAKEMap.put(MSCRMContract.Shake.STATUS, MSCRMContract.Shake.STATUS);
+        mSHAKEMap.put(MSCRMContract.Shake.SOCIALID, MSCRMContract.Shake.SOCIALID);
+        mSHAKEMap.put(MSCRMContract.Shake.DEVICEID, MSCRMContract.Shake.DEVICEID);
+        mSHAKEMap.put(MSCRMContract.Shake.DISTANCE, MSCRMContract.Shake.DISTANCE);
+        mSHAKEMap.put(MSCRMContract.Shake.EMPID, MSCRMContract.Shake.EMPID);
+        mSHAKEMap.put(MSCRMContract.Shake.FANREALID, MSCRMContract.Shake.FANREALID);
+        mSHAKEMap.put(MSCRMContract.Shake.FANID, MSCRMContract.Shake.FANID);
+        mSHAKEMap.put(MSCRMContract.Shake.TIMESTAMP, MSCRMContract.Shake.TIMESTAMP);
+        mSHAKEMap.put(MSCRMContract.Shake.GROUPID, MSCRMContract.Shake.GROUPID);
+        mSHAKEMap.put(MSCRMContract.Shake.ISREAD, MSCRMContract.Shake.ISREAD);
+
+
 
         /**
          * 粉丝
@@ -453,6 +483,11 @@ public class MSCRMProvider extends ContentProvider {
                 qb.setProjectionMap(mPULLNOTEMap);
                 qb.appendWhere(MSCRMContract.MessageNote._ID + "=" + ContentUris.parseId(uri));
                 break;
+            case SHAKE:
+                qb.setTables(MSCRMContract.Shake.TABLE_NAME);
+                qb.setProjectionMap(mSHAKEMap);
+                break;
+
             case FANS:
                 qb.setTables(MSCRMContract.FansRecord.TABLE_NAME);
                 qb.setProjectionMap(mFansMap);
@@ -721,6 +756,12 @@ public class MSCRMProvider extends ContentProvider {
             case PULL_NOTE_ID:
                 return VENDOR_TYPE_ITEM + "/" + VENDOR_SPECIFIC
                         + MSCRMContract.MessageNote.TABLE_NAME;
+            case SHAKE:
+                return VENDOR_TYPE_DIR + "/" + VENDOR_SPECIFIC
+                        + MSCRMContract.Shake.TABLE_NAME;
+            case SHAKE_ID:
+                return VENDOR_TYPE_ITEM + "/" + VENDOR_SPECIFIC
+                        + MSCRMContract.Shake.TABLE_NAME;
             case FANS:
                 return VENDOR_TYPE_DIR + "/" + VENDOR_SPECIFIC
                         + MSCRMContract.FansRecord.TABLE_NAME;
@@ -817,6 +858,10 @@ public class MSCRMProvider extends ContentProvider {
             //站内信
             case PULL_NOTE:
                 tableName = MSCRMContract.MessageNote.TABLE_NAME;
+                break;
+            //摇一摇
+            case SHAKE:
+                tableName = MSCRMContract.Shake.TABLE_NAME;
                 break;
             //粉丝
             case FANS:
