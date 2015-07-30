@@ -105,6 +105,9 @@ public class NotificationUtils {
         } else if (TextUtils.equals(type, Constant.CHAT_TYPE_IMAGE)) {
             mRemoteViews.setTextViewText(R.id.tv_message_content, "站内信" + mContext.getResources().getString(R.string.notice_receive_msg_img));
             builder.setTicker("站内信" + mContext.getResources().getString(R.string.notice_receive_img));
+        }else if (TextUtils.equals(type, Constant.CHAT_TYPE_SHAKE)) {
+            mRemoteViews.setTextViewText(R.id.tv_message_content, "摇一摇" + mContext.getResources().getString(R.string.notice_receive_msg_img));
+            builder.setTicker("摇一摇" + mContext.getResources().getString(R.string.notice_receive_new_msg));
         }
         /***
          * 是否消息通知声音

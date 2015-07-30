@@ -47,6 +47,7 @@
     <string name="high_user">高潜消费者</string>
     <string name="buyed_user">已购用户</string>
     <string name="my_group">我的分组</string>
+    <string name="shake_title">摇一摇</string>
     <string name="my_group_name_test">老顾客</string>
     <string name="my_group_people_number_test">0人</string>
     <string name="my_group_update_test">3天前</string>

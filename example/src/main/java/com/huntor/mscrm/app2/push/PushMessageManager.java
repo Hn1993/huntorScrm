@@ -17,6 +17,7 @@ import com.huntor.mscrm.app2.model.*;
 import com.huntor.mscrm.app2.provider.api.ApiFansRecordDb;
 import com.huntor.mscrm.app2.provider.api.ApiMessageRecordDb;
 import com.huntor.mscrm.app2.provider.api.ApiPullMessageNoteDb;
+import com.huntor.mscrm.app2.provider.api.ApiPullMessageShakeDb;
 import com.huntor.mscrm.app2.utils.*;
 
 
@@ -52,6 +53,18 @@ public class PushMessageManager {
         public void OnPullMessageNote(Object pushMessage);
     }
 
+    /**
+     * 收到推送消息后的回调
+     */
+    public interface OnPullMessageShakeListener {
+        /**
+         * 收到推送消息的回调
+         *
+         * @param pushMessage
+         */
+        public void OnPullMessageShake(Object pushMessage);
+    }
+
     public interface Rck {
         /**
          * 发送消息的回调接口
@@ -66,7 +79,7 @@ public class PushMessageManager {
 
     private static final List<OnReceivedPushMessageListener> mPushListeners = new ArrayList<OnReceivedPushMessageListener>();
     private static final List<OnPullMessageNoteListener> mlisteners = new ArrayList<OnPullMessageNoteListener>();
-
+    private static final List<OnPullMessageShakeListener> mShakelisteners = new ArrayList<OnPullMessageShakeListener>();
     private static PushMessageManager mPushMessageManager;
     private Context mContext; // 上下文
     private PushMessageHandler mPushMessageHandler; // 处理服务端推送消息的Handler
@@ -115,7 +128,9 @@ public class PushMessageManager {
         mlisteners.add(listener);
     }
 
-
+    public void registerOnReceivedPushMessageListener(OnPullMessageShakeListener listener) {
+        mShakelisteners.add(listener);
+    }
     /**
      * 设置当前交互的粉丝Id
      *
@@ -139,6 +154,9 @@ public class PushMessageManager {
 
     public void unregisterOnReceivedPushMessageListener(OnPullMessageNoteListener listener) {
         mPushListeners.remove(listener);
+    }
+    public void unregisterOnReceivedPushMessageListener(OnPullMessageShakeListener listener) {
+        mShakelisteners.remove(listener);
     }
 
     /**
@@ -238,6 +256,36 @@ public class PushMessageManager {
     }
 
     /**
+     * 解析推送的摇一摇消息，并把消息发送到监听者
+     *
+     * @param note
+     */
+    public void parsePushMessage(ShakeModle note) {
+        Log.i(TAG, "pushMessage = " + note);
+        if (note != null) {
+            ApiPullMessageShakeDb noteDb = new ApiPullMessageShakeDb(mContext);
+
+            noteDb.insert(note);
+
+            PullMessageNote pNote = new PullMessageNote();
+            pNote.time = new Date().getTime();
+
+
+            mNotificationUtils.sendPush(pNote);
+            /**
+             * 通知监听者
+             */
+            for (int i = 0; i < mlisteners.size(); i++) {
+                OnPullMessageShakeListener listener = mShakelisteners.get(i);
+                if (listener != null) {
+                    listener.OnPullMessageShake(note);
+
+                }
+            }
+        }
+    }
+
+    /**
      * 解析发送的消息，并把消息发送到监听者
      *
      * @param type 1 文本  10  图文
@@ -307,6 +355,8 @@ public class PushMessageManager {
                         parsePushMessage((MessageRecordModel) msg.obj);
                     } else if (type.equals("internalmsg")) {
                         parsePushMessage((PullMessageNote) msg.obj);
+                    }else if (type.equals("shake_event")) {
+                        parsePushMessage((ShakeModle) msg.obj);
                     }
                     break;
                 case MSG_PARSE_SEND_MESSAGE:

@@ -96,7 +96,7 @@ public class ApiPullMessageShakeDb {
      * @param context
      * @param fanId   粉丝ID
      */
-    public static int updateReadStatus(Context context, int fanId) {
+    public static int updateReadStatus(Context context) {
         ContentResolver resolver = context.getContentResolver();
         ContentValues updateValues = new ContentValues();
         updateValues.put(MSCRMContract.Shake.ISREAD, 1); //0是未读  1 是已读
