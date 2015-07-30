@@ -47,7 +47,7 @@ public class NormalFansAdapter extends MyBaseAdapter{
             convertView=inflater.inflate(R.layout.member_adapter_item,null);
             //vh.headPortrait = (ImageView) convertView.findViewById(R.id.head_portrait);
             vh.name = (TextView) convertView.findViewById(R.id.member_name);
-            vh.time = (TextView) convertView.findViewById(R.id.time);
+            vh.time = (TextView) convertView.findViewById(R.id.member_time);
             //vh.grade= (TextView) convertView.findViewById(R.id.tv_grade);
             convertView.setTag(vh);
 
