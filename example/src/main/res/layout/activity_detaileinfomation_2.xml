@@ -52,10 +52,10 @@
                       android:layout_marginTop="@dimen/activity_detailinfomation1_text1_totext_top"
                     />
         </LinearLayout>
-        <IconTextView
-                style="@style/account_information_to_compile"
-                android:id="@+id/account_information_compile_name"
-                />
+        <!--<IconTextView-->
+                <!--style="@style/account_information_to_compile"-->
+                <!--android:id="@+id/account_information_compile_name"-->
+                <!--/>-->
 
     </LinearLayout>
     <!--<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">-->
@@ -115,10 +115,10 @@
                 android:id="@+id/menber_address_text_2"
                 />
         <!---->
-            <IconTextView
-                style="@style/account_information_to_compile"
-                android:id="@+id/account_information_compile_gender"
-                />
+            <!--<IconTextView-->
+                <!--style="@style/account_information_to_compile"-->
+                <!--android:id="@+id/account_information_compile_gender"-->
+                <!--/>-->
 
 
     </LinearLayout>
@@ -159,10 +159,10 @@
 
                 />
         <!---->
-        <IconTextView
-                style="@style/account_information_to_compile"
-                android:id="@+id/account_information_compile_age"
-                />
+        <!--<IconTextView-->
+                <!--style="@style/account_information_to_compile"-->
+                <!--android:id="@+id/account_information_compile_age"-->
+                <!--/>-->
 
 
     </LinearLayout>
@@ -198,10 +198,10 @@
 
                   android:id="@+id/menber_mail_text_2"/>
         <!---->
-            <IconTextView
-                style="@style/account_information_to_compile"
-                android:id="@+id/account_information_compile_job"
-                />
+            <!--<IconTextView-->
+                <!--style="@style/account_information_to_compile"-->
+                <!--android:id="@+id/account_information_compile_job"-->
+                <!--/>-->
 
 
     </LinearLayout>
@@ -239,10 +239,10 @@
                   android:textSize="@dimen/activity_detailinfomation1_text2_size"
                   android:id="@+id/menber_phone_text_2"/>
         <!---->
-            <IconTextView
-                style="@style/account_information_to_compile"
-                android:id="@+id/account_information_compile_tel"
-                />
+            <!--<IconTextView-->
+                <!--style="@style/account_information_to_compile"-->
+                <!--android:id="@+id/account_information_compile_tel"-->
+                <!--/>-->
 
     </LinearLayout>
 

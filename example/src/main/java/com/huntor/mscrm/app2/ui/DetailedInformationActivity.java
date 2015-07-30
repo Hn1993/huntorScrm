@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PaintDrawable;
@@ -38,16 +39,21 @@ import com.huntor.mscrm.app2.ui.component.MyViewPager;
 import com.huntor.mscrm.app2.utils.*;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.wangjie.wavecompat.WaveCompat;
+import com.wangjie.wavecompat.WaveDrawable;
+import com.wangjie.wavecompat.WaveTouchHelper;
 import org.apache.http.protocol.HTTP;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.wangjie.wavecompat.WaveTouchHelper.*;
+
 /**
  * Created by Admin on 2015/5/4.
  */
-public class DetailedInformationActivity extends BaseActivity implements View.OnClickListener {
+public class DetailedInformationActivity extends BaseActivity implements View.OnClickListener,OnWaveTouchHelperListener {
     private Context context;
     private String TAG = getClass().getName();
 
@@ -160,7 +166,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = DetailedInformationActivity.this;
-        setContentView(R.layout.activity_detaileinfomation);
+        setContentView(R.layout.fragment_fans_info);
         Intent intent = getIntent();
         if (intent != null) {
 
@@ -173,6 +179,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 
         initData();
         initview();
+        findImage();
     }
 
     private void initData() {
@@ -206,9 +213,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         //Viewpager的三个界面
         viewpager = (ViewPager) findViewById(R.id.detailte_viewpager);
         viewlist = new ArrayList<View>();
-        viewlist.add(getLayoutInflater().inflate(R.layout.activity_detailinfomation_1_copy, null));
-        viewlist.add(getLayoutInflater().inflate(R.layout.activity_detaileinfomation_2, null));
-        viewlist.add(getLayoutInflater().inflate(R.layout.activity_detaileinfomation_3, null));
+        viewlist.add(getLayoutInflater().inflate(R.layout.layout_viewpager1, null));
+        viewlist.add(getLayoutInflater().inflate(R.layout.layout_viewpager2, null));
+        viewlist.add(getLayoutInflater().inflate(R.layout.layout_viewpager3, null));
         //viewpager的适配器
         myAdapter = new MyPagerAdapter(viewlist);
         viewpager.setAdapter(myAdapter);
@@ -216,8 +223,8 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         viewpager.setOnPageChangeListener(viewpager_linster);
 
         //购买意向按钮
-        buy_more = (IconTextView) viewlist.get(2).findViewById(R.id.member_info_buymore_3);
-        buy_more.setOnClickListener(this);
+//        buy_more = (IconTextView) viewlist.get(2).findViewById(R.id.member_info_buymore_3);
+//        buy_more.setOnClickListener(this);
         //购买意向和已购产品的Listview
         listview_want_buy_3 = (MySlideListView) viewlist.get(2).findViewById(R.id.listview_wantbuy);
         listview_buyed_3 = (ListView) viewlist.get(2).findViewById(R.id.listview_buyed);
@@ -244,11 +251,11 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
 
         //账户信息里的Icontext的点击事件
-        viewlist.get(1).findViewById(R.id.account_information_compile_gender).setOnClickListener(this);
-        viewlist.get(1).findViewById(R.id.account_information_compile_job).setOnClickListener(this);
-        viewlist.get(1).findViewById(R.id.account_information_compile_tel).setOnClickListener(this);
-        viewlist.get(1).findViewById(R.id.account_information_compile_name).setOnClickListener(this);
-        viewlist.get(1).findViewById(R.id.account_information_compile_age).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_gender).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_job).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_tel).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_name).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_age).setOnClickListener(this);
 
         //通过接口获取网络数据
 
@@ -669,6 +676,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 case 0:
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
+                    mImageView.setVisibility(View.VISIBLE);
                     detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
                     detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
                     detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
@@ -680,6 +688,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 case 1:
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
+                    mImageView.setVisibility(View.GONE);
                     detaileinfo_social.setTextColor(getResources().getColor(R.color.title));
                     detaileinfo_details.setTextColor(getResources().getColor(R.color.title_selected));
                     detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
@@ -691,6 +700,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 case 2:
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
+                    mImageView.setVisibility(View.GONE);
                     detaileinfo_social.setTextColor(getResources().getColor(R.color.title));
                     detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
                     detaileinfo_deal.setTextColor(getResources().getColor(R.color.title_selected));
@@ -794,17 +804,17 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 finish();
                 break;
             //新增购买意向
-            case R.id.member_info_buymore_3:
-                Utils.toast(this, "增加购买意向！");
-                if (accountId == 0) {
-                    Utils.toast(this, "数据错误！！");
-                } else {
-                    Intent intent = new Intent(this, BuyInclinationActivity.class);
-                    intent.putExtra("accountId", accountId);
-                    startActivity(intent);
-                }
-
-                break;
+//            case R.id.member_info_buymore_3:
+//                Utils.toast(this, "增加购买意向！");
+//                if (accountId == 0) {
+//                    Utils.toast(this, "数据错误！！");
+//                } else {
+//                    Intent intent = new Intent(this, BuyInclinationActivity.class);
+//                    intent.putExtra("accountId", accountId);
+//                    startActivity(intent);
+//                }
+//
+//                break;
             //点击pop删除购买意向
             case R.id.pop_delete:
                 if (null != popupWindow) {
@@ -899,19 +909,19 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 showTelDialog();
                 break;
             //账户信息的编辑
-            case R.id.account_information_compile_gender:
-//                compile_title="性别";
-//                String[] genderStr={"男","女","未知"};
-//                //弹出Listdialog
-//                mShowing.showSudokuListDialog(mShowing.GetCity(genderStr), DetailedInformationActivity.this, compile_title, viewpager2_fans_gender,accountId);
-                //modifyFansParam.gender=
-
-                mPopView = getLayoutInflater().inflate(R.layout.layout_popwindow_gender, null);
-                ShowSelectPop(mPopView);
-                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                genderSetOnClick(mPopView);
-                setGenderImageVisiable(viewpager2_fans_gender);
-                break;
+//            case R.id.account_information_compile_gender:
+////                compile_title="性别";
+////                String[] genderStr={"男","女","未知"};
+////                //弹出Listdialog
+////                mShowing.showSudokuListDialog(mShowing.GetCity(genderStr), DetailedInformationActivity.this, compile_title, viewpager2_fans_gender,accountId);
+//                //modifyFansParam.gender=
+//
+//                mPopView = getLayoutInflater().inflate(R.layout.layout_popwindow_gender, null);
+//                ShowSelectPop(mPopView);
+//                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+//                genderSetOnClick(mPopView);
+//                setGenderImageVisiable(viewpager2_fans_gender);
+//                break;
             case R.id.detailinfo2_gender_layout_outside:
                 mPopWindow.dismiss();
                 break;
@@ -937,16 +947,16 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 mPopWindow.dismiss();
                 break;
 
-            case R.id.account_information_compile_job:
-//                compile_title="职业";
-//                String[] jobStr={"个体户老板","初级白领","外来务工","学生","家庭主妇","企业单位管理人员","其他"};
-//                mShowing.showSudokuListDialog(mShowing.GetCity(jobStr), DetailedInformationActivity.this, compile_title, viewpager2_fans_job,accountId);
-                mPopView = getLayoutInflater().inflate(R.layout.layout_pop_job, null);
-                ShowSelectPop(mPopView);
-                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                jobSetOnClick(mPopView);
-                setJobImageVisiable(viewpager2_fans_job);
-                break;
+//            case R.id.account_information_compile_job:
+////                compile_title="职业";
+////                String[] jobStr={"个体户老板","初级白领","外来务工","学生","家庭主妇","企业单位管理人员","其他"};
+////                mShowing.showSudokuListDialog(mShowing.GetCity(jobStr), DetailedInformationActivity.this, compile_title, viewpager2_fans_job,accountId);
+//                mPopView = getLayoutInflater().inflate(R.layout.layout_pop_job, null);
+//                ShowSelectPop(mPopView);
+//                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+//                jobSetOnClick(mPopView);
+//                setJobImageVisiable(viewpager2_fans_job);
+//                break;
             case R.id.detailinfo2_job_layout_outside:
                 mPopWindow.dismiss();
                 break;
@@ -994,23 +1004,23 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 mShowing.JobInfoCompile(DetailedInformationActivity.this, viewpager2_fans_job, modifyFansParam, accountId, fans_id);
                 break;
 
-            case R.id.account_information_compile_tel:
-                compile_title = "tel";
-                new ShowListDialog().goInput(compile_title, DetailedInformationActivity.this, viewpager2_fans_tel, accountId, fans_id);
-                break;
-            case R.id.account_information_compile_name:
-                compile_title = "name";
-                new ShowListDialog().goInput(compile_title, DetailedInformationActivity.this, viewpager2_fans_name, accountId, fans_id);
-                break;
-
-
-            case R.id.account_information_compile_age:
-                mPopView = getLayoutInflater().inflate(R.layout.layout_pop_age, null);
-                ShowSelectPop(mPopView);
-                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                ageSetOnClick(mPopView);
-                setAgeImageVisiable(viewpager2_fans_age);
-                break;
+//            case R.id.account_information_compile_tel:
+//                compile_title = "tel";
+//                new ShowListDialog().goInput(compile_title, DetailedInformationActivity.this, viewpager2_fans_tel, accountId, fans_id);
+//                break;
+//            case R.id.account_information_compile_name:
+//                compile_title = "name";
+//                new ShowListDialog().goInput(compile_title, DetailedInformationActivity.this, viewpager2_fans_name, accountId, fans_id);
+//                break;
+//
+//
+//            case R.id.account_information_compile_age:
+//                mPopView = getLayoutInflater().inflate(R.layout.layout_pop_age, null);
+//                ShowSelectPop(mPopView);
+//                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+//                ageSetOnClick(mPopView);
+//                setAgeImageVisiable(viewpager2_fans_age);
+//                break;
             case R.id.detailinfo2_age_layout_outside:
                 mPopWindow.dismiss();
                 break;
@@ -1187,6 +1197,48 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     protected void onStop() {
         super.onStop();
         Log.i("黄安", "onStop");
+    }
+
+
+    /**
+     * 新app的水波纹点击事件
+     */
+
+    private WaveCompat.mCallBack callBack;//接口的回调
+    private RelativeLayout mRelativeLayout;
+    ImageView mImageView;//点击出现水波纹效果
+
+    public void findImage(){
+        mImageView = (ImageView) findViewById(R.id.imageView);
+        WaveTouchHelper.bindWaveTouchHelper(mImageView, this);//
+        mRelativeLayout= (RelativeLayout) findViewById(R.id.fans_info_layout_finish);
+        mRelativeLayout.setOnClickListener(this);
+        /**
+         * 在动画的完成后显示一个view
+         */
+        callBack=new WaveCompat.mCallBack() {
+            @Override
+            public void resault() {
+                mRelativeLayout.setVisibility(View.VISIBLE);
+            }
+        };
+    }
+    @Override
+    public void onWaveTouchUp(View view, Point locationInView, Point locationInScreen) {
+        switch (view.getId()){
+            case R.id.imageView:
+//                str=WaveCompat.startWaveFilter(getActivity(),
+//                        new WaveDrawable()
+//                                .setColor(0xddffffff) //0xddffffff
+//                                .setTouchPoint(locationInScreen),
+//                        generateIntent(0xddffffff,getActivity()),imageView);
+//                //showPoupopWindow(getActivity());
+//                imageView.setVisibility(View.VISIBLE);
+
+                WaveCompat.startWaveFilter(this, new WaveDrawable().setColor(0x99ffffff)
+                        .setTouchPoint(locationInScreen), callBack);
+                break;
+        }
     }
 
 

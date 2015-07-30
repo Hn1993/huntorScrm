@@ -206,8 +206,9 @@
     <style name="item_divider_common_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/divider</item>
-        <item name="android:background">@color/view_line</item>
-        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@color/huntor_bacground</item>
+        <item name="android:layout_marginLeft">@dimen/fragment_mymember_img_margin_left_right</item>
+        <item name="android:layout_marginRight">@dimen/fragment_mymember_img_margin_left_right</item>
     </style>
 
     <style name="DashboardButton">
@@ -325,5 +326,31 @@
         <item name="android:background">@color/huntor_bacground</item>
         <item name="android:layout_marginLeft">@dimen/fragment_mymember_img_margin_left_right</item>
         <item name="android:layout_marginRight">@dimen/fragment_mymember_img_margin_left_right</item>
+    </style>
+
+
+    <!--fans-->
+    <style name="faninfo_default_header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/fragment_fansinfo_header_marginleft</item>
+        <item name="android:layout_marginTop">@dimen/fragment_fansinfo_header_margintop</item>
+
+    </style>
+
+    <style name="faninfo_default_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/fragment_fansinfo_name_margintop</item>
+        <item name="android:textSize">@dimen/fragment_fansinfo_name_textsize</item>
+        <item name="android:drawablePadding">@dimen/fragment_fansinfo_name_drawaberpadding</item>
+    </style>
+
+    <style name="faninfo_default_time">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/fragment_fansinfo_time_margintop</item>
+        <item name="android:textSize">@dimen/fragment_fansinfo_time_textsize</item>
+        <item name="android:layout_marginBottom">@dimen/fragment_fansinfo_time_marginbuttom</item>
     </style>
 </resources>
