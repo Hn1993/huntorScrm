@@ -270,10 +270,10 @@
     <dimen name="activity_login_help_top">10dp</dimen>
     <dimen name="activity_login_text_marginLeft">18dp</dimen>
     <dimen name="activity_login_text_marginTop">60dp</dimen>
-    <dimen name="activity_login_back_buttom">10dp</dimen>
+    <dimen name="activity_login_back_bottom">10dp</dimen>
     <dimen name="activity_login_back_left">20dp</dimen>
     <dimen name="activity_login_back_textsize">15sp</dimen>
-    <dimen name="activity_login_view_buttom">50dp</dimen>
+    <dimen name="activity_login_view_bottom">50dp</dimen>
     <dimen name="activity_login_help_left">30dp</dimen>
 
 

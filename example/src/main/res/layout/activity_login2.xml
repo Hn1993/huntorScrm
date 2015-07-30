@@ -8,9 +8,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/activity_login_top"
-            android:text="登录"
+            android:text="@string/login"
             android:textSize="@dimen/activity_login_top_size"
-            android:layout_marginLeft="@dimen/activity_login_text_marginLeft"
+            android:layout_marginStart="@dimen/activity_login_text_marginLeft"
             android:layout_marginTop="@dimen/activity_login_text_marginTop"
             android:textColor="@color/black"
             />
@@ -18,34 +18,34 @@
             android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="请输入账号和密码"
+            android:text="@string/please_enter_username_password"
             android:layout_below="@+id/activity_login_top"
-            android:layout_marginLeft="@dimen/activity_login_text_marginLeft"
+            android:layout_marginStart="@dimen/activity_login_text_marginLeft"
             android:layout_marginTop="@dimen/activity_login_text_marginLeft"
             android:id="@+id/activity_login_input"/>
 
     <com.huntor.mscrm.app2.view.EditText.ColorUnderLineEditText
             style="@style/Login_edit_input"
-            android:hint="请输入用户名"
-            android:id="@+id/activity_login_name"
+            android:hint="@string/please_enter_username"
+            android:id="@+id/et_username"
             android:layout_centerVertical="true" />
     <com.huntor.mscrm.app2.view.EditText.ColorUnderLineEditText
             android:inputType="textPassword"
             style="@style/Login_edit_input"
-            android:id="@+id/activity_login_pwd"
+            android:id="@+id/et_password"
             android:layout_marginTop="@dimen/activity_login_edit_top"
-            android:hint="请输入密码"
+            android:hint="@string/please_enter_password"
 
-            android:layout_below="@+id/activity_login_name"/>
+            android:layout_below="@+id/et_username"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/login_help"
-            android:text="需要帮助？"
-            android:layout_below="@+id/activity_login_pwd"
+            android:text="@string/need_help"
+            android:layout_below="@+id/et_password"
             android:layout_marginTop="@dimen/activity_login_help_top"
-            android:id="@+id/login_help"
-            android:layout_marginLeft="@dimen/activity_login_help_left"/>
+            android:id="@+id/tv_need_help"
+            android:layout_marginStart="@dimen/activity_login_help_left"/>
     <View
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -53,62 +53,34 @@
             android:layout_marginLeft="@dimen/activity_login_back_left"
             android:layout_marginRight="@dimen/activity_login_back_left"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/activity_login_view_buttom"
+            android:layout_marginBottom="@dimen/activity_login_view_bottom"
             android:id="@+id/view"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/activity_login_back_buttom">
+            android:layout_marginBottom="@dimen/activity_login_back_bottom">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:textColor="@color/login_back"
-                    android:layout_marginLeft="@dimen/activity_login_back_left"
-                    android:text="返回"
+                    android:layout_marginStart="@dimen/activity_login_back_left"
+                    android:text="@string/back"
                     android:textSize="@dimen/activity_login_back_textsize"
-                    android:id="@+id/activity_login_back"/>
+                    android:gravity="center"
+                    android:id="@+id/tv_back"/>
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:text="登陆"
+                    android:text="@string/login"
                     android:textSize="@dimen/activity_login_back_textsize"
-                    android:id="@+id/activity_login_buttom"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="right"
-                    android:layout_marginRight="@dimen/activity_login_back_left"/>
+                    android:id="@+id/tv_login"
+                    android:gravity="center"
+                    android:layout_marginEnd="@dimen/activity_login_back_left"/>
         </LinearLayout>
-
-        <!--
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/login_back"
-            android:layout_marginLeft="@dimen/activity_login_back_left"
-            android:text="返回"
-            android:textSize="@dimen/activity_login_back_textsize"
-            android:id="@+id/activity_login_back"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/activity_login_back_buttom"/>
-
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="登陆"
-            android:textSize="@dimen/activity_login_back_textsize"
-            android:id="@+id/activity_login_buttom"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/activity_login_back_left"
-            android:layout_marginBottom="@dimen/activity_login_back_buttom"
-            />
-        -->
-
-
 
 </RelativeLayout>
