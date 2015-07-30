@@ -46,10 +46,10 @@ public class NewFansAdapter extends MyBaseAdapter {
         ViewHolder vh = null;
         if (convertView == null) {
             vh = new ViewHolder();
-            convertView = inflater.inflate(R.layout.item_member, null);
+            convertView = inflater.inflate(R.layout.member_adapter_item, null);
             //vh.headPortrait = (ImageView) convertView.findViewById(R.id.head_portrait);
             vh.name = (TextView) convertView.findViewById(R.id.member_name);
-            vh.time = (TextView) convertView.findViewById(R.id.time);
+            vh.time = (TextView) convertView.findViewById(R.id.member_time);
             //vh.grade = (TextView) convertView.findViewById(R.id.tv_grade);
             convertView.setTag(vh);
 
