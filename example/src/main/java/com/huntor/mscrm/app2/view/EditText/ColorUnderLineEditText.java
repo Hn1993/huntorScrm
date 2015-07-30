@@ -1,13 +1,11 @@
-package com.huntor.scrm.view.EditText;
+package com.huntor.mscrm.app2.view.EditText;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.EditText;
-
 import com.huntor.mscrm.app2.R;
-
 
 /**
  * Created by SL
