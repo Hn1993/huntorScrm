@@ -1,113 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="wrap_content">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                    android:id="@+id/image_people_head"
-                style="@style/faninfo_default_header"
-                android:src="@drawable/fans_info_deault_header"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/fragment_fansinfo_header_marginleft"
-                android:orientation="vertical">
-                <TextView
-                        android:id="@+id/people_name"
-                    android:drawableRight="@drawable/fans_info_gender_women"
-                    style="@style/faninfo_default_name"
-                    android:text="李女士"/>
-
-                <TextView
-                        android:id="@+id/people_time"
-                    style="@style/faninfo_default_time"
-                    android:text="关注于2天前"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="@color/lighter_gray"
-            android:orientation="horizontal">
-            <RelativeLayout
-                android:id="@+id/detaileinfo_social"
-                android:layout_weight="1"
-                android:background="@drawable/selector_faninfo_tab"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="@dimen/fragment_fansinfo_viewpager_tab_textsize"
-                    android:text="会员详情"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/detaileinfo_details"
-                android:layout_weight="1"
-                android:background="@drawable/selector_faninfo_tab"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="@dimen/fragment_fansinfo_viewpager_tab_textsize"
-                    android:text="联系方式"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/detaileinfo_deal"
-                android:layout_weight="1"
-                android:background="@drawable/selector_faninfo_tab"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textSize="@dimen/fragment_fansinfo_viewpager_tab_textsize"
-                    android:text="购买意向"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/default_bacground">
-
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/member_item_text_name"
+                android:text="购买意向"
+                android:id="@+id/purchase_intention" />
             <View
-                android:id="@+id/detaileinfo_line_1"
+                style="@style/item_divider_common_style"
+                android:layout_below="@id/purchase_intention"
+                android:id="@+id/view_line1" />
+
+            <ListView
+                    android:id="@+id/listview_wantbuy"
+                android:layout_below="@id/view_line1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/huntor_bacground"
-                />
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
 
-        </LinearLayout>
-        <android.support.v4.view.ViewPager
-            android:id="@+id/detailte_viewpager"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentBottom="true"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/member_item_text_name"
+                android:text="已购产品"
+                android:id="@+id/purchase_buyed" />
+            <View
+                style="@style/item_divider_common_style"
+                android:layout_below="@id/purchase_buyed"
+                android:id="@+id/view_line2" />
+
+            <ListView
+                    android:id="@+id/listview_buyed"
+                android:layout_below="@id/view_line2"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
     </LinearLayout>
-
     <RelativeLayout
-
+        android:visibility="gone"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_width="match_parent"
         android:layout_height="200dp" >
@@ -141,7 +86,7 @@
     <RelativeLayout
         android:visibility="gone"
         android:background="#99ffffff"
-        android:id="@+id/fans_info_layout_finish"
+        android:id="@+id/layout_finish"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -159,7 +104,6 @@
                 android:orientation="horizontal"
                 android:paddingBottom="10dp">
                 <Button
-                        android:id="@+id/send_message"
                     android:text="发消息"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -180,7 +124,6 @@
                 android:orientation="horizontal"
                 android:paddingBottom="10dp">
                 <Button
-                        android:id="@+id/join_group"
                     android:text="加入分组"
                     android:layout_weight="1"
                     android:layout_width="0dp"

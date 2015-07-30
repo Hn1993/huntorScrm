@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/member_item_text_name"
+                android:text="地区"
+                android:id="@+id/member_info_diqu" />
+            <View
+                style="@style/item_divider_member_style"
+                android:layout_below="@id/member_info_diqu"
+                android:id="@+id/view_line1" />
+
+            <TextView
+                android:text="湖南"
+                style="@style/member_item_text_time"
+                android:id="@+id/member_provice_1"
+                android:layout_below="@id/view_line1" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/member_item_text_name"
+                android:text="最近交互"
+                android:id="@+id/member_info_zuijin" />
+            <View
+                style="@style/item_divider_common_style"
+                android:layout_below="@id/member_info_zuijin"
+                android:id="@+id/view_line2" />
+
+            <TextView
+                android:text="5小时前"
+                style="@style/member_item_text_time"
+                android:id="@+id/interation_time_before_1"
+                android:layout_below="@id/view_line2" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/member_item_text_name"
+                android:text="交互次数"
+                android:id="@+id/member_info_cishu" />
+            <View
+                style="@style/item_divider_common_style"
+                android:layout_below="@id/member_info_cishu"
+                android:id="@+id/view_line3" />
+
+            <TextView
+                android:text="3次"
+                style="@style/member_item_text_time"
+                android:id="@+id/brwose_num"
+                android:layout_below="@id/view_line3" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/member_item_text_name"
+                android:text="其他分组"
+                android:id="@+id/member_info_fenzu" />
+            <View
+                style="@style/item_divider_common_style"
+                android:layout_below="@id/member_info_fenzu"
+                android:id="@+id/view_line4" />
+
+                <TextView
+                        style="@style/member_item_text_time"
+                    android:text="高潜粉丝群"
+                    android:id="@+id/in_the_group"
+                    android:layout_below="@id/view_line4"
+                    />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+    android:layout_gravity="center_horizontal|bottom"
+    android:layout_width="match_parent"
+    android:layout_height="200dp" >
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/drawerlayout_mian_image_marginLeft"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/drawerlayout_mian_image_marginLeft"
+        android:id="@+id/linearLayout2" >
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/load_more"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="#99ffffff"
+        android:id="@+id/layout_finish"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/drawerlayout_mian_image_marginLeft"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/drawerlayout_mian_image_marginLeft" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
+                <Button
+                    android:text="发消息"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/send_message"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
+                <Button
+                    android:text="加入分组"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/join_group"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:text="完成"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/second_wave"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

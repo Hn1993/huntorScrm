@@ -65,16 +65,17 @@
                                 android:id="@+id/goumaiyixiang"
                                 />
 
-                        <IconTextView android:layout_width="wrap_content"
-                                      android:layout_height="wrap_content"
-                                      android:src="@drawable/addbuy"
-                                      android:layout_gravity="center_vertical"
-                                      android:layout_marginLeft="240dp"
-                                      android:text="{fa-plus}"
-                                      android:id="@+id/member_info_buymore_3"
-                                      android:textColor="@color/login_bg"
-                                      android:textSize="@dimen/add_buy_intention"
-                                />
+                        <!--<IconTextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                      <!--android:layout_height="wrap_content"-->
+                                      <!--android:src="@drawable/addbuy"-->
+                                      <!--android:layout_gravity="center_vertical"-->
+                                      <!--android:layout_marginLeft="240dp"-->
+                                      <!--android:text="{fa-plus}"-->
+                                      <!--android:id="@+id/member_info_buymore_3"-->
+                                      <!--android:textColor="@color/login_bg"-->
+                                      <!--android:textSize="@dimen/add_buy_intention"-->
+                                <!--/>-->
 
                 </LinearLayout>
 

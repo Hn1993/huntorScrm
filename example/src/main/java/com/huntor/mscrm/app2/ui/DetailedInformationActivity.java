@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PaintDrawable;
@@ -38,16 +39,21 @@ import com.huntor.mscrm.app2.ui.component.MyViewPager;
 import com.huntor.mscrm.app2.utils.*;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.wangjie.wavecompat.WaveCompat;
+import com.wangjie.wavecompat.WaveDrawable;
+import com.wangjie.wavecompat.WaveTouchHelper;
 import org.apache.http.protocol.HTTP;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.wangjie.wavecompat.WaveTouchHelper.*;
+
 /**
  * Created by Admin on 2015/5/4.
  */
-public class DetailedInformationActivity extends BaseActivity implements View.OnClickListener {
+public class DetailedInformationActivity extends BaseActivity implements View.OnClickListener,OnWaveTouchHelperListener {
     private Context context;
     private String TAG = getClass().getName();
 
@@ -173,6 +179,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 
         initData();
         initview();
+        findImage();
     }
 
     private void initData() {
@@ -669,6 +676,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 case 0:
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
+                    mImageView.setVisibility(View.VISIBLE);
                     detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
                     detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
                     detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
@@ -680,6 +688,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 case 1:
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
+                    mImageView.setVisibility(View.GONE);
                     detaileinfo_social.setTextColor(getResources().getColor(R.color.title));
                     detaileinfo_details.setTextColor(getResources().getColor(R.color.title_selected));
                     detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
@@ -691,6 +700,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 case 2:
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
+                    mImageView.setVisibility(View.GONE);
                     detaileinfo_social.setTextColor(getResources().getColor(R.color.title));
                     detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
                     detaileinfo_deal.setTextColor(getResources().getColor(R.color.title_selected));
@@ -1187,6 +1197,48 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     protected void onStop() {
         super.onStop();
         Log.i("黄安", "onStop");
+    }
+
+
+    /**
+     * 新app的水波纹点击事件
+     */
+
+    private WaveCompat.mCallBack callBack;//接口的回调
+    private RelativeLayout mRelativeLayout;
+    ImageView mImageView;//点击出现水波纹效果
+
+    public void findImage(){
+        mImageView = (ImageView) findViewById(R.id.imageView);
+        WaveTouchHelper.bindWaveTouchHelper(mImageView, this);//
+        mRelativeLayout= (RelativeLayout) findViewById(R.id.fans_info_layout_finish);
+        mRelativeLayout.setOnClickListener(this);
+        /**
+         * 在动画的完成后显示一个view
+         */
+        callBack=new WaveCompat.mCallBack() {
+            @Override
+            public void resault() {
+                mRelativeLayout.setVisibility(View.VISIBLE);
+            }
+        };
+    }
+    @Override
+    public void onWaveTouchUp(View view, Point locationInView, Point locationInScreen) {
+        switch (view.getId()){
+            case R.id.imageView:
+//                str=WaveCompat.startWaveFilter(getActivity(),
+//                        new WaveDrawable()
+//                                .setColor(0xddffffff) //0xddffffff
+//                                .setTouchPoint(locationInScreen),
+//                        generateIntent(0xddffffff,getActivity()),imageView);
+//                //showPoupopWindow(getActivity());
+//                imageView.setVisibility(View.VISIBLE);
+
+                WaveCompat.startWaveFilter(this, new WaveDrawable().setColor(0x99ffffff)
+                        .setTouchPoint(locationInScreen), callBack);
+                break;
+        }
     }
 
 

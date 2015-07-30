@@ -206,8 +206,9 @@
     <style name="item_divider_common_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/divider</item>
-        <item name="android:background">@color/view_line</item>
-        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@color/huntor_bacground</item>
+        <item name="android:layout_marginLeft">@dimen/fragment_mymember_img_margin_left_right</item>
+        <item name="android:layout_marginRight">@dimen/fragment_mymember_img_margin_left_right</item>
     </style>
 
     <style name="DashboardButton">
