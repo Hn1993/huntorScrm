@@ -63,7 +63,7 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
         fragmentManager = getFragmentManager();
 
         // Inflate the layout for this fragment
-        View ret = inflater.inflate(R.layout.fragment_my_member, container, false);
+        View ret = inflater.inflate(R.layout.fragment_my_member_new, container, false);
 
         Typeface typeFace =Typeface.createFromAsset(getActivity().getAssets(),"fonts/KhmerUI.ttf");
         newFansView = (TextView) ret.findViewById(R.id.text_number_people_new_fans);
@@ -75,23 +75,23 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
         buyedUserView = (TextView) ret.findViewById(R.id.text_number_people_buyed_user);
         highUserView.setTypeface(typeFace);
 
-        ImageView iv_search = (ImageView) ret.findViewById(R.id.iv_search);
-        iv_search.setOnClickListener(this);
+//        ImageView iv_search = (ImageView) ret.findViewById(R.id.iv_search);
+//        iv_search.setOnClickListener(this);
 
         ret.findViewById(R.id.layout_fragment_mymember_new_fans).setOnClickListener(this);
         ret.findViewById(R.id.layout_fragment_mymember_normal_fans).setOnClickListener(this);
         ret.findViewById(R.id.layout_fragment_mymember_high_user).setOnClickListener(this);
         ret.findViewById(R.id.layout_fragment_mymember_buyed_user).setOnClickListener(this);
         ret.findViewById(R.id.layout_fragment_mymember_my_group).setOnClickListener(this);
-        ret.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity2 ma = ((MainActivity2) getActivity());
-                if(ma != null){
-                    //ma.menu();
-                }
-            }
-        });
+//        ret.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                MainActivity2 ma = ((MainActivity2) getActivity());
+//                if(ma != null){
+//                    //ma.menu();
+//                }
+//            }
+//        });
         getFanGroupCount();
         return ret;
     }
@@ -207,11 +207,11 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.frame_main, new MyGroupFragment(), Constant.MY_MEMBER);
                 break;
-            case R.id.iv_search:
-                clearBackStack();
-                transaction.addToBackStack(Constant.SEARCH);
-                transaction.add(R.id.frame_main, new SearchFragment(), Constant.SEARCH);
-                break;
+//            case R.id.iv_search:
+//                clearBackStack();
+//                transaction.addToBackStack(Constant.SEARCH);
+//                transaction.add(R.id.frame_main, new SearchFragment(), Constant.SEARCH);
+//                break;
         }
         transaction.commit();
     }
