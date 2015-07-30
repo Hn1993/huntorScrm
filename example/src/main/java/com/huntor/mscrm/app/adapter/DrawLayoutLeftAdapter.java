@@ -42,17 +42,17 @@ public class DrawLayoutLeftAdapter extends MyBaseAdapter{
             vh.content= (TextView) convertView.findViewById(R.id.drawerlayout_left_text);
             convertView.setTag(vh);
 
-            if(list.get(position)==0){
+            if((int)list.get(position)==0){
                 vh.header.setImageResource(R.drawable.draw_left_header_interactive);
                 vh.content.setText("现场交互");
                 //vh.huntorImage.setVisibility(View.VISIBLE);
-            }else if(list.get(position)==1){
+            }else if((int)list.get(position)==1){
                 vh.header.setImageResource(R.drawable.draw_left_header_online);
                 vh.content.setText("在线交互");
-            }else if(list.get(position)==2){
+            }else if((int)list.get(position)==2){
                 vh.header.setImageResource(R.drawable.draw_left_header_member);
                 vh.content.setText("我的会员");
-            }else if(list.get(position)==3){
+            }else if((int)list.get(position)==3){
                 vh.header.setImageResource(R.drawable.draw_left_header_more);
                 vh.content.setText("添加其他功能");
             }
