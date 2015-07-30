@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.huntor.mscrm.app.R;
 
@@ -45,24 +46,24 @@ public class InteractionLocaleFragment extends Fragment implements View.OnClickL
         if (activity != null) {
             activity.dismissCustomDialog();
         }
-        View ret = inflater.inflate(R.layout.fragment_interaction, container, false);
-        RelativeLayout layoutBuyEnter = (RelativeLayout) ret.findViewById(R.id.layout_fragment_interaction_buy_enter);
-        RelativeLayout layoutEnterInvitation = (RelativeLayout) ret.findViewById(R.id.layout_fragment_interaction_enter_invitation);
-        ImageView iv_search = (ImageView) ret.findViewById(R.id.iv_search);
+        View ret = inflater.inflate(R.layout.fragment_interactive, container, false);
+        LinearLayout layoutBuyEnter = (LinearLayout) ret.findViewById(R.id.layout_fragment_interaction_buy_enter);
+        LinearLayout layoutEnterInvitation = (LinearLayout) ret.findViewById(R.id.layout_fragment_interaction_enter_invitation);
+        //ImageView iv_search = (ImageView) ret.findViewById(R.id.iv_search);
 
         layoutBuyEnter.setOnClickListener(this);
         layoutEnterInvitation.setOnClickListener(this);
-        iv_search.setOnClickListener(this);
+        //iv_search.setOnClickListener(this);
 
-        ret.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity2 ma = ((MainActivity2) getActivity());
-                if (ma != null) {
-                    //ma.menu();
-                }
-            }
-        });
+//        ret.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                MainActivity2 ma = ((MainActivity2) getActivity());
+//                if (ma != null) {
+//                    //ma.menu();
+//                }
+//            }
+//        });
 
         fragmentManager = getFragmentManager();
         return ret;
@@ -87,10 +88,10 @@ public class InteractionLocaleFragment extends Fragment implements View.OnClickL
                 intent.putExtra(Constant.INTERACTION_INTENT_DATA, Constant.ENTER_INVITATION);
                 startActivity(intent);
                 break;
-            case R.id.iv_search:
-                transaction.addToBackStack(Constant.SEARCH);
-                transaction.add(R.id.frame_main, new SearchFragment(), Constant.SEARCH);
-                break;
+//            case R.id.iv_search:
+//                transaction.addToBackStack(Constant.SEARCH);
+//                transaction.add(R.id.frame_main, new SearchFragment(), Constant.SEARCH);
+//                break;
         }
         transaction.commitAllowingStateLoss();
     }

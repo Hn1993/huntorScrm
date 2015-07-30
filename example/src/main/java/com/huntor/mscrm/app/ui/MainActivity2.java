@@ -155,16 +155,16 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener{
                 if(i==0){
                     InteractionLocaleFragment itf=new InteractionLocaleFragment();
                     transaction.replace(R.id.fl_content, itf);
-                    toolbar.setTitle("现场交互");
+                    toolbar.setTitle("\t\t现场交互");
                 }else if(i==1){
                     InteractionOnlineFragment otf=new InteractionOnlineFragment();
                     transaction.replace(R.id.fl_content,otf);
-                    toolbar.setTitle("在线交互");
+                    toolbar.setTitle("\t\t在线交互");
 
                 }else if(i==2){
                     MyMemberFragment mbf = new MyMemberFragment();
                     transaction.replace(R.id.fl_content, mbf);
-                    toolbar.setTitle("我的会员");
+                    toolbar.setTitle("\t\t我的会员");
 
                 }else if(i==3){//添加其他功能
 
