@@ -14,7 +14,7 @@ import android.widget.*;
 
 
 
-import com.huntor.mscrm.app.R;
+import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.DrawLayoutLeftAdapter;
 import com.huntor.mscrm.app2.model.FansRecordModel;
 import com.huntor.mscrm.app2.model.MessageRecordModel;
