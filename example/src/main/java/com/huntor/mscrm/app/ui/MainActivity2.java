@@ -50,7 +50,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener{
 
         findViews();
 
-        toolbar.setTitle("我的会员");//设置Toolbar标题
+        toolbar.setTitle("\t\t现场交互");//设置Toolbar标题
         //toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
 

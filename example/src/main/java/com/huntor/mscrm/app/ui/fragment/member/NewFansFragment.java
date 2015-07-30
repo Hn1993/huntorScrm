@@ -34,7 +34,7 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * 新增粉丝
+ * 新增粉丝(新APP的在线交互粉丝)
  */
 public class NewFansFragment extends BaseFragment implements View.OnClickListener,XListView.IXListViewListener {
     String TAG="NewFansFragment";

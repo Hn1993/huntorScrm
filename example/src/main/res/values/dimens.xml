@@ -97,7 +97,6 @@
     <dimen name="fragment_mymember_people_number_height">10dp</dimen>
     <dimen name="fragment_mymember_people_number_size">16sp</dimen>
     <dimen name="fragment_mymember_text_size">18sp</dimen>
-    <dimen name="fragment_mymember_img_margin_left_right">17dp</dimen>
     <dimen name="fragment_mymember_img_margin_top_bottom">10dp</dimen>
     <dimen name="fragment_mymember_img_right_corner_height">25dp</dimen>
     <dimen name="fragment_mymember_people_padding_top_bottom">3dp</dimen>
@@ -227,4 +226,10 @@
     <dimen name="drawerlayout_mian_image_marginLeft">18dp</dimen>
     <dimen name="drawerlayout_mian_item_height">50dp</dimen>
     <dimen name="drawerlayout_mian_text_marginLeft">22dp</dimen>
+
+    <!--我的会员-->
+    <dimen name="fragment_mymember_item_name_size">18sp</dimen>
+    <dimen name="fragment_mymember_img_margin_left_right">18dp</dimen>
+    <dimen name="fragment_mymember_item_time_size">10sp</dimen>
+    <dimen name="fragment_mymember_item_time_margintop">10dp</dimen>
 </resources>

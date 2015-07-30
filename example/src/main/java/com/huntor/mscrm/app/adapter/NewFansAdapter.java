@@ -47,10 +47,10 @@ public class NewFansAdapter extends MyBaseAdapter {
         if (convertView == null) {
             vh = new ViewHolder();
             convertView = inflater.inflate(R.layout.item_member, null);
-            vh.headPortrait = (ImageView) convertView.findViewById(R.id.head_portrait);
+            //vh.headPortrait = (ImageView) convertView.findViewById(R.id.head_portrait);
             vh.name = (TextView) convertView.findViewById(R.id.member_name);
             vh.time = (TextView) convertView.findViewById(R.id.time);
-            vh.grade = (TextView) convertView.findViewById(R.id.tv_grade);
+            //vh.grade = (TextView) convertView.findViewById(R.id.tv_grade);
             convertView.setTag(vh);
 
         } else {
@@ -72,68 +72,68 @@ public class NewFansAdapter extends MyBaseAdapter {
         }
 
 
-        mType = ((Fans) list.get(position)).group;
-        //vh.headPortrait.setImageResource(R.drawable.n_head);
-        //1新增 2普通 3高潜 4已购 5全部
-        if (1 == mType) {
-
-        } else if (2 == mType) {
-            ImageLoader imageLoader = ImageLoader.getInstance();
-            DisplayImageOptions options = new DisplayImageOptions.Builder()
-                    .showImageOnLoading(R.drawable.dimension_code_loading_default)
-                    .showImageForEmptyUri(R.drawable.p_head).cacheOnDisc(true)
-                    .showImageOnFail(R.drawable.p_head).cacheInMemory(true).build();
-            String url = null;
-            if (fans.avatar == null) {
-                vh.headPortrait.setImageResource(R.drawable.p_head);
-            } else {
-                url = fans.avatar;
-                imageLoader.displayImage(url, vh.headPortrait, options);
-            }
-            //vh.headPortrait.setImageResource(R.drawable.p_head);
-
-            vh.grade.setText("普通");
-        } else if (3 == mType) {
-            ImageLoader imageLoader = ImageLoader.getInstance();
-            DisplayImageOptions options = new DisplayImageOptions.Builder()
-                    .showImageOnLoading(R.drawable.dimension_code_loading_default)
-                    .showImageForEmptyUri(R.drawable.g_head).cacheOnDisc(true)
-                    .showImageOnFail(R.drawable.g_head).cacheInMemory(true).build();
-            String url = null;
-            if (fans.avatar == null) {
-                vh.headPortrait.setImageResource(R.drawable.g_head);
-            } else {
-                url = fans.avatar;
-                imageLoader.displayImage(url, vh.headPortrait, options);
-            }
-            //vh.headPortrait.setImageResource(R.drawable.g_head);
-
-            vh.grade.setText("高潜");
-        } else if (4 == mType) {
-            ImageLoader imageLoader = ImageLoader.getInstance();
-            DisplayImageOptions options = new DisplayImageOptions.Builder()
-                    .showImageOnLoading(R.drawable.dimension_code_loading_default)
-                    .showImageForEmptyUri(R.drawable.y_head).cacheOnDisc(true)
-                    .showImageOnFail(R.drawable.y_head).cacheInMemory(true).build();
-            String url = null;
-            if (fans.avatar == null) {
-                vh.headPortrait.setImageResource(R.drawable.y_head);
-            } else {
-                url = fans.avatar;
-                imageLoader.displayImage(url, vh.headPortrait, options);
-            }
-            //vh.headPortrait.setImageResource(R.drawable.y_head);
-            vh.grade.setText("已购");
-        } else {
-
-        }
+//        mType = ((Fans) list.get(position)).group;
+//        //vh.headPortrait.setImageResource(R.drawable.n_head);
+//        //1新增 2普通 3高潜 4已购 5全部
+//        if (1 == mType) {
+//
+//        } else if (2 == mType) {
+//            ImageLoader imageLoader = ImageLoader.getInstance();
+//            DisplayImageOptions options = new DisplayImageOptions.Builder()
+//                    .showImageOnLoading(R.drawable.dimension_code_loading_default)
+//                    .showImageForEmptyUri(R.drawable.p_head).cacheOnDisc(true)
+//                    .showImageOnFail(R.drawable.p_head).cacheInMemory(true).build();
+//            String url = null;
+//            if (fans.avatar == null) {
+//                vh.headPortrait.setImageResource(R.drawable.p_head);
+//            } else {
+//                url = fans.avatar;
+//                imageLoader.displayImage(url, vh.headPortrait, options);
+//            }
+//            //vh.headPortrait.setImageResource(R.drawable.p_head);
+//
+//            vh.grade.setText("普通");
+//        } else if (3 == mType) {
+//            ImageLoader imageLoader = ImageLoader.getInstance();
+//            DisplayImageOptions options = new DisplayImageOptions.Builder()
+//                    .showImageOnLoading(R.drawable.dimension_code_loading_default)
+//                    .showImageForEmptyUri(R.drawable.g_head).cacheOnDisc(true)
+//                    .showImageOnFail(R.drawable.g_head).cacheInMemory(true).build();
+//            String url = null;
+//            if (fans.avatar == null) {
+//                vh.headPortrait.setImageResource(R.drawable.g_head);
+//            } else {
+//                url = fans.avatar;
+//                imageLoader.displayImage(url, vh.headPortrait, options);
+//            }
+//            //vh.headPortrait.setImageResource(R.drawable.g_head);
+//
+//            vh.grade.setText("高潜");
+//        } else if (4 == mType) {
+//            ImageLoader imageLoader = ImageLoader.getInstance();
+//            DisplayImageOptions options = new DisplayImageOptions.Builder()
+//                    .showImageOnLoading(R.drawable.dimension_code_loading_default)
+//                    .showImageForEmptyUri(R.drawable.y_head).cacheOnDisc(true)
+//                    .showImageOnFail(R.drawable.y_head).cacheInMemory(true).build();
+//            String url = null;
+//            if (fans.avatar == null) {
+//                vh.headPortrait.setImageResource(R.drawable.y_head);
+//            } else {
+//                url = fans.avatar;
+//                imageLoader.displayImage(url, vh.headPortrait, options);
+//            }
+//            //vh.headPortrait.setImageResource(R.drawable.y_head);
+//            vh.grade.setText("已购");
+//        } else {
+//
+//        }
         return convertView;
     }
 
     public class ViewHolder {
         TextView name;//姓名
-        ImageView headPortrait;//ͷ头像
+        //ImageView headPortrait;//ͷ头像
         TextView time;//时间
-        TextView grade;//显示等级
+        //TextView grade;//显示等级
     }
 }
