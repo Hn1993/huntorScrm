@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:minHeight="@dimen/list_item_height"
+        android:descendantFocusability="blocksDescendants"
+        >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            >
+
+
+        <ImageView
+                android:id="@+id/head_img"
+                style="@style/head_icon_style"
+                android:src="@drawable/fragment_mymember_my_group"
+                />
+
+        <TextView
+                android:id="@+id/member_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:text="陈灿"
+                android:singleLine="true"
+                />
+
+        <TextView
+                android:id="@+id/time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_weight="1"
+                android:text="5小时"
+                android:layout_marginLeft="50dp"
+                />
+
+        <ImageView
+                android:id="@+id/remove"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_marginLeft="20dp"
+                android:focusable="false"
+                android:src="@drawable/selector_list_btn"
+                />
+
+
+    </LinearLayout>
+
+    <View
+            style="@style/item_divider_common_style"
+            />
+</RelativeLayout>

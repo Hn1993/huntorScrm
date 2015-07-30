@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/pop_layout"
+                android:background="#90000000"
+              >
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#FFFFFF"
+                  android:orientation="vertical"
+                  android:layout_above="@+id/linearLayout"
+                  android:layout_alignParentStart="true"
+                  android:layout_marginLeft="20dp"
+                  android:layout_marginRight="20dp"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+            >
+
+        <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="删除"
+                android:id="@+id/pop_delete"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="25sp"
+                />
+        <View
+                android:layout_marginTop="10dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#FFFFFF"
+                  android:orientation="vertical"
+                  android:layout_centerVertical="true"
+                  android:layout_alignParentStart="true"
+                  android:id="@+id/linearLayout"
+                  android:layout_marginLeft="20dp"
+                  android:layout_marginRight="20dp">
+        <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="取消"
+                android:id="@+id/pop_cancel"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="25sp"
+
+                />
+        <View
+                android:layout_marginTop="10dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+
+</RelativeLayout>

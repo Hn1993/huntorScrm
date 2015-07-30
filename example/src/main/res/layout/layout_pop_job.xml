@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:id="@+id/detailinfo2_job_layout_outside"
+              android:gravity="center_vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#90000000">
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:layout_height="50dp"
+                  android:layout_gravity="center"
+                  android:orientation="horizontal"
+                  android:background="#ffffff"
+                  android:id="@+id/linearLayout4"
+                  android:layout_above="@+id/linearLayout3"
+                  android:layout_alignStart="@+id/linearLayout3">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="2"
+                  android:layout_gravity="center"
+                  android:text="职业"
+                  android:paddingLeft="20dp"
+                  android:textSize="25sp"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                  android:layout_gravity="center"
+                  android:orientation="horizontal"
+                  android:background="@drawable/selector_detailinfo2_editor"
+                  android:gravity="center"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/detailinfo2_job_individual"
+                  >
+        <TextView android:layout_width="100dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="2"
+                  android:layout_gravity="center"
+                  android:text="个体户老板"
+                  android:paddingLeft="20dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/detailinfo2_editor_image"
+                   android:layout_gravity="center"
+                   android:layout_weight="1"
+                   android:visibility="gone"
+                   android:scaleX="0.7"
+                   android:scaleY="0.7"
+                   android:id="@+id/detailinfo2_job_individual_image"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:background="#ffffff"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_height="wrap_content">
+
+        <View
+
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                  android:layout_gravity="center"
+                  android:orientation="horizontal"
+                  android:background="@drawable/selector_detailinfo2_editor"
+                  android:gravity="center"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/detailinfo2_job_junior_white_collar"
+            >
+        <TextView android:layout_width="100dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="2"
+                  android:text="初级白领"
+                  android:paddingLeft="20dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/detailinfo2_editor_image"
+                   android:layout_gravity="center"
+                    android:layout_weight="1"
+                   android:visibility="gone"
+                   android:scaleX="0.7"
+                   android:scaleY="0.7"
+                   android:id="@+id/detailinfo2_job_junior_white_collar_image"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:background="#ffffff"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_height="wrap_content">
+
+        <View
+
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                  android:layout_gravity="center"
+                  android:orientation="horizontal"
+                  android:background="@drawable/selector_detailinfo2_editor"
+                  android:gravity="center"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/detailinfo2_job_exotic_laborers"
+            >
+        <TextView android:layout_width="100dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="2"
+                  android:text="外来务工"
+                  android:paddingLeft="20dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/detailinfo2_editor_image"
+                   android:layout_gravity="center"
+                   android:layout_weight="1"
+                   android:visibility="gone"
+                   android:scaleX="0.7"
+                   android:scaleY="0.7"
+                   android:id="@+id/detailinfo2_job_exotic_laborers_image"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:background="#ffffff"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_height="wrap_content">
+
+        <View
+
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                  android:layout_gravity="center"
+                  android:orientation="horizontal"
+                  android:background="@drawable/selector_detailinfo2_editor"
+                  android:gravity="center"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/detailinfo2_job_student"
+            >
+        <TextView android:layout_width="100dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="2"
+                  android:text="学生"
+                  android:paddingLeft="20dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/detailinfo2_editor_image"
+                   android:layout_gravity="center"
+                   android:layout_weight="1"
+                   android:visibility="gone"
+                   android:scaleX="0.7"
+                   android:scaleY="0.7"
+                   android:id="@+id/detailinfo2_job_student_image"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:background="#ffffff"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_height="wrap_content">
+
+        <View
+
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                  android:layout_gravity="center"
+                  android:orientation="horizontal"
+                  android:background="@drawable/selector_detailinfo2_editor"
+                  android:gravity="center"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/detailinfo2_job_housewife"
+            >
+        <TextView android:layout_width="100dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="2"
+                  android:text="家庭主妇"
+                  android:paddingLeft="20dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/detailinfo2_editor_image"
+                   android:layout_gravity="center"
+                   android:layout_weight="1"
+                   android:visibility="gone"
+                   android:scaleX="0.7"
+                   android:scaleY="0.7"
+                   android:id="@+id/detailinfo2_job_housewife_image"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:background="#ffffff"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_height="wrap_content">
+
+        <View
+
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                  android:layout_gravity="center"
+                  android:orientation="horizontal"
+                  android:background="@drawable/selector_detailinfo2_editor"
+                  android:gravity="center"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/detailinfo2_job_manager"
+            >
+        <TextView android:layout_width="100dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="2"
+                  android:text="企业单位管理人员"
+                  android:paddingLeft="20dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/detailinfo2_editor_image"
+                   android:layout_gravity="center"
+                   android:layout_weight="1"
+                   android:visibility="gone"
+                   android:scaleX="0.7"
+                   android:scaleY="0.7"
+                   android:id="@+id/detailinfo2_job_manager_image"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:background="#ffffff"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_height="wrap_content">
+
+        <View
+
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@color/view_line"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+    </LinearLayout>
+    <LinearLayout android:layout_width="@dimen/activity_detailinfomation2_editor_width"
+                  android:layout_height="@dimen/activity_detailinfomation_layout_height"
+                  android:layout_gravity="center"
+                  android:orientation="horizontal"
+                  android:background="@drawable/selector_detailinfo2_editor"
+                  android:gravity="center"
+                  android:layout_centerHorizontal="true"
+                  android:id="@+id/detailinfo2_job_other"
+            >
+        <TextView android:layout_width="100dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="2"
+                  android:text="其他"
+                  android:paddingLeft="20dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_weight="1"
+                   android:src="@drawable/detailinfo2_editor_image"
+                   android:visibility="gone"
+                   android:scaleX="0.7"
+                   android:scaleY="0.7"
+
+                   android:id="@+id/detailinfo2_job_other_image"
+                />
+    </LinearLayout>
+
+
+</LinearLayout>

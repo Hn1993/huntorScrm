@@ -1,0 +1,244 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test"
+                android:onClick="test"
+                />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="testLogin"
+                android:onClick="testLogin"
+                />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="login"
+                android:text="login" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiLogin"
+                android:text="testApiLogin" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiFlushCache"
+                android:text="testApiFlushCache" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiGetProducts"
+                android:text="testApiGetProducts" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiGetConversations"
+                android:text="testApiGetConversations" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiQrCreate"
+                android:text="testApiQrCreate" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiEmployee"
+                android:text="testApiEmployee" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiChat"
+                android:text="testChat"
+                />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiCreateDeal"
+                android:text="testApiCreateDeal" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiFansGroupCount"
+                android:text="testApiFansGroupCount" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiFansGroup"
+                android:text="testApiFansGroup" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiFansPurchaseIntent"
+                android:text="testApiFansPurchaseIntent" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiDeletePurchaseIntent"
+                android:text="testApiDeletePurchaseIntent" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiDeletePurchaseIntent"
+                android:text="testApiDeletePurchaseIntent" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiAddFansTargetList"
+                android:text="testApiAddFansTargetList" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiCreateFansTargetList"
+                android:text="testApiCreateFansTargetList" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiDeleteFansTargetList"
+                android:text="testApiDeleteFansTargetList" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiGetFansTargetList"
+                android:text="testApiGetFansTargetList" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiFansTargetListRemove"
+                android:text="testApiFansTargetListRemove" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiFansTargetListUpdate"
+                android:text="testApiFansTargetListUpdate" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiGetTargetLists"
+                android:text="testApiGetTargetLists" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiGetFans"
+                android:text="testApiGetFans" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiRealTimeClose"
+                android:text="testApiRealTimeClose" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiRealTimeHistory"
+                android:text="testApiRealTimeHistory" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiKbContents"
+                android:text="testApiKbContents" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiKbCategories"
+                android:text="testApiKbCategories" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiRealtimeOpen"
+                android:text="testApiRealtimeOpen" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiRealtimeSend"
+                android:text="testApiRealtimeSend" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiModifyPwd"
+                android:text="testApiModifyPwd" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="fansStatusNewTwoOld"
+                android:text="fansStatusNewTwoOld" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testApiFanslist"
+                android:text="testApiFanslist" />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testAllFansInfo"
+                android:text="testAllFansInfo" />
+         <EditText
+                 android:id="@+id/et_searchkey"
+                 android:layout_width="200dp "
+                 android:layout_height="wrap_content"
+                 android:textColor="@color/black"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testSearchFans"
+                android:text="testSearchFans" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testDeleteAllFans"
+                android:text="testDeleteAllFans" />
+
+        <EditText
+                android:id="@+id/et_username"
+                android:layout_width="200dp "
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testReqCode"
+                android:text="testReqCode" />
+
+    </LinearLayout>
+
+</ScrollView>

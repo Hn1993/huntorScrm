@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/login_bg"
+        >
+
+    <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/vivo_logo"
+            android:contentDescription="@string/vivo_logo"
+            />
+
+    <com.huntor.mscrm.app2.ui.component.WhiteUnderLineEditText
+            android:id="@+id/edit_login_login_number"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_height_size"
+            android:hint="@string/login_number"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/activity_login_edit_padding_left"
+            android:paddingEnd="@dimen/activity_login_edit_padding_left"
+            android:layout_marginLeft="@dimen/activity_login_edit_margin"
+            android:layout_marginRight="@dimen/activity_login_edit_margin"
+            android:background="@null"
+            android:singleLine="true"
+            android:maxLength="12"
+            />
+
+    <com.huntor.mscrm.app2.ui.component.WhiteUnderLineEditText
+            android:id="@+id/edit_login_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_height_size"
+            android:hint="@string/login_password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/activity_login_edit_margin"
+            android:layout_marginRight="@dimen/activity_login_edit_margin"
+            android:layout_marginTop="@dimen/activity_login_edit_top_margin"
+            android:paddingStart="@dimen/activity_login_edit_padding_left"
+            android:paddingEnd="@dimen/activity_login_edit_padding_left"
+            android:background="@null"
+            android:singleLine="true"
+            android:maxLength="12"
+            />
+
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="30dp"
+              android:layout_marginStart="@dimen/activity_login_find_pwd_margin"
+              android:paddingStart="10dp"
+              android:paddingEnd="10dp"
+              android:layout_marginTop="10dp"
+              android:textColor="@color/white"
+              android:gravity="center_vertical"
+              android:text="@string/forget_pwd"
+              android:textSize="16sp"
+              android:id="@+id/tv_forget_pwd"/>
+    <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="@dimen/activity_login_edit_margin"
+            android:layout_marginRight="@dimen/activity_login_edit_margin"
+            >
+
+        <CheckBox
+                android:id="@+id/box_check_remember_psw"
+                style="@style/login_check_box_style"
+                android:text="@string/login_remember_psw"
+                />
+
+        <CheckBox
+                android:id="@+id/box_check_login_auto"
+                style="@style/login_check_box_style"
+                android:layout_alignParentRight="true"
+                android:text="@string/login_auto_login"
+                />
+    </RelativeLayout>-->
+
+    <Button
+            android:id="@+id/btn_login_login"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="@dimen/activity_login_edit_margin"
+            android:layout_marginRight="@dimen/activity_login_edit_margin"
+            android:layout_marginTop="@dimen/activity_login_btn_login_margin_top"
+            android:background="@drawable/selector_login_btn_login"
+            android:text="@string/login_login"
+            android:textColor="@color/white"
+            />
+
+
+</LinearLayout>

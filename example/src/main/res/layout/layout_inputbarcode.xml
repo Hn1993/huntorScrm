@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/input_barcode_bacground">
+
+    <EditText android:layout_width="@dimen/zxing_input_barcode_edittext_width"
+              android:layout_height="wrap_content"
+              android:id="@+id/edit_input_barcode"
+              android:gravity="center"
+              android:hint="请输入15位条形码"
+              android:textColor="@color/white"
+              android:layout_marginTop="115dp"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:maxLength="15"
+              android:numeric="integer"  />
+    <TextView
+            android:layout_width="@dimen/zxing_input_barcode_text_width"
+            android:layout_height="@dimen/zxing_input_barcode_text_height"
+            android:text="切换扫码"
+            android:id="@+id/go_scanning_barcode"
+            android:background="@drawable/shape_input_barcode"
+            android:gravity="center"
+            android:textColor="@color/white"
+
+            android:layout_alignTop="@+id/go_show_barcode"
+            android:layout_alignStart="@+id/edit_input_barcode"/>
+
+    <TextView
+            android:layout_width="@dimen/zxing_input_barcode_text_width"
+            android:layout_height="@dimen/zxing_input_barcode_text_height"
+            android:text="确定"
+            android:id="@+id/go_show_barcode"
+            android:background="@drawable/shape_input_barcode"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="68dp"
+            android:layout_below="@+id/edit_input_barcode" android:layout_alignEnd="@+id/edit_input_barcode"/>
+
+</RelativeLayout>
