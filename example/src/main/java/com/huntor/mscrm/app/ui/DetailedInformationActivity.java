@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PaintDrawable;
@@ -38,6 +39,9 @@ import com.huntor.mscrm.app.ui.component.MyViewPager;
 import com.huntor.mscrm.app.utils.*;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.wangjie.wavecompat.WaveCompat;
+import com.wangjie.wavecompat.WaveTouchHelper;
+
 import org.apache.http.protocol.HTTP;
 
 import java.lang.reflect.Field;
@@ -47,7 +51,7 @@ import java.util.List;
 /**
  * Created by Admin on 2015/5/4.
  */
-public class DetailedInformationActivity extends BaseActivity implements View.OnClickListener {
+public class DetailedInformationActivity extends BaseActivity implements View.OnClickListener,WaveTouchHelper.OnWaveTouchHelperListener {
     private Context context;
     private String TAG = getClass().getName();
 
@@ -1187,6 +1191,15 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     protected void onStop() {
         super.onStop();
         Log.i("黄安", "onStop");
+    }
+
+
+    private WaveCompat.mCallBack callBack;//接口的回调
+    private RelativeLayout mRelativeLayout;
+    ImageView mImageView;//点击出现水波纹效果
+    @Override
+    public void onWaveTouchUp(View view, Point locationInView, Point locationInScreen) {
+
     }
 
 
