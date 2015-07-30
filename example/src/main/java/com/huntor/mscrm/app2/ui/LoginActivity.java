@@ -2,16 +2,13 @@ package com.huntor.mscrm.app2.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.model.EmpLoyeeInfo;
 import com.huntor.mscrm.app2.net.BaseResponse;
 import com.huntor.mscrm.app2.net.HttpRequestController;
@@ -25,44 +22,30 @@ import com.huntor.mscrm.app2.utils.MyLogger;
 import com.huntor.mscrm.app2.utils.PreferenceUtils;
 import com.huntor.mscrm.app2.utils.Utils;
 import com.umeng.analytics.MobclickAgent;
+import com.huntor.mscrm.app2.R;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
-
-	public static final String LOGIN_USER_NAME = "userName";
 	private final String TAG = "LoginActivity";
 	private LoginActivity context = LoginActivity.this;
-	private EditText txtNumber;//工号框
-	private EditText txtPassword;//密码框
-	private String mPsw;//密码
-
-
-	//===================保存到共享参数的用户名和密码=====================
-	private final String NAME = "NAME";
-	private final String PSW = "PSW";
-
+	private EditText et_username;
+	private EditText et_password;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
-//        mTitleLayout.setVisibility(View.GONE);
-		String chatter_url = PreferenceUtils.getString(getApplicationContext(), "chatter_url", "");
-		String request_url = PreferenceUtils.getString(getApplicationContext(), "request_url", "");
-		MyLogger.e(TAG, "chatter_url:" + chatter_url);
-		MyLogger.e(TAG, "request_url:" + request_url);
+		setContentView(R.layout.activity_login2);
 		initView();
 	}
 
 	private void initView() {
-		txtNumber = (EditText) findViewById(R.id.edit_login_login_number);
-		txtPassword = (EditText) findViewById(R.id.edit_login_login_password);
-		TextView forget_pwd = (TextView) findViewById(R.id.tv_forget_pwd);
+		et_username = (EditText) findViewById(R.id.et_username);
+		et_password = (EditText) findViewById(R.id.et_password);
 
-		Button btnLogin = (Button) findViewById(R.id.btn_login_login);
-		String userName = PreferenceUtils.getString(context, LOGIN_USER_NAME, "");//获取保存的用户名称
+		String userName = PreferenceUtils.getString(context, Constant.PREFERENCE_NUMBER, "");//获取保存的用户名称
 		String userPsw = PreferenceUtils.getString(context, Constant.PREFERENCE_PSW, "");//获取保存的用户密码
 		String saveTime = PreferenceUtils.getString(context, Constant.PREFERENCE_CURRENT_TIME, "");//获取保存的上次登录时间
+
 		long time = 0;
-		if (saveTime != null && !saveTime.equals("")) {
+		if (saveTime != null && !TextUtils.isEmpty(saveTime)) {
 			time = Long.parseLong(saveTime);
 		}
 		long currentTime = System.currentTimeMillis();
@@ -71,8 +54,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 			finish();
 		}
 
-		btnLogin.setOnClickListener(this);
-		forget_pwd.setOnClickListener(this);
+		TextView tv_login = (TextView) findViewById(R.id.tv_login);
+		tv_login.setOnClickListener(this);
+		TextView tv_need_help = (TextView) findViewById(R.id.tv_need_help);
+		tv_need_help.setOnClickListener(this);
 		if (getIntentFlag() == Constant.LOGINOUT_FLAG) {
 			showDialog();
 		}
@@ -91,27 +76,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
 	@Override
 	public void onBackPressed() {
-//        String name = PreferenceUtils.getString(context, Constant.PREFERENCE_EMP_NAME, "");
-//        if (TextUtils.isEmpty(name)){
-//            MyLogger.w(TAG, "当前没有用户");
-//            finish();
-//            android.os.Process.killProcess(android.os.Process.myPid());//获取PID
-//            System.exit(0);
-////            ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-////            manager.restartPackage(getPackageName());
-//        }
 		finish();
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.btn_login_login:
-				String mNumber = txtNumber.getText().toString().trim();
-				mPsw = txtPassword.getText().toString().trim();
-				login(mNumber, mPsw);
+			case R.id.tv_login:
+				String username = et_username.getText().toString().trim();
+				String password = et_password.getText().toString().trim();
+				login(username, password);
 				break;
-			case R.id.tv_forget_pwd:
+			case R.id.tv_need_help:
 				startActivity(new Intent(context,ReqVerifyCodeActivity.class));
 				break;
 		}
@@ -139,7 +115,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 								setUserDetail(response, number, psw);
 							}
 						} else {
-							//Utils.toast(LoginActivity.this, response.getRetInfo() + "");
 							if (response.getRetCode() == BaseResponse.RET_HTTP_STATUS_ERROR) {
 								Utils.toast(context, R.string.login_network_err);
 							} else if (response.getRetCode() == BaseResponse.RET_RESULT_STATUS_ERROR) {
@@ -175,10 +150,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 		PreferenceUtils.putLong(context, Constant.LAST_REFRESH_ALLFANS_TIME, 0);
 
 		MyLogger.i("Login", "empId = " + empId);
-
-		/**
-		 * 启动服务
-		 */
+		//启动服务
 		Intent intents = new Intent(context, PushMessageReceiverService.class);
 		context.startService(intents);
 		emplyouTask(empId);//去获取并缓存员工的基础信息
@@ -207,9 +179,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 							PreferenceUtils.putInt(context, "employeeType", employeeInfo.employeeType);
 							PreferenceUtils.putString(context, "phone", employeeInfo.phone);
 							PreferenceUtils.putString(context, Constant.PREFERENCE_QRCODE, employeeInfo.qrcode);
-//                            PreferenceUtils.putString(context,Constant.PREFERENCE_QRCODE,"");
 							MyLogger.i("LoginActivity", "employeeInfo.qrcode = " + employeeInfo.qrcode);
-
 							Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
 							startActivity(intent);
 							finish();
@@ -218,10 +188,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 						}
 						Log.e(TAG, "" + response.getRetInfo());
 						dismissCustomDialog();
-//                        Utils.toast(LoginActivity.this, response.getRetInfo() + "");
+
 					}
 				});
-
 	}
 
 	@Override

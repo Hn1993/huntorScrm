@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.MyJoinGroupAdapter;
 import com.huntor.mscrm.app2.model.FanInfo;
 import com.huntor.mscrm.app2.model.Target;
@@ -20,6 +19,7 @@ import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.utils.Constant;
 import com.huntor.mscrm.app2.utils.PreferenceUtils;
 import com.huntor.mscrm.app2.utils.Utils;
+import com.huntor.mscrm.app2.R;
 
 import java.util.ArrayList;
 import java.util.List;
