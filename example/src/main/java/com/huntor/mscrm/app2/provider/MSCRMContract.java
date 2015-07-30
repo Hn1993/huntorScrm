@@ -55,6 +55,29 @@ public abstract class MSCRMContract {
         public static final Uri CONTENT_URI = Uri.parse(BASE_CONTENT_URI + TABLE_NAME);
 
     }
+    /**
+     * 摇一摇记录表
+     */
+    public interface Shake extends BaseColumns {
+        // 表名
+        public static final String TABLE_NAME = "Shake";
+
+        public static final String STATUS = "status";//1选中设备  2周围设备
+        public static final String SOCIALID = "socialId";//设备所属公众号
+        public static final String DEVICEID = "deviceId"; // 设备唯一号
+        public static final String DISTANCE = "distance"; // 距离
+        public static final String ENPID = "empId"; //员工id
+        public static final String FANREALID = "fanRealId"; //粉丝的fanreadid
+        public static final String FANID = "fanId"; //粉丝id
+        public static final String TIMESTAMP = "timestamp"; //时间
+        public static final String GROUPID = "groupId"; //消息组id
+
+
+
+        public static final Uri CONTENT_URI = Uri.parse(BASE_CONTENT_URI + TABLE_NAME);
+
+    }
+
 
     /**
      * 和导购交互过的粉丝
