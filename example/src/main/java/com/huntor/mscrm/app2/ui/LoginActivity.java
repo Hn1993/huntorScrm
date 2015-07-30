@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.model.EmpLoyeeInfo;
 import com.huntor.mscrm.app2.net.BaseResponse;
 import com.huntor.mscrm.app2.net.HttpRequestController;

@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.MyJoinGroupAdapter;
 import com.huntor.mscrm.app2.model.FanInfo;
 import com.huntor.mscrm.app2.model.Target;
