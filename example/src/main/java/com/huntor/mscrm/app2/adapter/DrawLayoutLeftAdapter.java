@@ -9,13 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-<<<<<<< HEAD:example/src/main/java/com/huntor/mscrm/app/adapter/DrawLayoutLeftAdapter.java
-import com.huntor.mscrm.app.R;
-import com.huntor.mscrm.app.ui.MainActivity2;
-=======
 import com.huntor.mscrm.app2.R;
->>>>>>> 0fd19cc5627eb92aba8dbe70491a0dd805db21a7:example/src/main/java/com/huntor/mscrm/app2/adapter/DrawLayoutLeftAdapter.java
 
 
 /**

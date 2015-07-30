@@ -22,6 +22,7 @@ import com.huntor.mscrm.app2.utils.MyLogger;
 import com.huntor.mscrm.app2.utils.PreferenceUtils;
 import com.huntor.mscrm.app2.utils.Utils;
 import com.umeng.analytics.MobclickAgent;
+import com.huntor.mscrm.app2.R;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 	private final String TAG = "LoginActivity";
