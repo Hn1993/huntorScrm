@@ -166,7 +166,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = DetailedInformationActivity.this;
-        setContentView(R.layout.activity_detaileinfomation);
+        setContentView(R.layout.fragment_fans_info);
         Intent intent = getIntent();
         if (intent != null) {
 
@@ -213,9 +213,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         //Viewpager的三个界面
         viewpager = (ViewPager) findViewById(R.id.detailte_viewpager);
         viewlist = new ArrayList<View>();
-        viewlist.add(getLayoutInflater().inflate(R.layout.activity_detailinfomation_1_copy, null));
-        viewlist.add(getLayoutInflater().inflate(R.layout.activity_detaileinfomation_2, null));
-        viewlist.add(getLayoutInflater().inflate(R.layout.activity_detaileinfomation_3, null));
+        viewlist.add(getLayoutInflater().inflate(R.layout.layout_viewpager1, null));
+        viewlist.add(getLayoutInflater().inflate(R.layout.layout_viewpager2, null));
+        viewlist.add(getLayoutInflater().inflate(R.layout.layout_viewpager3, null));
         //viewpager的适配器
         myAdapter = new MyPagerAdapter(viewlist);
         viewpager.setAdapter(myAdapter);
@@ -223,8 +223,8 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         viewpager.setOnPageChangeListener(viewpager_linster);
 
         //购买意向按钮
-        buy_more = (IconTextView) viewlist.get(2).findViewById(R.id.member_info_buymore_3);
-        buy_more.setOnClickListener(this);
+//        buy_more = (IconTextView) viewlist.get(2).findViewById(R.id.member_info_buymore_3);
+//        buy_more.setOnClickListener(this);
         //购买意向和已购产品的Listview
         listview_want_buy_3 = (MySlideListView) viewlist.get(2).findViewById(R.id.listview_wantbuy);
         listview_buyed_3 = (ListView) viewlist.get(2).findViewById(R.id.listview_buyed);
@@ -251,11 +251,11 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
 
         //账户信息里的Icontext的点击事件
-        viewlist.get(1).findViewById(R.id.account_information_compile_gender).setOnClickListener(this);
-        viewlist.get(1).findViewById(R.id.account_information_compile_job).setOnClickListener(this);
-        viewlist.get(1).findViewById(R.id.account_information_compile_tel).setOnClickListener(this);
-        viewlist.get(1).findViewById(R.id.account_information_compile_name).setOnClickListener(this);
-        viewlist.get(1).findViewById(R.id.account_information_compile_age).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_gender).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_job).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_tel).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_name).setOnClickListener(this);
+//        viewlist.get(1).findViewById(R.id.account_information_compile_age).setOnClickListener(this);
 
         //通过接口获取网络数据
 
@@ -804,17 +804,17 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 finish();
                 break;
             //新增购买意向
-            case R.id.member_info_buymore_3:
-                Utils.toast(this, "增加购买意向！");
-                if (accountId == 0) {
-                    Utils.toast(this, "数据错误！！");
-                } else {
-                    Intent intent = new Intent(this, BuyInclinationActivity.class);
-                    intent.putExtra("accountId", accountId);
-                    startActivity(intent);
-                }
-
-                break;
+//            case R.id.member_info_buymore_3:
+//                Utils.toast(this, "增加购买意向！");
+//                if (accountId == 0) {
+//                    Utils.toast(this, "数据错误！！");
+//                } else {
+//                    Intent intent = new Intent(this, BuyInclinationActivity.class);
+//                    intent.putExtra("accountId", accountId);
+//                    startActivity(intent);
+//                }
+//
+//                break;
             //点击pop删除购买意向
             case R.id.pop_delete:
                 if (null != popupWindow) {
@@ -909,19 +909,19 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 showTelDialog();
                 break;
             //账户信息的编辑
-            case R.id.account_information_compile_gender:
-//                compile_title="性别";
-//                String[] genderStr={"男","女","未知"};
-//                //弹出Listdialog
-//                mShowing.showSudokuListDialog(mShowing.GetCity(genderStr), DetailedInformationActivity.this, compile_title, viewpager2_fans_gender,accountId);
-                //modifyFansParam.gender=
-
-                mPopView = getLayoutInflater().inflate(R.layout.layout_popwindow_gender, null);
-                ShowSelectPop(mPopView);
-                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                genderSetOnClick(mPopView);
-                setGenderImageVisiable(viewpager2_fans_gender);
-                break;
+//            case R.id.account_information_compile_gender:
+////                compile_title="性别";
+////                String[] genderStr={"男","女","未知"};
+////                //弹出Listdialog
+////                mShowing.showSudokuListDialog(mShowing.GetCity(genderStr), DetailedInformationActivity.this, compile_title, viewpager2_fans_gender,accountId);
+//                //modifyFansParam.gender=
+//
+//                mPopView = getLayoutInflater().inflate(R.layout.layout_popwindow_gender, null);
+//                ShowSelectPop(mPopView);
+//                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+//                genderSetOnClick(mPopView);
+//                setGenderImageVisiable(viewpager2_fans_gender);
+//                break;
             case R.id.detailinfo2_gender_layout_outside:
                 mPopWindow.dismiss();
                 break;
@@ -947,16 +947,16 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 mPopWindow.dismiss();
                 break;
 
-            case R.id.account_information_compile_job:
-//                compile_title="职业";
-//                String[] jobStr={"个体户老板","初级白领","外来务工","学生","家庭主妇","企业单位管理人员","其他"};
-//                mShowing.showSudokuListDialog(mShowing.GetCity(jobStr), DetailedInformationActivity.this, compile_title, viewpager2_fans_job,accountId);
-                mPopView = getLayoutInflater().inflate(R.layout.layout_pop_job, null);
-                ShowSelectPop(mPopView);
-                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                jobSetOnClick(mPopView);
-                setJobImageVisiable(viewpager2_fans_job);
-                break;
+//            case R.id.account_information_compile_job:
+////                compile_title="职业";
+////                String[] jobStr={"个体户老板","初级白领","外来务工","学生","家庭主妇","企业单位管理人员","其他"};
+////                mShowing.showSudokuListDialog(mShowing.GetCity(jobStr), DetailedInformationActivity.this, compile_title, viewpager2_fans_job,accountId);
+//                mPopView = getLayoutInflater().inflate(R.layout.layout_pop_job, null);
+//                ShowSelectPop(mPopView);
+//                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+//                jobSetOnClick(mPopView);
+//                setJobImageVisiable(viewpager2_fans_job);
+//                break;
             case R.id.detailinfo2_job_layout_outside:
                 mPopWindow.dismiss();
                 break;
@@ -1004,23 +1004,23 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 mShowing.JobInfoCompile(DetailedInformationActivity.this, viewpager2_fans_job, modifyFansParam, accountId, fans_id);
                 break;
 
-            case R.id.account_information_compile_tel:
-                compile_title = "tel";
-                new ShowListDialog().goInput(compile_title, DetailedInformationActivity.this, viewpager2_fans_tel, accountId, fans_id);
-                break;
-            case R.id.account_information_compile_name:
-                compile_title = "name";
-                new ShowListDialog().goInput(compile_title, DetailedInformationActivity.this, viewpager2_fans_name, accountId, fans_id);
-                break;
-
-
-            case R.id.account_information_compile_age:
-                mPopView = getLayoutInflater().inflate(R.layout.layout_pop_age, null);
-                ShowSelectPop(mPopView);
-                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                ageSetOnClick(mPopView);
-                setAgeImageVisiable(viewpager2_fans_age);
-                break;
+//            case R.id.account_information_compile_tel:
+//                compile_title = "tel";
+//                new ShowListDialog().goInput(compile_title, DetailedInformationActivity.this, viewpager2_fans_tel, accountId, fans_id);
+//                break;
+//            case R.id.account_information_compile_name:
+//                compile_title = "name";
+//                new ShowListDialog().goInput(compile_title, DetailedInformationActivity.this, viewpager2_fans_name, accountId, fans_id);
+//                break;
+//
+//
+//            case R.id.account_information_compile_age:
+//                mPopView = getLayoutInflater().inflate(R.layout.layout_pop_age, null);
+//                ShowSelectPop(mPopView);
+//                mPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+//                ageSetOnClick(mPopView);
+//                setAgeImageVisiable(viewpager2_fans_age);
+//                break;
             case R.id.detailinfo2_age_layout_outside:
                 mPopWindow.dismiss();
                 break;
