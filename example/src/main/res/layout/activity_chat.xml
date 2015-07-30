@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context="com.huntor.mscrm.app.ui.ChatActivity"
+              tools:context="com.huntor.mscrm.app2.ui.ChatActivity"
               android:background="@color/white"
         >
 
@@ -53,7 +53,7 @@
 
     </RelativeLayout>
 
-    <com.huntor.mscrm.app.ui.component.DropdownListView
+    <com.huntor.mscrm.app2.ui.component.DropdownListView
             android:id="@+id/message_chat_listview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -111,7 +111,7 @@
                 android:layout_centerVertical="true"
                 />
 
-        <com.huntor.mscrm.app.ui.component.MyEditText
+        <com.huntor.mscrm.app2.ui.component.MyEditText
                 android:id="@+id/edit_chat_send"
                 android:layout_weight="1"
                 android:layout_width="0dp"

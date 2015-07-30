@@ -2,7 +2,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              tools:context="com.huntor.mscrm.app.ui.ChatExtraDetailActivity"
+              tools:context="com.huntor.mscrm.app2.ui.ChatExtraDetailActivity"
               android:background="@color/white"
               android:orientation="vertical"
         >

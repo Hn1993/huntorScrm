@@ -89,12 +89,12 @@
                     android:id="@+id/listview_wantbuy"
                     />
             -->
-            <com.huntor.mscrm.app.ui.component.MySlideListView
+            <com.huntor.mscrm.app2.ui.component.MySlideListView
                     android:id="@+id/listview_wantbuy"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
-            </com.huntor.mscrm.app.ui.component.MySlideListView>
+            </com.huntor.mscrm.app2.ui.component.MySlideListView>
 
         </LinearLayout>
 

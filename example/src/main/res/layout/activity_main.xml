@@ -4,7 +4,7 @@
         android:id="@+id/main_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.huntor.mscrm.app.ui.MainActivity"
+        tools:context="com.huntor.mscrm.app2.ui.MainActivity"
         android:background="@android:color/transparent"
         >
 

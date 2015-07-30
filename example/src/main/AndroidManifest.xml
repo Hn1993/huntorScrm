@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.huntor.mscrm.app"
+          package="com.huntor.mscrm.app2"
         >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -44,7 +44,7 @@
 
 
     <application
-            android:name=".utils.MyApplication"
+            android:name="com.huntor.mscrm.app2.utils.MyApplication"
             android:allowBackup="true"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
@@ -52,7 +52,7 @@
             android:theme="@style/AppTheme"
             >
         <activity
-                android:name=".ui.SampleActivity"
+                android:name="com.huntor.mscrm.app2.ui.SampleActivity"
                 android:label="@string/app_name"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme">
@@ -60,7 +60,7 @@
 
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.MainActivity2"
+                android:name="com.huntor.mscrm.app2.ui.MainActivity2"
                 android:label="@string/app_name"
                 android:launchMode="singleTask"
                 android:windowSoftInputMode="adjustPan"
@@ -72,58 +72,58 @@
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.PswChangeActivity"
+                android:name="com.huntor.mscrm.app2.ui.PswChangeActivity"
                 android:label="@string/title_activity_psw_change"
                 >
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.MsgCenterActivity"
+                android:name="com.huntor.mscrm.app2.ui.MsgCenterActivity"
                 android:launchMode="singleTop"
                 >
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.component.BaseActivity"
+                android:name="com.huntor.mscrm.app2.ui.component.BaseActivity"
                 android:label="@string/title_activity_base"
                 >
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.InteractionLocaleActivity"
+                android:name="com.huntor.mscrm.app2.ui.InteractionLocaleActivity"
                 android:label="@string/title_activity_interaction_locale"
                 >
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.DetailedInformationActivity"
+                android:name="com.huntor.mscrm.app2.ui.DetailedInformationActivity"
                 android:label="@string/title_activity_detailinfo"
                 >
 
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.BuyInclinationActivity"
+                android:name="com.huntor.mscrm.app2.ui.BuyInclinationActivity"
                 android:label="@string/title_activity_buyinclination"
                 >
         </activity>
 
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.LoginActivity"
+                android:name="com.huntor.mscrm.app2.ui.LoginActivity"
                 android:launchMode="singleTask"
                 android:label="@string/app_name">
         </activity>
 
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.JoinGroupAcitivity"
+                android:name="com.huntor.mscrm.app2.ui.JoinGroupAcitivity"
                 android:label="@string/title_activity_joingroup"
                 >
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.ChatActivity"
+                android:name="com.huntor.mscrm.app2.ui.ChatActivity"
                 android:label="@string/title_activity_chat"
                 android:launchMode="singleTask"
                 android:windowSoftInputMode="adjustResize"
@@ -131,13 +131,13 @@
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.ChatExtraActivity"
+                android:name="com.huntor.mscrm.app2.ui.ChatExtraActivity"
                 android:label="@string/title_activity_chat_extra"
                 >
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.ChatExtraDetailActivity"
+                android:name="com.huntor.mscrm.app2.ui.ChatExtraDetailActivity"
                 android:label="@string/title_activity_chat_extra_detail"
                 >
         </activity>
@@ -145,7 +145,7 @@
         <!-- zxing 二维码扫描界面 -->
         <activity
                 android:screenOrientation="portrait"
-                android:name=".myZXing.CaptureActivity"
+                android:name="com.huntor.mscrm.app2.myZXing.CaptureActivity"
 
                 >
         </activity>
@@ -167,40 +167,40 @@
 
 
         <!-- 接收推送消息的Service -->
-        <service android:name="com.huntor.mscrm.app.push.PushMessageReceiverService">
+        <service android:name="com.huntor.mscrm.app2.push.PushMessageReceiverService">
         </service>
 
         <!-- provider -->
         <provider
-                android:name="com.huntor.mscrm.app.provider.MSCRMProvider"
-                android:authorities="com.huntor.mscrm.app.provider"
+                android:name="com.huntor.mscrm.app2.provider.MSCRMProvider"
+                android:authorities="com.huntor.mscrm.app2.provider"
                 android:exported="true">
             <grant-uri-permission android:pathPattern=".*"/>
         </provider>
 
         <activity
-                android:name=".ui.SetTailsActivity"
+                android:name="com.huntor.mscrm.app2.ui.SetTailsActivity"
                 android:label="@string/title_activity_set_tails">
         </activity>
 
         <activity
-                android:name=".ui.InputBarcodeActivity"
+                android:name="com.huntor.mscrm.app2.ui.InputBarcodeActivity"
                 android:label="@string/title_activity_input_barcode">
         </activity>
 
         <activity
-                android:name=".ui.TestActivity">
+                android:name="com.huntor.mscrm.app2.ui.TestActivity">
         </activity>
 
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.ReqVerifyCodeActivity"
+                android:name="com.huntor.mscrm.app2.ui.ReqVerifyCodeActivity"
                 android:label="@string/forget_password"
                 >
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.ResetPwdActivity"
+                android:name="com.huntor.mscrm.app2.ui.ResetPwdActivity"
                 android:label="@string/reset_password"
                 >
         </activity>

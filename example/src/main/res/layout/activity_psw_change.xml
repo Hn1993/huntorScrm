@@ -3,13 +3,13 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context="com.huntor.mscrm.app.ui.PswChangeActivity"
+              tools:context="com.huntor.mscrm.app2.ui.PswChangeActivity"
               android:background="@color/white"
         >
 
     <include layout="@layout/activity_base"/>
 
-    <com.huntor.mscrm.app.ui.component.GrayUnderLineEditText
+    <com.huntor.mscrm.app2.ui.component.GrayUnderLineEditText
             android:id="@+id/edit_psw_change_old"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_height_size"
@@ -25,7 +25,7 @@
             android:maxLength="12"
             />
 
-    <com.huntor.mscrm.app.ui.component.GrayUnderLineEditText
+    <com.huntor.mscrm.app2.ui.component.GrayUnderLineEditText
             android:id="@+id/edit_psw_change_new"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_height_size"
@@ -42,7 +42,7 @@
             />
 
 
-    <com.huntor.mscrm.app.ui.component.GrayUnderLineEditText
+    <com.huntor.mscrm.app2.ui.component.GrayUnderLineEditText
             android:id="@+id/edit_psw_change_confirm"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_height_size"

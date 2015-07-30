@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:background="@color/white"
-              tools:context="com.huntor.mscrm.app.ui.fragment.online.InteractionOnlineFragment"
+              tools:context="com.huntor.mscrm.app2.ui.fragment.online.InteractionOnlineFragment"
         >
 
     <RelativeLayout

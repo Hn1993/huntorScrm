@@ -31,7 +31,7 @@
             android:layout_below="@id/tv_time_pull"
             >
 
-        <com.huntor.mscrm.app.ui.component.MyTextView
+        <com.huntor.mscrm.app2.ui.component.MyTextView
                 android:id="@+id/tv_content_pull"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

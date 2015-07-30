@@ -18,7 +18,7 @@
             android:contentDescription="@string/vivo_logo"
             />
 
-    <com.huntor.mscrm.app.ui.component.WhiteUnderLineEditText
+    <com.huntor.mscrm.app2.ui.component.WhiteUnderLineEditText
             android:id="@+id/edit_login_login_number"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_height_size"
@@ -35,7 +35,7 @@
             android:maxLength="12"
             />
 
-    <com.huntor.mscrm.app.ui.component.WhiteUnderLineEditText
+    <com.huntor.mscrm.app2.ui.component.WhiteUnderLineEditText
             android:id="@+id/edit_login_login_password"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_height_size"
