@@ -185,27 +185,27 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
             case R.id.layout_fragment_mymember_new_fans://新增
                 clearBackStack();
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.frame_main, new NewFansFragment(), Constant.MY_MEMBER);
+                transaction.replace(R.id.fl_content, new NewFansFragment(), Constant.MY_MEMBER);
                 break;
             case R.id.layout_fragment_mymember_normal_fans://普通
                 clearBackStack();
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.frame_main, new NormalFansFragment(), Constant.MY_MEMBER);
+                transaction.replace(R.id.fl_content, new NormalFansFragment(), Constant.MY_MEMBER);
                 break;
             case R.id.layout_fragment_mymember_high_user://高潜
                 clearBackStack();
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.frame_main, new HighUserFragment(), Constant.MY_MEMBER);
+                transaction.replace(R.id.fl_content, new HighUserFragment(), Constant.MY_MEMBER);
                 break;
             case R.id.layout_fragment_mymember_buyed_user://已购
                 clearBackStack();
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.frame_main, new BuyedUserFragment(), Constant.MY_MEMBER);
+                transaction.replace(R.id.fl_content, new BuyedUserFragment(), Constant.MY_MEMBER);
                 break;
             case R.id.layout_fragment_mymember_my_group://我的分组
                 clearBackStack();
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.frame_main, new MyGroupFragment(), Constant.MY_MEMBER);
+                transaction.replace(R.id.fl_content, new MyGroupFragment(), Constant.MY_MEMBER);
                 break;
 //            case R.id.iv_search:
 //                clearBackStack();

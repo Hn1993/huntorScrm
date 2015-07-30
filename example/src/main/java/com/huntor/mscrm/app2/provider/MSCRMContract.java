@@ -12,7 +12,7 @@ public abstract class MSCRMContract {
     /**
      * ContentProvider的Authority
      */
-    public static final String AUTHORITY = "com.huntor.mscrm.app.provider";
+    public static final String AUTHORITY = "com.huntor.mscrm.app2.provider";
 
     private static final String BASE_CONTENT_URI = "content://" + AUTHORITY + "/";
 
