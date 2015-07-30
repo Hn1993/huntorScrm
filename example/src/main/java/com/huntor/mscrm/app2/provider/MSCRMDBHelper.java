@@ -212,6 +212,9 @@ public class MSCRMDBHelper extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS " + MSCRMContract.MessageNote.TABLE_NAME);
 
+        //删除摇一摇
+        db.execSQL("DROP TABLE IF EXISTS " + MSCRMContract.Shake.TABLE_NAME);
+
         onCreate(db);
     }
 
