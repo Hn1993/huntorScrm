@@ -70,7 +70,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         //toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);
-       // toolbar.setOnMenuItemClickListener(menuLitener_toolbar);//设置menu
+        // toolbar.setOnMenuItemClickListener(menuLitener_toolbar);//设置menu
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
