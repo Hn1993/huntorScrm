@@ -4,7 +4,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <include layout="@layout/activity_base"/>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_title_height"
+            android:background="@color/huntor_bacground"
+            >
+
+        <RelativeLayout
+                android:background="@drawable/selector_back"
+                style="@style/layout_left_corner"
+                android:id="@+id/img_left_corner">
+            <ImageView
+                    style="@style/img_title_common_style"
+                    />
+        </RelativeLayout>
+
+        <TextView
+                android:id="@+id/text_base_title"
+                style="@style/text_title_left_commom_style"
+                android:text="加入分组"
+                />
+    </RelativeLayout>
+
 
     <ListView
             android:layout_width="fill_parent"
