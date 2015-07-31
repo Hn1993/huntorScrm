@@ -22,12 +22,12 @@
                 android:layout_alignParentLeft="true"
                 android:textSize="15sp"
                 android:textColor="@color/black"
-
                 />
-
         <View
+                android:layout_below="@id/item_join_group_mygroup"
                 style="@style/item_divider_common_style"
                 />
+
     </RelativeLayout>
     <!--<LinearLayout-->
             <!--android:orientation="vertical"-->

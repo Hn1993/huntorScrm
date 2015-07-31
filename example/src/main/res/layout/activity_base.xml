@@ -3,10 +3,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base_title_height"
                 tools:context="com.huntor.mscrm.app2.ui.component.BaseActivity"
-                android:background="@color/login_bg"
+                android:background="@color/huntor_bacground"
         >
 
     <ImageView
+            android:background="@drawable/selector_back"
             android:id="@+id/img_left_corner"
             android:layout_width="@dimen/base_title_height"
             android:layout_height="wrap_content"

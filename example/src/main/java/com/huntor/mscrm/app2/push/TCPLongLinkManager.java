@@ -95,6 +95,7 @@ public class TCPLongLinkManager {
             mSocket.on("shake_event", shake_event);
 
             mSocket.connect();
+
         }
     }
 
