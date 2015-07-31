@@ -40,7 +40,7 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends BaseActivity implements View.OnClickListener {
     private String TAG = "MainActivity2";
-    private Toolbar toolbar;
+    public  Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView lvLeftMenu;
@@ -55,10 +55,13 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
     private Button mButton;
     private TextView txtOnlineMessageNumber;
 
+
+    public static MainActivity2 mainActivity2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        mainActivity2=this;
         isLogined();
         if (isLogin) {
             Intent serviceIntent = new Intent(this, PushMessageReceiverService.class);
