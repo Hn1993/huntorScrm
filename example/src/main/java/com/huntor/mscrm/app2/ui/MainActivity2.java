@@ -198,7 +198,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                 } else if (i == 2) {
                     MyMemberFragment mbf = new MyMemberFragment();
                     transaction.replace(R.id.fl_content, mbf);
-                    toolbar.setTitle("\t\t我的会员");
+                    toolbar.setTitle("我的会员");
 
                 } else if (i == 3) {//添加其他功能
 
