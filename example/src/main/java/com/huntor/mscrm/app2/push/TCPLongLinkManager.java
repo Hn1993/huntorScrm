@@ -83,6 +83,7 @@ public class TCPLongLinkManager {
             mSocket.on("internalmsg", internalmsg);
             mSocket.on("shake_event", shake_event);
             mSocket.connect();
+
         }
     }
 
