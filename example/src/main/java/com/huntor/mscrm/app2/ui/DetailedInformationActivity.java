@@ -804,9 +804,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             case R.id.fans_info_layout_finish:
                 mRelativeLayout.setVisibility(View.GONE);
                 break;
-            case R.id.fans_info_button_finish:
-                mRelativeLayout.setVisibility(View.GONE);
-                break;
+//            case R.id.fans_info_button_finish:
+//                mRelativeLayout.setVisibility(View.GONE);
+//                break;
             case R.id.img_left_corner:
                 finish();
                 break;
@@ -1184,28 +1184,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     protected void onPause() {
         super.onPause();
         dismissCustomDialog();
+        mRelativeLayout.setVisibility(View.GONE);
         Log.i("黄安", "onPause");
     }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i("黄安", "onStart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("黄安", "onResume");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("黄安", "onStop");
-    }
-
 
     /**
      * 新app的水波纹点击事件
@@ -1250,20 +1231,4 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         }
     }
 
-
-//    @Override
-//    public boolean onLongClick(View view) {
-//        switch (view.getId()){
-//            case R.id.menber_phone_text_2:
-//
-//                // 获取剪贴板管理服务
-//                ClipboardManager cm = (ClipboardManager) this
-//                        .getSystemService(Context.CLIPBOARD_SERVICE);
-//                // 将文本数据复制到剪贴板
-//                cm.setText(viewpager2_fans_tel.getText().toString());
-//                break;
-//
-//        }
-//        return true;
-//    }
 }
