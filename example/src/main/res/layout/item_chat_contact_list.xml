@@ -9,7 +9,7 @@
             android:id="@+id/img_item_chat_contact_list_head"
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:src="@drawable/head"
+            android:src="@drawable/head2"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             />
