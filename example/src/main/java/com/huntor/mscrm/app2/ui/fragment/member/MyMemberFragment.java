@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,9 +46,14 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
     private List<Data> mMemberData;
     private FragmentManager fragmentManager;
 
+    Toolbar toolbar;
+
     public MyMemberFragment() {
-        // Required java.lang.Stringempty public constructor
     }
+//    public MyMemberFragment(Toolbar toolbar) {
+//        // Required java.lang.Stringempty public constructor
+//        this.toolbar=toolbar;
+//    }
 
     @Override
     public void onResume() {
@@ -61,10 +67,10 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
 
         System.out.println("onCreateView");
         fragmentManager = getFragmentManager();
-
         // Inflate the layout for this fragment
         View ret = inflater.inflate(R.layout.fragment_my_member_new, container, false);
-
+        //toolbar= (Toolbar) findViewById(R.id.toolbar);
+        this.toolbar=MainActivity2.mainActivity2.toolbar;
         Typeface typeFace =Typeface.createFromAsset(getActivity().getAssets(),"fonts/KhmerUI.ttf");
         newFansView = (TextView) ret.findViewById(R.id.text_number_people_new_fans);
         newFansView.setTypeface(typeFace);
@@ -83,6 +89,8 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
         ret.findViewById(R.id.layout_fragment_mymember_high_user).setOnClickListener(this);
         ret.findViewById(R.id.layout_fragment_mymember_buyed_user).setOnClickListener(this);
         ret.findViewById(R.id.layout_fragment_mymember_my_group).setOnClickListener(this);
+        ret.findViewById(R.id.layout_fragment_mymember_other_group).setOnClickListener(this);
+
 //        ret.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -181,31 +189,43 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
         int id = v.getId();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+
         switch (id){
             case R.id.layout_fragment_mymember_new_fans://新增
                 clearBackStack();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.fl_content, new NewFansFragment(), Constant.MY_MEMBER);
+                toolbar.setTitle("在线交互粉丝");
                 break;
             case R.id.layout_fragment_mymember_normal_fans://普通
                 clearBackStack();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.fl_content, new NormalFansFragment(), Constant.MY_MEMBER);
+                toolbar.setTitle("普通粉丝");
                 break;
             case R.id.layout_fragment_mymember_high_user://高潜
                 clearBackStack();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.fl_content, new HighUserFragment(), Constant.MY_MEMBER);
+                toolbar.setTitle("高潜会员");
                 break;
             case R.id.layout_fragment_mymember_buyed_user://已购
                 clearBackStack();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.fl_content, new BuyedUserFragment(), Constant.MY_MEMBER);
+                toolbar.setTitle("已购用户");
                 break;
             case R.id.layout_fragment_mymember_my_group://我的分组
                 clearBackStack();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.fl_content, new MyGroupFragment(), Constant.MY_MEMBER);
+                toolbar.setTitle("我的分组");
+                break;
+            case R.id.layout_fragment_mymember_other_group://其他分组
+                clearBackStack();
+                transaction.addToBackStack(null);
+                transaction.replace(R.id.fl_content, new MyGroupFragment(), Constant.MY_MEMBER);
+                toolbar.setTitle("其他分组");
                 break;
 //            case R.id.iv_search:
 //                clearBackStack();

@@ -40,7 +40,7 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends BaseActivity implements View.OnClickListener {
     private String TAG = "MainActivity2";
-    private Toolbar toolbar;
+    public  Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView lvLeftMenu;
@@ -55,10 +55,13 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
     private Button mButton;
     private TextView txtOnlineMessageNumber;
 
+
+    public static MainActivity2 mainActivity2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        mainActivity2=this;
         isLogined();
         if (isLogin) {
             Intent serviceIntent = new Intent(this, PushMessageReceiverService.class);
@@ -66,11 +69,11 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         }
         findViews();
 
-        toolbar.setTitle("\t\t现场交互");//设置Toolbar标题
+        toolbar.setTitle("现场交互");//设置Toolbar标题
         //toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);
-        // toolbar.setOnMenuItemClickListener(menuLitener_toolbar);//设置menu
+        toolbar.setOnMenuItemClickListener(menuLitener_toolbar);//设置menu
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -198,7 +201,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                 } else if (i == 2) {
                     MyMemberFragment mbf = new MyMemberFragment();
                     transaction.replace(R.id.fl_content, mbf);
-                    toolbar.setTitle("\t\t我的会员");
+                    toolbar.setTitle("我的会员");
 
                 } else if (i == 3) {//添加其他功能
 

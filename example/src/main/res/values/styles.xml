@@ -313,6 +313,7 @@
     <style name="member_item_text_name">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/huntor_bacground</item>
         <item name="android:textSize">@dimen/fragment_mymember_item_name_size</item>
         <item name="android:layout_marginLeft">@dimen/fragment_mymember_img_margin_left_right</item>
         <item name="android:layout_marginTop">@dimen/fragment_mymember_img_margin_left_right</item>
@@ -321,6 +322,7 @@
     <style name="member_item_text_time">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/huntor_bacground</item>
         <item name="android:textSize">@dimen/fragment_mymember_item_time_size</item>
         <item name="android:layout_marginLeft">@dimen/fragment_mymember_img_margin_left_right</item>
         <item name="android:layout_marginTop">@dimen/fragment_mymember_item_time_margintop</item>
@@ -356,7 +358,7 @@
 
     <style name="faninfo_default_time">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">20dp</item>
         <item name="android:layout_marginTop">@dimen/fragment_fansinfo_time_margintop</item>
         <item name="android:textSize">@dimen/fragment_fansinfo_time_textsize</item>
         <item name="android:layout_marginBottom">@dimen/fragment_fansinfo_time_marginbuttom</item>

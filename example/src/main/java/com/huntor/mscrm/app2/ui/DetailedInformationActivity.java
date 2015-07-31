@@ -203,11 +203,12 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 //        relativeLayout = (RelativeLayout) findViewById(R.id.detailinfo_buttom_layout);
 //        relativeLayout.setVisibility(View.GONE);
 
-//        mBackImage = (RelativeLayout) findViewById(R.id.img_left_corner);
+        mBackImage = (RelativeLayout) findViewById(R.id.img_left_corner);
+        mBackImage.setOnClickListener(this);
 //        mLeftTitle = (TextView) findViewById(R.id.text_base_title);
 //        mBackImage.setVisibility(View.VISIBLE);
 //        mLeftTitle.setVisibility(View.VISIBLE);
-//        mBackImage.setOnClickListener(this);
+
 //        mLeftTitle.setText("会员详情");
 
         //Viewpager的三个界面
@@ -441,7 +442,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         }
 
 
-        RelativeLayout groupRelativelayout = (RelativeLayout) viewlist.get(0).findViewById(R.id.relativelayout_in_the_group);
+       // RelativeLayout groupRelativelayout = (RelativeLayout) viewlist.get(0).findViewById(R.id.relativelayout_in_the_group);
         mTargetList = fan.targetLists;
         TextView InTheGroup = (TextView) viewlist.get(0).findViewById(R.id.in_the_group);
         MyLogger.i(TAG, "mTargetList.size = :" + mTargetList.size());
@@ -462,7 +463,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 
         String str="";
         if(mTargetList.size()==0){
-            groupRelativelayout.setVisibility(View.GONE);
+            //groupRelativelayout.setVisibility(View.GONE);
         }else{
             for (int i = 0; i < mTargetList.size(); i++) {
                 //截取字符串   让最后一行不加 "\n"
@@ -803,10 +804,12 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             case R.id.fans_info_layout_finish:
                 mRelativeLayout.setVisibility(View.GONE);
                 break;
-
-//            case R.id.img_left_corner:
-//                finish();
-//                break;
+            case R.id.fans_info_button_finish:
+                mRelativeLayout.setVisibility(View.GONE);
+                break;
+            case R.id.img_left_corner:
+                finish();
+                break;
             //新增购买意向
 //            case R.id.member_info_buymore_3:
 //                Utils.toast(this, "增加购买意向！");
@@ -1217,6 +1220,8 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         WaveTouchHelper.bindWaveTouchHelper(mImageView, this);//
         mRelativeLayout= (RelativeLayout) findViewById(R.id.fans_info_layout_finish);
         mRelativeLayout.setOnClickListener(this);
+
+        findViewById(R.id.fans_info_button_finish).setOnClickListener(this);
         /**
          * 在动画的完成后显示一个view
          */
