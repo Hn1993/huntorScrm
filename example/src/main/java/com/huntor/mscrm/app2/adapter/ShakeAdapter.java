@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.model.ShakeMessageModle;
+import com.huntor.mscrm.app2.utils.DateFormatUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -73,7 +75,7 @@ public class ShakeAdapter extends BaseAdapter {
 
         viewHolder.content.setText(data.get(position).nickName + "发来一条摇一摇信息");
 
-        viewHolder.chat_time.setText(data.get(position).time);
+        viewHolder.chat_time.setText(DateFormatUtils.format(new Date(data.get(position).timestamp), "MM-dd HH:mm"));
 
         return convertView;
     }

@@ -231,6 +231,28 @@ public class ApiFansInFoDb {
 
         return fanInfo;
     }
+
+    /**
+     * 根据粉丝ID获取指定粉丝信息
+     * @param context
+     * @param fanId
+     * @return
+     */
+    public static FanInfo getFansInfoById2(Context context, int fanId) {
+        ContentResolver resolver = context.getContentResolver();
+        Cursor cursor = resolver.query(MSCRMContract.FanInfo.CONTENT_URI, null, MSCRMContract.FanInfo.FAN_ID+"=?", new String[]{""+fanId}, null);
+        FanInfo fanInfo = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            fanInfo = new FanInfo();
+            fanInfo.fanId = cursor.getInt(cursor.getColumnIndex(MSCRMContract.FanInfo.FAN_ID));
+            fanInfo.nickName = cursor.getString(cursor.getColumnIndex(MSCRMContract.FanInfo.NICKNAME));
+
+            fanInfo.avatar = cursor.getString(cursor.getColumnIndex(MSCRMContract.FanInfo.AVATAR));
+
+        }
+
+        return fanInfo;
+    }
     /**
      * 删除所有固定分组列表信息
      *
