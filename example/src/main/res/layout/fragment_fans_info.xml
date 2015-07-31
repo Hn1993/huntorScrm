@@ -35,8 +35,9 @@
         </LinearLayout>
 
         <LinearLayout
+                android:layout_marginTop="@dimen/fragment_fansinfo_header_margintop"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="@dimen/fragment_fansinfo_tab_height"
             android:background="@color/lighter_gray"
             android:orientation="horizontal">
             <RelativeLayout
@@ -201,6 +202,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <Button
+                        android:id="@+id/fans_info_button_finish"
                     android:text="完成"
                     android:layout_weight="1"
                     android:layout_width="0dp"

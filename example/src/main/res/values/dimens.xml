@@ -239,7 +239,7 @@
     <dimen name="fragment_fansinfo_time_textsize">15sp</dimen>
     <dimen name="fragment_fansinfo_time_marginbuttom">20dp</dimen>
     <dimen name="fragment_fansinfo_viewpager_tab_textsize">20sp</dimen>
-
+    <dimen name="fragment_fansinfo_tab_height">50dp</dimen>
 
     <!--fab button-->
     <dimen name="fab_size_normal">56dp</dimen>

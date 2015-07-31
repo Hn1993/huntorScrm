@@ -441,7 +441,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         }
 
 
-        RelativeLayout groupRelativelayout = (RelativeLayout) viewlist.get(0).findViewById(R.id.relativelayout_in_the_group);
+       // RelativeLayout groupRelativelayout = (RelativeLayout) viewlist.get(0).findViewById(R.id.relativelayout_in_the_group);
         mTargetList = fan.targetLists;
         TextView InTheGroup = (TextView) viewlist.get(0).findViewById(R.id.in_the_group);
         MyLogger.i(TAG, "mTargetList.size = :" + mTargetList.size());
@@ -462,7 +462,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 
         String str="";
         if(mTargetList.size()==0){
-            groupRelativelayout.setVisibility(View.GONE);
+            //groupRelativelayout.setVisibility(View.GONE);
         }else{
             for (int i = 0; i < mTargetList.size(); i++) {
                 //截取字符串   让最后一行不加 "\n"
@@ -803,7 +803,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             case R.id.fans_info_layout_finish:
                 mRelativeLayout.setVisibility(View.GONE);
                 break;
-
+            case R.id.fans_info_button_finish:
+                mRelativeLayout.setVisibility(View.GONE);
+                break;
 //            case R.id.img_left_corner:
 //                finish();
 //                break;
@@ -1217,6 +1219,8 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         WaveTouchHelper.bindWaveTouchHelper(mImageView, this);//
         mRelativeLayout= (RelativeLayout) findViewById(R.id.fans_info_layout_finish);
         mRelativeLayout.setOnClickListener(this);
+
+        findViewById(R.id.fans_info_button_finish).setOnClickListener(this);
         /**
          * 在动画的完成后显示一个view
          */
