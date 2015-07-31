@@ -800,14 +800,10 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         View mPopView = null;
 
         switch (view.getId()) {
-<<<<<<< HEAD
-
             case R.id.fans_info_layout_finish:
                 mRelativeLayout.setVisibility(View.GONE);
                 break;
 
-=======
->>>>>>> c4f7d1993f9edb6f12cb2980f39bf27a471c4408
 //            case R.id.img_left_corner:
 //                finish();
 //                break;
