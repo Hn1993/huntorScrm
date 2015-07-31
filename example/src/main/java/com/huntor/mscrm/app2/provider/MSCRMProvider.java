@@ -206,6 +206,7 @@ public class MSCRMProvider extends ContentProvider {
         /**
          * 摇一摇投影字段
          */
+        mSHAKEMap = new HashMap<String, String>();
         mSHAKEMap.put(MSCRMContract.Shake.STATUS, MSCRMContract.Shake.STATUS);
         mSHAKEMap.put(MSCRMContract.Shake.SOCIALID, MSCRMContract.Shake.SOCIALID);
         mSHAKEMap.put(MSCRMContract.Shake.DEVICEID, MSCRMContract.Shake.DEVICEID);
