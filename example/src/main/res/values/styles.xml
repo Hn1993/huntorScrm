@@ -337,8 +337,9 @@
 
     <!--fans-->
     <style name="faninfo_default_header">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/fab_size_normal</item>
+        <item name="android:layout_height">@dimen/fab_size_normal</item>
+        <item name="android:scaleType">fitXY</item>
         <item name="android:layout_marginLeft">@dimen/fragment_fansinfo_header_marginleft</item>
         <item name="android:layout_marginTop">@dimen/fragment_fansinfo_header_margintop</item>
 
