@@ -39,6 +39,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="interaction_buy_enter">购买入会</string>
     <string name="interaction_enter_invitation">入会邀请</string>
+    <string name="interaction_enter_shake">摇一摇</string>
     <string name="new_fans">新增粉丝</string>
     <string name="mymember_people_zero">0人</string>
     <string name="title_activity_interaction_locale">InteractionLocaleActivity</string>

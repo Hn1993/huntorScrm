@@ -204,6 +204,12 @@
                 android:label="@string/reset_password"
                 >
         </activity>
+        <activity
+                android:screenOrientation="portrait"
+                android:name="com.huntor.mscrm.app2.ui.ShackActivity"
+                android:label="@string/reset_password"
+                >
+        </activity>
     </application>
 
 </manifest>

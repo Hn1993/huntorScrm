@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import com.huntor.mscrm.app2.R;
@@ -14,6 +15,7 @@ import com.huntor.mscrm.app2.model.ShakeModle;
 import com.huntor.mscrm.app2.provider.api.ApiFansInFoDb;
 import com.huntor.mscrm.app2.provider.api.ApiPullMessageShakeDb;
 import com.huntor.mscrm.app2.push.PushMessageManager;
+import com.huntor.mscrm.app2.utils.Constant;
 import com.huntor.mscrm.app2.utils.DateFormatUtils;
 
 import java.util.ArrayList;
@@ -39,6 +41,8 @@ public class ShackActivity extends Activity implements View.OnClickListener{
 
         pushMessageManager = PushMessageManager.getInstance(this);
         pushMessageManager.registerOnReceivedPushMessageListener(shakeListener);
+
+
     }
 
     public void initView(){
@@ -56,7 +60,7 @@ public class ShackActivity extends Activity implements View.OnClickListener{
     public void getShakeData(){
         List<ShakeModle> modles = ApiPullMessageShakeDb.getMsgList(this);
         ApiPullMessageShakeDb.updateReadStatus(this);
-
+        Constant.shakecount = 0;
 
 
         List<ShakeMessageModle> newData = new ArrayList<ShakeMessageModle>();
@@ -92,8 +96,8 @@ public class ShackActivity extends Activity implements View.OnClickListener{
 
     @Override
     protected void onResume() {
-        super.onResume();
         getShakeData();
+        super.onResume();
     }
 
     @Override
@@ -123,6 +127,8 @@ public class ShackActivity extends Activity implements View.OnClickListener{
     PushMessageManager.OnPullMessageShakeListener shakeListener = new PushMessageManager.OnPullMessageShakeListener() {
         @Override
         public void OnPullMessageShake(Object pushMessage) {
+
+            Log.e("SahkeActivity"  ,"收到摇一摇消息");
             getShakeData();
         }
     };

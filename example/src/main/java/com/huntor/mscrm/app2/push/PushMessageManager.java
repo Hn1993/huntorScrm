@@ -275,7 +275,7 @@ public class PushMessageManager {
             /**
              * 通知监听者
              */
-            for (int i = 0; i < mlisteners.size(); i++) {
+            for (int i = 0; i < mShakelisteners.size(); i++) {
                 OnPullMessageShakeListener listener = mShakelisteners.get(i);
                 if (listener != null) {
                     listener.OnPullMessageShake(note);

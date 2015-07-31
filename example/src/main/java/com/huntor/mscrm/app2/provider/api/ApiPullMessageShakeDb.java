@@ -34,7 +34,7 @@ public class ApiPullMessageShakeDb {
     public static List<ShakeModle> getMsgList(Context context) {
         List<ShakeModle> messages = new ArrayList<ShakeModle>();
         ContentResolver resolver = context.getContentResolver();
-        Cursor cursor = resolver.query(MSCRMContract.Shake.CONTENT_URI, null, null, null, MSCRMContract.Shake.TIMESTAMP + " desc");
+        Cursor cursor = resolver.query(MSCRMContract.Shake.CONTENT_URI, null, null, null, MSCRMContract.Shake.TIMESTAMP + " asc");
         if (cursor != null) {
             ShakeModle note = null;
             while (cursor.moveToNext()) {

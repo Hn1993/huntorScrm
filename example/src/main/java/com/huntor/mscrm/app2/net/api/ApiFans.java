@@ -91,6 +91,7 @@ public class ApiFans extends HttpApiBase {
             }
             Log.i(TAG, "response.fanInfo = " + response.fanInfo);
 
+
             ApiFansInFoDb aff = new ApiFansInFoDb(mContext);
             Log.e(TAG,"================="+System.currentTimeMillis());
             response.fanInfo.fanId = mFanId;

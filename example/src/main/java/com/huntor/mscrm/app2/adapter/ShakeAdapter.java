@@ -4,9 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.model.ShakeMessageModle;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -63,22 +61,44 @@ public class ShakeAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_shake,null);
+            convertView = setViewHolder();
         }
 
-        ImageView img = (ImageView) convertView.findViewById(R.id.fan_head);
 
-        ImageLoader.getInstance().displayImage(data.get(position).avatar, img, options);
+        ViewHolder viewHolder = (ViewHolder) convertView.getTag();
 
-        TextView content = (TextView) convertView.findViewById(R.id.shake_content);
-        content.setText(data.get(position).nickName + "发来一条摇一摇信息");
 
-        TextView time = (TextView) convertView.findViewById(R.id.chat_time);
-        time.setText(data.get(position).time);
+        ImageLoader.getInstance().displayImage(data.get(position).avatar, viewHolder.img, options);
+
+
+        viewHolder.content.setText(data.get(position).nickName + "发来一条摇一摇信息");
+
+        viewHolder.chat_time.setText(data.get(position).time);
 
         return convertView;
     }
 
+
+    private View setViewHolder(){
+        View  convertView = LayoutInflater.from(context).inflate(R.layout.item_shake,null);
+
+        ViewHolder viewHolder = new ViewHolder();
+        viewHolder.img = (ImageView) convertView.findViewById(R.id.fan_head);
+        viewHolder.chat_time = (TextView) convertView.findViewById(R.id.chat_time);
+        viewHolder.content = (TextView) convertView.findViewById(R.id.shake_content);
+
+        convertView.setTag(viewHolder);
+        return convertView;
+    }
+
+    class ViewHolder {
+
+
+        ImageView img;
+        TextView content;
+        TextView chat_time;
+
+    }
     DisplayImageOptions options = new DisplayImageOptions.Builder()
             .showImageForEmptyUri(R.drawable.dimension_code_fail_default)
             .showImageOnFail(R.drawable.dimension_code_fail_default)

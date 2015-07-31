@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.huntor.mscrm.app2.model.*;
 import com.huntor.mscrm.app2.net.BaseResponse;
 import com.huntor.mscrm.app2.net.api.ApiFans;
+import com.huntor.mscrm.app2.provider.api.ApiFansInFoDb;
 import com.huntor.mscrm.app2.provider.api.ApiMessageRecordDb;
 import com.huntor.mscrm.app2.utils.*;
 import com.umeng.analytics.MobclickAgent;
@@ -62,7 +63,17 @@ public class TCPLongLinkManager {
             Log.e(TAG, "准备连接。。。");
             try {//http://chat.socket.io
                 IO.Options opts = new IO.Options();
-                opts.forceNew = false;
+                opts.forceNew = true;
+                opts.reconnection = true;
+                opts.timeout = 30000;
+                opts.reconnectionDelay = 1000;
+                opts.reconnectionDelayMax = 2000;
+                Log.e("参数 opts.timeout＝",""+opts.timeout);
+                Log.e("参数 opts.Delay＝",""+opts.reconnectionDelay);
+                Log.e("参数 opts.DelayMax＝",""+opts.reconnectionDelayMax);
+
+
+
 
 //                mSocket = IO.socket(Constant.SOCKET_TCP_LONG_HOST_URL, opts);
                 String chatter_url_main = Constant.SOCKET_TCP_LONG_HOST_URL;
@@ -82,6 +93,7 @@ public class TCPLongLinkManager {
             mSocket.on("chat", chat);
             mSocket.on("internalmsg", internalmsg);
             mSocket.on("shake_event", shake_event);
+
             mSocket.connect();
         }
     }
@@ -104,6 +116,7 @@ public class TCPLongLinkManager {
             mSocket.off(Socket.EVENT_CONNECT, onConnect);
             mSocket.off("chat", chat);
             mSocket.off("internalmsg", internalmsg);
+            mSocket.off("shake_event", shake_event);
             Log.e(TAG, "" + new Date().getTime());
         }
         mSocket.close();
@@ -205,23 +218,54 @@ public class TCPLongLinkManager {
      * 收到的摇一摇信息
      */
     private Emitter.Listener shake_event = new Emitter.Listener() {
+
+
+
         @Override
         public void call(final Object... args) {
-            Log.e(TAG, "receive message=====");
+
+
+
+
+
+            Log.e(TAG, "receive 摇一摇信息=====");
             if (args != null && args.length > 0) {
                 JSONObject data = (JSONObject) args[0];
                 Gson gson = new Gson();
                 ShakeModle sm = gson.fromJson(args[0].toString(), ShakeModle.class);
-                Log.e(TAG, "receive message=====" + sm.toString());
+                Log.e(TAG, "receive 摇一摇信息=====" + sm.toString());
 
-                ApiFans.ApiFansParams params = new ApiFans.ApiFansParams(sm.fanId);
+                FanInfo fan = ApiFansInFoDb.getFansInfoById(context,sm.fanId );
+                if (fan == null){
+                    ApiFans.ApiFansParams params = new ApiFans.ApiFansParams(sm.fanId);
 
-                ApiFans.ApiFansResponse response = new ApiFans(context,params).getHttpResponse();
-                if(response.getRetCode() != BaseResponse.RET_CACHE_STATUS_OK){
-                    handler.sendEmptyMessage(2);
+                    ApiFans.ApiFansResponse response = new ApiFans(context,params).getHttpResponse();
+                    Log.e(TAG,"response.getRetCode() = " + response.getRetCode());
+                    if(response.getRetCode() != BaseResponse.RET_HTTP_STATUS_OK){
+                        handler.sendEmptyMessage(2);
+                    }
                 }
+
+                //回调
+                Log.e(TAG, "args.size=====" + args.length);
+                Ack ack = (Ack) args[args.length - 1];
+                ack.call("123");
+
+                ++Constant.shakecount;
                 pmm.sendPushMessage(sm, "shake_event");
-                ++Constant.notecount;
+
+
+
+
+                JSONObject ob = new JSONObject();
+                try {
+                    ob.put("code","0");
+                    ob.put("msg","OK");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                mSocket.emit("shake_event", ob.toString());
             } else {
                 Log.e(TAG, "receive message====null");
             }

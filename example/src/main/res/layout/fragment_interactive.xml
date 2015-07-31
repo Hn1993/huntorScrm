@@ -56,6 +56,39 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/lighter_gray"/>
+
+        <LinearLayout
+                android:background="@drawable/selector_mymember"
+                android:id="@+id/layout_fragment_interaction_enter_shake"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/drawerlayout_mian_item_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            <ImageView
+                    style="@style/member_header"
+                    android:src="@drawable/buyed_user_header"/>
+
+            <TextView
+                    style="@style/member_text2"
+                    android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
+                    android:textColor="@color/gray"
+                    android:text="摇一摇"
+                    />
+            <TextView
+                    android:id="@+id/shake_count"
+                    android:text=""
+                    android:textColor="@color/huntor_bacground"
+                    android:layout_width="fill_parent"
+                    android:layout_marginLeft="-100dp"
+                    android:layout_height="wrap_content"/>
+            <ImageView
+                    style="@style/member_go" />
+
+        </LinearLayout>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/lighter_gray"/>
     </LinearLayout>
 
 </FrameLayout>
