@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:padding="10dip"
+              android:gravity="center"
+              android:layout_height="match_parent">
+    <TextView
+            android:id="@+id/chat_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/lighter_gray"
+            android:textSize="12sp"
+            android:text="@string/time_stamp"
+            />
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/fan_head"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:src="@drawable/head"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                />
+        <TextView
+
+                android:id="@+id/shake_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                />
+    </LinearLayout>
+</LinearLayout>

@@ -20,5 +20,5 @@ public class ShakeMessageModle {
 
     public String nickName;//	昵称	String
     public String avatar;//	头像	String	头像图片url
-
+    public String time;//时间 MM-dd HH:mm
 }

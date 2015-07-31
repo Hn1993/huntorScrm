@@ -162,10 +162,12 @@ public final class Constant {
     public static final String CHAT_TYPE_TEXT = "1";//聊天内容类型:文本
     public static final String CHAT_TYPE_VOICE = "3";//聊天：音频
     public static final String CHAT_TYPE_IMAGE = "2";//图片
+    public static final String CHAT_TYPE_SHAKE = "4";//摇一摇
     public static final String CHAT_TYPE_PUSHVOICE = "5";
     public static final String CHAT_INTENT_PUSH_MESSAGE = "pushMessage";
     public static final String MAIN_INTENT_DATA = "MainIntentData";//侧滑界面跳转到其他界面时传递的key
     public static final String CHAT_TAILS = "ChatTails";//小尾巴
     public static int notecount = 0;//消息中心
+    public static int shakecount = 0;//摇一摇消息中心
     public static final String PREFERENCE_DEST = "dest";
 }

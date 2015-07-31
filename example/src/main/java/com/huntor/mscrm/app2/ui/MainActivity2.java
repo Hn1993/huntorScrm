@@ -9,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
@@ -67,9 +69,8 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         toolbar.setTitle("\t\t现场交互");//设置Toolbar标题
         //toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
-
         setSupportActionBar(toolbar);
-        //toolbar.setOnMenuItemClickListener(menuLitener_toolbar);//设置menu
+       // toolbar.setOnMenuItemClickListener(menuLitener_toolbar);//设置menu
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -112,6 +113,46 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
         lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
 
+    }
+
+    Toolbar.OnMenuItemClickListener menuLitener_toolbar = new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_settings:
+                    Utils.toast(MainActivity2.this, "setting");
+                    break;
+                case R.id.action_settings1:
+                    Utils.toast(MainActivity2.this, "setting");
+                    break;
+                case R.id.action_settings2:
+                    Utils.toast(MainActivity2.this, "setting");
+                    break;
+                case R.id.action_search:
+                    Utils.toast(MainActivity2.this, "setting");
+                    break;
+            }
+
+            return true;
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_settings:
+                return true;
+            case R.id.action_search:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

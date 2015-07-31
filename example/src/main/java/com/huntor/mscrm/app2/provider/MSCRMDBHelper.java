@@ -55,6 +55,23 @@ public class MSCRMDBHelper extends SQLiteOpenHelper {
                 + MSCRMContract.MessageNote.CONTENT + " TEXT,"
                 + MSCRMContract.MessageNote.TIME + " LONG"
                 + ")");
+
+        //站内信表
+        db.execSQL("CREATE TABLE " + MSCRMContract.Shake.TABLE_NAME + "("
+                + MSCRMContract.Shake._ID + " INTEGER PRIMARY KEY,"
+                + MSCRMContract.Shake.STATUS + " INTEGER,"
+                + MSCRMContract.Shake.SOCIALID + " INTEGER,"
+                + MSCRMContract.Shake.DEVICEID + " INTEGER,"
+                + MSCRMContract.Shake.DISTANCE + " TEXT,"
+                + MSCRMContract.Shake.EMPID + " INTEGER,"
+                + MSCRMContract.Shake.FANREALID + " TEXT,"
+                + MSCRMContract.Shake.FANID + " INTEGER,"
+                + MSCRMContract.Shake.TIMESTAMP + " LONG,"
+                + MSCRMContract.Shake.GROUPID + " INTEGER,"
+                + MSCRMContract.Shake.ISREAD + " INTEGER,"
+
+
+                + ")");
         // 粉丝表
         db.execSQL("CREATE TABLE " + MSCRMContract.FansRecord.TABLE_NAME + "("
                 + MSCRMContract.FansRecord._ID + " INTEGER PRIMARY KEY,"
@@ -211,6 +228,9 @@ public class MSCRMDBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + MSCRMContract.FansInfo.TABLE_NAME);//v15
 
         db.execSQL("DROP TABLE IF EXISTS " + MSCRMContract.MessageNote.TABLE_NAME);
+
+        //删除摇一摇
+        db.execSQL("DROP TABLE IF EXISTS " + MSCRMContract.Shake.TABLE_NAME);
 
         onCreate(db);
     }

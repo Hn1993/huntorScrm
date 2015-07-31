@@ -11,6 +11,8 @@ import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
 import com.huntor.mscrm.app2.model.*;
+import com.huntor.mscrm.app2.net.BaseResponse;
+import com.huntor.mscrm.app2.net.api.ApiFans;
 import com.huntor.mscrm.app2.provider.api.ApiMessageRecordDb;
 import com.huntor.mscrm.app2.utils.*;
 import com.umeng.analytics.MobclickAgent;
@@ -79,6 +81,7 @@ public class TCPLongLinkManager {
             mSocket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
             mSocket.on("chat", chat);
             mSocket.on("internalmsg", internalmsg);
+            mSocket.on("shake_event", shake_event);
             mSocket.connect();
         }
     }
@@ -198,6 +201,33 @@ public class TCPLongLinkManager {
         }
     };
 
+    /****
+     * 收到的摇一摇信息
+     */
+    private Emitter.Listener shake_event = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            Log.e(TAG, "receive message=====");
+            if (args != null && args.length > 0) {
+                JSONObject data = (JSONObject) args[0];
+                Gson gson = new Gson();
+                ShakeModle sm = gson.fromJson(args[0].toString(), ShakeModle.class);
+                Log.e(TAG, "receive message=====" + sm.toString());
+
+                ApiFans.ApiFansParams params = new ApiFans.ApiFansParams(sm.fanId);
+
+                ApiFans.ApiFansResponse response = new ApiFans(context,params).getHttpResponse();
+                if(response.getRetCode() != BaseResponse.RET_CACHE_STATUS_OK){
+                    handler.sendEmptyMessage(2);
+                }
+                pmm.sendPushMessage(sm, "shake_event");
+                ++Constant.notecount;
+            } else {
+                Log.e(TAG, "receive message====null");
+            }
+        }
+    };
+
     /**
      * 发送消息
      *
@@ -302,6 +332,9 @@ public class TCPLongLinkManager {
             switch (msg.what) {
                 case 1:
                     Utils.toast(context, "该粉丝已经取消关注，看来服务要更用心哦！");
+                    break;
+                case 2:
+                    Utils.toast(context, "获取摇一摇粉丝信息失败！");
                     break;
 
             }
