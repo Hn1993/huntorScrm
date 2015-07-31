@@ -68,10 +68,7 @@ public class MSCRMDBHelper extends SQLiteOpenHelper {
                 + MSCRMContract.Shake.FANID + " INTEGER,"
                 + MSCRMContract.Shake.TIMESTAMP + " LONG,"
                 + MSCRMContract.Shake.GROUPID + " INTEGER,"
-                + MSCRMContract.Shake.ISREAD + " INTEGER,"
-
-
-                + ")");
+                + MSCRMContract.Shake.ISREAD + " INTEGER)");
         // 粉丝表
         db.execSQL("CREATE TABLE " + MSCRMContract.FansRecord.TABLE_NAME + "("
                 + MSCRMContract.FansRecord._ID + " INTEGER PRIMARY KEY,"
