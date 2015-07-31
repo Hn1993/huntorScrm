@@ -34,10 +34,11 @@
                     android:layout_gravity="center"
                     android:text="平板电脑"
                     android:textSize="@dimen/activity_detailinfomation1_text2_size"
-
+                    android:textColor="@color/huntor_bacground"
                     android:singleLine="true"
                     />
             <TextView
+                    android:textColor="@color/huntor_bacground"
                     android:layout_weight="1"
                     android:id="@+id/item_detaileinfo_time"
                     android:layout_width="wrap_content"
@@ -52,7 +53,7 @@
         </LinearLayout>
         <View
                 style="@style/item_divider_common_style"
-                
+
                 />
         <LinearLayout
                 android:visibility="gone"

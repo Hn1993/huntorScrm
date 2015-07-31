@@ -52,18 +52,18 @@
                 android:src="@drawable/item_photo"
                 />
         <TextView
+                android:textColor="@color/huntor_bacground"
                 android:layout_marginLeft="50dp"
                 android:layout_weight="1"
                 android:id="@+id/item_detaileinfo_buyed_product"
                 android:layout_width="@dimen/buy_more_list_textHeight"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
                 android:textSize="@dimen/activity_detailinfomation1_text2_size"
-
                 android:singleLine="true"
                 />
         <TextView
+                android:textColor="@color/huntor_bacground"
                 android:layout_weight="1"
                 android:id="@+id/item_detaileinfo_buyed_time"
                 android:layout_width="wrap_content"
