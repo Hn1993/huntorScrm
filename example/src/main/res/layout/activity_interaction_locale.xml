@@ -14,6 +14,7 @@
             >
 
         <RelativeLayout
+                android:background="@drawable/selector_back"
                 style="@style/layout_left_corner"
                 android:id="@+id/img_left_corner">
             <ImageView

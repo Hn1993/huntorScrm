@@ -203,11 +203,12 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 //        relativeLayout = (RelativeLayout) findViewById(R.id.detailinfo_buttom_layout);
 //        relativeLayout.setVisibility(View.GONE);
 
-//        mBackImage = (RelativeLayout) findViewById(R.id.img_left_corner);
+        mBackImage = (RelativeLayout) findViewById(R.id.img_left_corner);
+        mBackImage.setOnClickListener(this);
 //        mLeftTitle = (TextView) findViewById(R.id.text_base_title);
 //        mBackImage.setVisibility(View.VISIBLE);
 //        mLeftTitle.setVisibility(View.VISIBLE);
-//        mBackImage.setOnClickListener(this);
+
 //        mLeftTitle.setText("会员详情");
 
         //Viewpager的三个界面
@@ -806,9 +807,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             case R.id.fans_info_button_finish:
                 mRelativeLayout.setVisibility(View.GONE);
                 break;
-//            case R.id.img_left_corner:
-//                finish();
-//                break;
+            case R.id.img_left_corner:
+                finish();
+                break;
             //新增购买意向
 //            case R.id.member_info_buymore_3:
 //                Utils.toast(this, "增加购买意向！");
