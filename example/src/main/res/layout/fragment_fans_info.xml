@@ -7,6 +7,27 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base_title_height"
+                android:background="@color/huntor_bacground"
+                >
+
+            <RelativeLayout
+                    android:background="@drawable/selector_back"
+                    style="@style/layout_left_corner"
+                    android:id="@+id/img_left_corner">
+                <ImageView
+                        style="@style/img_title_common_style"
+                        />
+            </RelativeLayout>
+
+            <TextView
+                    android:id="@+id/text_base_title"
+                    style="@style/text_title_left_commom_style"
+                    android:text="粉丝详情"
+                    />
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,8 +48,7 @@
                     style="@style/faninfo_default_name"
                     android:text="李女士"/>
 
-                <TextView
-                        android:id="@+id/people_time"
+                <TextView android:id="@+id/people_time"
                     style="@style/faninfo_default_time"
                     android:text="关注于2天前"/>
             </LinearLayout>
