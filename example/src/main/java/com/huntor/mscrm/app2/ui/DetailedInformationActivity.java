@@ -77,7 +77,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 
     //标题下面的view  以及文字
     private View detaileinfo_line_1;
-    private TextView detaileinfo_social, detaileinfo_details, detaileinfo_deal;
+    private RelativeLayout detaileinfo_social, detaileinfo_details, detaileinfo_deal;
 
     /**
      * viewpager1的会员信息
@@ -124,7 +124,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
      */
     //fans 已买和购买意向listview
     //private ListView listview_want_buy_3;
-    private MySlideListView listview_want_buy_3;
+    private ListView listview_want_buy_3;
     private ListView listview_buyed_3;
     private LinearLayout mLinearLyout;
 
@@ -226,9 +226,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 //        buy_more = (IconTextView) viewlist.get(2).findViewById(R.id.member_info_buymore_3);
 //        buy_more.setOnClickListener(this);
         //购买意向和已购产品的Listview
-        listview_want_buy_3 = (MySlideListView) viewlist.get(2).findViewById(R.id.listview_wantbuy);
+        listview_want_buy_3 = (ListView) viewlist.get(2).findViewById(R.id.listview_wantbuy);
         listview_buyed_3 = (ListView) viewlist.get(2).findViewById(R.id.listview_buyed);
-        mLinearLyout = (LinearLayout) viewlist.get(2).findViewById(R.id.no_buyed_product);
+        //mLinearLyout = (LinearLayout) viewlist.get(2).findViewById(R.id.no_buyed_product);
         //购买意向的长按事件
         listview_want_buy_3.setOnItemLongClickListener(longClickListener);
         //popwindow上的控件
@@ -242,13 +242,13 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         detaileinfo_line_1.setLayoutParams(new LinearLayout.LayoutParams((getWindowManager().getDefaultDisplay().getWidth()) / 3, 5));
 
         //获取二级标题（三个Tab）
-        detaileinfo_social = (TextView) findViewById(R.id.detaileinfo_social);
-        detaileinfo_details = (TextView) findViewById(R.id.detaileinfo_details);
-        detaileinfo_deal = (TextView) findViewById(R.id.detaileinfo_deal);
+        detaileinfo_social = (RelativeLayout) findViewById(R.id.detaileinfo_social);
+        detaileinfo_details = (RelativeLayout) findViewById(R.id.detaileinfo_details);
+        detaileinfo_deal = (RelativeLayout) findViewById(R.id.detaileinfo_deal);
         detaileinfo_social.setOnClickListener(this);
         detaileinfo_details.setOnClickListener(this);
         detaileinfo_deal.setOnClickListener(this);
-        detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
+        //detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
 
         //账户信息里的Icontext的点击事件
 //        viewlist.get(1).findViewById(R.id.account_information_compile_gender).setOnClickListener(this);
@@ -352,13 +352,13 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             return;
         }
         //加入分组和发消息的按钮
-        viewpager1_send_message = (Button) viewlist.get(0).findViewById(R.id.send_message);
+        viewpager1_send_message = (Button) findViewById(R.id.send_message);
         viewpager1_send_message.setClickable(true);
         viewpager1_send_message.setOnClickListener(this);
-        viewpager1_into_group = (Button) viewlist.get(0).findViewById(R.id.join_group);
+        viewpager1_into_group = (Button)findViewById(R.id.join_group);
         viewpager1_into_group.setOnClickListener(this);
 
-        viewpager1_fans_image = (ImageView) viewlist.get(0).findViewById(R.id.image_people_head);
+        viewpager1_fans_image = (ImageView) findViewById(R.id.image_people_head);
 
         ImageLoader imageLoader = ImageLoader.getInstance();
         DisplayImageOptions options = new DisplayImageOptions.Builder()
@@ -373,7 +373,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             imageLoader.displayImage(url, viewpager1_fans_image, options);
         }
 
-        viewpager1_fans_name = (TextView) viewlist.get(0).findViewById(R.id.people_name);
+        viewpager1_fans_name = (TextView) findViewById(R.id.people_name);
         if (fan.nickName != null || ("null".equals(fan.nickName))) {
             viewpager1_fans_name.setText(fan.nickName);
         } else {
@@ -381,7 +381,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         }
 
 
-        viewpager1_attention_time = (TextView) viewlist.get(0).findViewById(R.id.people_time);
+        viewpager1_attention_time = (TextView) findViewById(R.id.people_time);
         long subscribeTime = fan.subscribeTime;
         if (subscribeTime != 0) {
             String time1 = DateFormatUtils.getPassedTime(this, fan.subscribeTime);
@@ -649,12 +649,12 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         if (buyed_list == null) {
             buyed_list = new ArrayList<FanInfo.Details>();
         }
-        if (buyed_list.size() == 0) {
-            Log.i(TAG, "buyed_list.size:" + buyed_list.size());
-            mLinearLyout.setVisibility(View.VISIBLE);
-        } else {
-            mLinearLyout.setVisibility(View.GONE);
-        }
+//        if (buyed_list.size() == 0) {
+//            Log.i(TAG, "buyed_list.size:" + buyed_list.size());
+//            mLinearLyout.setVisibility(View.VISIBLE);
+//        } else {
+//            mLinearLyout.setVisibility(View.GONE);
+//        }
         buyed_adapter = new UserBuyedAdapter(this, buyed_list, dealsList);
         listview_buyed_3.setAdapter(buyed_adapter);
         setPullLvHeight(listview_buyed_3);
@@ -677,9 +677,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
                     mImageView.setVisibility(View.VISIBLE);
-                    detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
-                    detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
-                    detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
+//                    detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
+//                    detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
+//                    detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
                     an = new TranslateAnimation((getWindowManager().getDefaultDisplay().getWidth()) / 3, 0, 0, 0);
                     an.setFillAfter(true);
                     detaileinfo_line_1.startAnimation(an);
@@ -689,9 +689,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
                     mImageView.setVisibility(View.GONE);
-                    detaileinfo_social.setTextColor(getResources().getColor(R.color.title));
-                    detaileinfo_details.setTextColor(getResources().getColor(R.color.title_selected));
-                    detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
+//                    detaileinfo_social.setTextColor(getResources().getColor(R.color.title));
+//                    detaileinfo_details.setTextColor(getResources().getColor(R.color.title_selected));
+//                    detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
                     an = new TranslateAnimation((getWindowManager().getDefaultDisplay().getWidth()) / 3 * 2, (getWindowManager().getDefaultDisplay().getWidth()) / 3, 0, 0);
                     an.setFillAfter(true);
                     detaileinfo_line_1.startAnimation(an);
@@ -701,9 +701,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
                     mImageView.setVisibility(View.GONE);
-                    detaileinfo_social.setTextColor(getResources().getColor(R.color.title));
-                    detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
-                    detaileinfo_deal.setTextColor(getResources().getColor(R.color.title_selected));
+//                    detaileinfo_social.setTextColor(getResources().getColor(R.color.title));
+//                    detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
+//                    detaileinfo_deal.setTextColor(getResources().getColor(R.color.title_selected));
                     an = new TranslateAnimation((getWindowManager().getDefaultDisplay().getWidth()), (getWindowManager().getDefaultDisplay().getWidth()) / 3 * 2, 0, 0);
                     an.setFillAfter(true);
                     detaileinfo_line_1.startAnimation(an);
