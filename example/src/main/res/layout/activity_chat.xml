@@ -12,7 +12,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/base_title_height"
-            android:background="@color/login_bg"
+            android:background="@color/huntor_bacground"
             >
 
         <RelativeLayout

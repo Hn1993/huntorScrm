@@ -45,12 +45,7 @@ public class ShackActivity extends Activity implements View.OnClickListener{
         pushMessageManager = PushMessageManager.getInstance(this);
         pushMessageManager.registerOnReceivedPushMessageListener(shakeListener);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                getShakeData();
-            }
-        }).start();
+        getShakeData();
     }
 
     public void initView(){

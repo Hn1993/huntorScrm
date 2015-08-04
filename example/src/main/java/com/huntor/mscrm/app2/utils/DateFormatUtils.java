@@ -261,7 +261,7 @@ public class DateFormatUtils {
         return passedTime;
     }
 
-    
+
     /***
      * 取当前时间的下一天
      * @return

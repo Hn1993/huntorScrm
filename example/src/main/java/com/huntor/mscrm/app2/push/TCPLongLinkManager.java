@@ -236,7 +236,7 @@ public class TCPLongLinkManager {
                 ShakeModle sm = gson.fromJson(args[0].toString(), ShakeModle.class);
                 Log.e(TAG, "receive 摇一摇信息=====" + sm.toString());
 
-                FanInfo fan = ApiFansInFoDb.getFansInfoById(context,sm.fanId );
+                FanInfo fan = ApiFansInFoDb.getFansInfoById2(context,sm.fanId );
                 if (fan == null){
                     ApiFans.ApiFansParams params = new ApiFans.ApiFansParams(sm.fanId);
 
@@ -359,6 +359,9 @@ public class TCPLongLinkManager {
             ApiMessageRecordDb.updateSendStatus(context, id, 1);
             rck.onResult(true, "send success !", id);
         } else if (response.code.equals("99020")) {
+
+            MyLogger.e(TAG, "发送错误信息=" + response.toString());
+
             ApiMessageRecordDb.updateSendStatus(context, id, 0);
             rck.onResult(false, "socket is null !", id);
             Message msg = new Message();
