@@ -95,9 +95,6 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        //设置菜单列表
-        initData();
-
 
         fragmentManager = getFragmentManager();
         android.app.FragmentTransaction transaction;
@@ -105,7 +102,11 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         InteractionLocaleFragment mbf = new InteractionLocaleFragment();
         transaction.add(R.id.fl_content, mbf);
         transaction.commit();
+        //设置菜单列表
+        initData();
 
+
+        MyLogger.i(TAG,"现场交互 start");
         messageManager = PushMessageManager.getInstance(this);
         messageManager.registerOnReceivedPushMessageListener(opl);
         // messageManager.registerOnReceivedPushMessageListener(listener);
@@ -177,6 +178,8 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
      * 初始化数据
      */
     private void initData() {
+
+
         drawLeftList = new ArrayList<>();
         mAdapter = new DrawLayoutLeftAdapter(MainActivity2.this);
         for (int i = 0; i < 4; i++) {
@@ -191,10 +194,13 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                 mDrawerLayout.closeDrawers();
 
                 if (i == 0) {
+                    clearBackStack();
                     InteractionLocaleFragment itf = new InteractionLocaleFragment();
                     transaction.replace(R.id.fl_content, itf);
                     toolbar.setTitle("现场交互");
+                    MyLogger.i(TAG,"现场交互");
                 } else if (i == 1) {
+                    clearBackStack();
                     InteractionOnlineFragment otf = new InteractionOnlineFragment();
                     transaction.replace(R.id.fl_content, otf);
                     toolbar.setTitle("在线交互");
@@ -202,13 +208,12 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                     MyMemberFragment mbf = new MyMemberFragment();
                     transaction.replace(R.id.fl_content, mbf);
                     toolbar.setTitle("我的会员");
-
+                    MyLogger.i(TAG,"我的会员");
                 } else if (i == 3) {//添加其他功能
 
                 }
-                clearBackStack();
                 transaction.commitAllowingStateLoss();
-                mAdapter.notifyDataSetChanged();
+                //mAdapter.notifyDataSetChanged();
             }
         });
 
