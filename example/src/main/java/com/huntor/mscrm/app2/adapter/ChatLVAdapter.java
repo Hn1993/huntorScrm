@@ -375,10 +375,16 @@ public class ChatLVAdapter extends BaseAdapter {
         @Override
         public void onClick(View v) {
             final MessageRecordModel model = list.get(position);
-            Message msg = new Message();
-            msg.what = 3;
-            msg.obj = position;
-            handler.sendMessage(msg);
+            //在页面上删除本记录
+            //  Message msg = new Message();
+            //  msg.what = 3;
+            //  msg.obj = position;
+            //  handler.sendMessage(msg);
+
+            ChatLVAdapter.this.list.get(position).successOrFail = 3;
+
+            notifyDataSetChanged();
+            
             model.successOrFail = 2;
             final SendMessage sendMessage = new SendMessage();
             sendMessage.content = model.content;
