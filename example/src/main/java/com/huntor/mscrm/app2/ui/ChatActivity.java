@@ -754,10 +754,11 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
                         cursor.moveToFirst();
                         String path = cursor.getString(column_index);
                         MyLogger.d(TAG, "图片格式" + path);
-                        if (path.endsWith(".jpg") || path.endsWith(".jpeg")) {
+                        if (path.endsWith(".jpg") || path.endsWith(".jpeg") || path.endsWith(".png") || path.endsWith(".bmp") || path.endsWith(".gif")) {
+
                             imageViewSetBitmap(path);
                         } else {
-                            Utils.toast(context, "仅支持图片的格式为:jpg和jpeg");
+                            Utils.toast(context, "不支持的图片格式");
                         }
                     }
                 }
