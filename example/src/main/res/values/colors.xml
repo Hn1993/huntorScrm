@@ -159,4 +159,7 @@
     <!--我的会员-->
 
 
+    <!--保存图片-->
+    <drawable name="white">#ffffff</drawable>
+    <drawable name="fragment_mymember_text_color">#FF7B7B7B</drawable>
 </resources>

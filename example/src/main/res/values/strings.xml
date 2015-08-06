@@ -195,4 +195,6 @@
     <string name="please_enter_password">请输入密码</string>
     <string name="need_help">需要帮助？</string>
     <string name="back">返回</string>
+
+    <string name="show_image_window">放大图片</string>
 </resources>

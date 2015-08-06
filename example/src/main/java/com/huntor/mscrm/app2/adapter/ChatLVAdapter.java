@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -43,6 +44,7 @@ import com.huntor.mscrm.app2.net.api.ApiUpload;
 import com.huntor.mscrm.app2.net.task.VoiceDownloadTask;
 import com.huntor.mscrm.app2.provider.api.ApiMessageRecordDb;
 import com.huntor.mscrm.app2.push.PushMessageManager;
+import com.huntor.mscrm.app2.ui.ImageActivity;
 import com.huntor.mscrm.app2.ui.gif.AnimatedGifDrawable;
 import com.huntor.mscrm.app2.ui.gif.AnimatedImageSpan;
 import com.huntor.mscrm.app2.utils.*;
@@ -384,7 +386,7 @@ public class ChatLVAdapter extends BaseAdapter {
             ChatLVAdapter.this.list.get(position).successOrFail = 3;
 
             notifyDataSetChanged();
-            
+
             model.successOrFail = 2;
             final SendMessage sendMessage = new SendMessage();
             sendMessage.content = model.content;
@@ -732,6 +734,7 @@ public class ChatLVAdapter extends BaseAdapter {
             imgUrl = content;
         }
 
+
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(imgUrl, imgPop, options);
         imgPop.setOnClickListener(new View.OnClickListener() {
@@ -858,14 +861,40 @@ public class ChatLVAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View v) {
-            int[] arrayOfInt = new int[2];
+
+
+            String content = list.get(position).content;
+            String imgUrl = "";
+            try {
+                JSONObject jsonObject = new JSONObject(content);
+                if (v.getId() == leftImgID) {
+                    imgUrl = jsonObject.getString("pic");
+                } else if (v.getId() == rightImgID) {
+                    imgUrl = jsonObject.getString("picUrl");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                imgUrl = content;
+            }
+
+            Log.e("图片地址", "图片地址＝＝" + imgUrl);
+
+            Intent intent = new Intent();
+            intent.setClass(mContext, ImageActivity.class);
+            intent.putExtra("url",imgUrl);
+
+            mContext.startActivity(intent);
+
+          /*  int[] arrayOfInt = new int[2];
             // 获取点击按钮的坐标
             v.getLocationOnScreen(arrayOfInt);
             int x = arrayOfInt[0];
             int y = arrayOfInt[1];
             // System.out.println("x: " + x + " y:" + y + " w: " +
             // v.getMeasuredWidth() + " h: " + v.getMeasuredHeight() );
-            showImgPop(v, x, y, view, position);
+            showImgPop(v, x, y, view, position);*/
+
+
         }
     }
 
