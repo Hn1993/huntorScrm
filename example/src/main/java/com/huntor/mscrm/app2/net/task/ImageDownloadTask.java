@@ -16,7 +16,7 @@ import java.util.Date;
  * on 2015/5/16 0016
  * 15:16.
  */
-public class ImageDownloadTask extends AsyncTask<String, Void, Integer> {
+public class ImageDownloadTask extends AsyncTask<String, Void, String> {
 
     private String TAG = getClass().getName();
 
@@ -29,9 +29,10 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Integer> {
     }
 
     @Override
-    protected Integer doInBackground(String... params) {
+    protected String doInBackground(String... params) {
         FileOutputStream outputStream = null;
         InputStream ret = null;
+        String path = null;
         if (params != null && params.length == 1) {
 
             String urlStr = params[0];
@@ -55,7 +56,7 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Integer> {
                         filePath = Environment.getDataDirectory();
                     }
 
-                    String path = filePath.getAbsolutePath() + Constant.IMAGE_CACHE_PATH;
+                    path = filePath.getAbsolutePath() + Constant.IMAGE_CACHE_PATH;
                     File file = new File(path);
                     Log.w(TAG, "path = " + path);
 
@@ -83,7 +84,7 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Integer> {
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
-                        return 1;
+                        return null;
                     }finally {
                         try {
                             if (outputStream != null) {
@@ -100,17 +101,17 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Integer> {
 
             } catch (IOException e) {
                 e.printStackTrace();
-                return 1;
+                return null;
             }
         }else{
-            return 1;
+            return null;
         }
 
-        return 0;
+        return path;
     }
 
     @Override
-    protected void onPostExecute(Integer result) {
+    protected void onPostExecute(String result) {
 //        File filePath;
 //        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 //            filePath = Environment.getExternalStorageDirectory();
@@ -123,6 +124,6 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Integer> {
     }
 
     public interface CallBack {
-        void onResult(int result);
+        void onResult(String result);
     }
 }

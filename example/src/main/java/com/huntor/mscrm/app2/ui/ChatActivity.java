@@ -786,7 +786,7 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
             Map<String, File> files = new HashMap<String, File>();
             File file = new File(imagePath);
             files.put("Key_imagePath", file);
-            HashMap<String, byte[]> map = PictureUtils.compressFile(files, 300, 500, 50);
+            HashMap<String, byte[]> map = PictureUtils.compressFile(files, 480, 800, 50);
             byte[] date = map.get("Key_imagePath");
             MyLogger.e("图片长度", date.length + "");
             Bitmap bm = null;

@@ -3,8 +3,11 @@ package com.huntor.mscrm.app2.ui;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,6 +22,8 @@ import com.huntor.mscrm.app2.net.task.ImageDownloadTask;
 import com.huntor.mscrm.app2.utils.Utils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.io.File;
 
 /**
  *
@@ -58,9 +63,8 @@ public class ImageActivity extends Activity implements View.OnClickListener,Imag
             public boolean onLongClick(View v) {
 
                 Log.e("longclick", "longclick");
-                if (dialog == null) {
-                    showDialog();
-                }
+
+                showDialog();
 
 
                 return true;
@@ -116,11 +120,25 @@ public class ImageActivity extends Activity implements View.OnClickListener,Imag
     }
 
     @Override
-    public void onResult(int result) {
+    public void onResult(String result) {
 
-        if(result == 0){
+        if(result != null){
             //成功
-            Utils.toast(getApplicationContext(), "保存成功");
+            Utils.toast(getApplicationContext(), "图片已保存至" + result + "文件夹");
+
+            MediaScannerConnection.scanFile(ImageActivity.this,
+                    new String[]{result}, new String[]{"image/*"},
+                    new MediaScannerConnection.OnScanCompletedListener() {
+                        public void onScanCompleted(String path, Uri uri) {
+                            sendBroadcast(new Intent(android.hardware.Camera.ACTION_NEW_PICTURE, uri));
+                            sendBroadcast(new Intent("com.android.camera.NEW_PICTURE", uri));
+                        }
+                    });
+
+            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            Uri uri = Uri.fromFile(new File(result));
+            intent.setData(uri);
+            sendBroadcast(intent);
         }else{
             //失败
             Utils.toast(getApplicationContext(), "保存失败");

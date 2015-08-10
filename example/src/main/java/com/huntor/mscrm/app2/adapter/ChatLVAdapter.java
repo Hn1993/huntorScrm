@@ -446,7 +446,7 @@ public class ChatLVAdapter extends BaseAdapter {
                     @Override
                     public void onResult(ApiUpload.ApiUploadResponse response) {
                         if (response.result == null) {
-                            Utils.toast(mContext, "网络异常");
+                            Utils.toast(mContext, "超过48小时");
                             Message msg = new Message();
                             msg.what = 2;
                             handler.sendMessage(msg);
