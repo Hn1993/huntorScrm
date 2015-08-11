@@ -128,6 +128,7 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
         MyLogger.e(TAG, "initViews info=" + infos.toString());
         mLvAdapter = new ChatLVAdapter(this, infos, mHandler);
         mListView.setAdapter(mLvAdapter);
+        mLvAdapter.setListView(mListView);
         //表情图标
         image_face = (ImageView) findViewById(R.id.image_face);
         //表情布局

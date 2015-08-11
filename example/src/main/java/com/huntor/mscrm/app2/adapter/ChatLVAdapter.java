@@ -99,6 +99,8 @@ public class ChatLVAdapter extends BaseAdapter {
     private double rightImgID;
     private double leftImgID;
 
+
+    private ListView listView;
     public ChatLVAdapter(Context mContext, List<MessageRecordModel> list, Handler handler) {
         super();
         if (mContext != null) {
@@ -120,6 +122,14 @@ public class ChatLVAdapter extends BaseAdapter {
 //    private void initAnimation() {
 //        leftAnimation = (Animation) mContext.getResources().getAnimation(R.anim.voice_play_left);
 //    }
+
+    public ListView getListView() {
+        return listView;
+    }
+
+    public void setListView(ListView listView) {
+        this.listView = listView;
+    }
 
     public void setList(List<MessageRecordModel> list) {
         if (this.list == null) {
@@ -383,9 +393,21 @@ public class ChatLVAdapter extends BaseAdapter {
             //  msg.obj = position;
             //  handler.sendMessage(msg);
 
-            ChatLVAdapter.this.list.get(position).successOrFail = 3;
+            list.get(position).successOrFail = 3;
 
-            notifyDataSetChanged();
+           // notifyDataSetChanged();
+
+            ViewHolder holder = (ViewHolder)listView.getChildAt(position - listView.getFirstVisiblePosition() + 1).getTag();
+
+            if (list.get(position).sendOrReceive == 0) {
+                // 收到消息 from显示
+//            getFrom(position, holder);
+                setFrom(position, holder, list.get(position).type);
+            } else {
+                // 发送消息 to显示
+//            setTo(position, holder);
+                setTo(position, holder, list.get(position).type);
+            }
 
             model.successOrFail = 2;
             final SendMessage sendMessage = new SendMessage();
@@ -442,37 +464,22 @@ public class ChatLVAdapter extends BaseAdapter {
                 });
             }
             if (sendMessage.type.equals(Constant.CHAT_TYPE_IMAGE)) {
-                HttpRequestController.upload(mContext, sendMessage.content, "2", new HttpResponseListener<ApiUpload.ApiUploadResponse>() {
+                PushMessageManager messageManager = PushMessageManager.getInstance(mContext);
+                messageManager.sendEmpMessage("chat", sendMessage, new PushMessageManager.Rck() {
                     @Override
-                    public void onResult(ApiUpload.ApiUploadResponse response) {
-                        if (response.result == null) {
-                            Utils.toast(mContext, "超过48小时");
-                            Message msg = new Message();
-                            msg.what = 2;
-                            handler.sendMessage(msg);
-                            return;
-                        }
-                        String url = response.result.url;
-                        String content = "{\"" + "picUrl\"" + ":" + "\"" + url + "\"}";
-                        sendMessage.content = content;
-                        PushMessageManager messageManager = PushMessageManager.getInstance(mContext);
-                        messageManager.sendEmpMessage("chat", sendMessage, new PushMessageManager.Rck() {
-                            @Override
-                            public void onResult(boolean status, final String errorInfo, int msgId) {
-                                if (!status && "socket is null !".equals(errorInfo)) {
-                                    handler.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Utils.toast(mContext, "-" + errorInfo + "-");
-                                        }
-                                    });
+                    public void onResult(boolean status, final String errorInfo, int msgId) {
+                        if (!status && "socket is null !".equals(errorInfo)) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Utils.toast(mContext, "-" + errorInfo + "-");
                                 }
-                                Message msg = new Message();
-                                msg.what = 2;
-                                msg.obj = status;
-                                handler.sendMessage(msg);
-                            }
-                        });
+                            });
+                        }
+                        Message msg = new Message();
+                        msg.what = 2;
+                        msg.obj = status;
+                        handler.sendMessage(msg);
                     }
                 });
             }
