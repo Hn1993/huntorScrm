@@ -130,7 +130,9 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                     Utils.toast(MainActivity2.this, "action_settings1");
                     break;
                 case R.id.action_settings2:
-                    Utils.toast(MainActivity2.this, "action_settings2");
+                    //退出登陆
+                    //Utils.toast(MainActivity2.this, "action_settings2");
+                    logout();
                     break;
                 case R.id.action_search:
                     Utils.toast(MainActivity2.this, "action_search");
@@ -140,6 +142,15 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
             return true;
         }
     };
+
+    //退出到登陆界面
+    public void logout() {
+        //context.stopService(serviceIntent);
+        PreferenceUtils.clearUser(context);
+        PreferenceUtils.putLong(context, Constant.LAST_REFRESH_ALLFANS_TIME, 0);
+        startActivity(new Intent(context, LoginActivity.class));
+        finish();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
