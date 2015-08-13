@@ -124,16 +124,16 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_settings:
-                    Utils.toast(MainActivity2.this, "setting");
+                    Utils.toast(MainActivity2.this, "action_settings");
                     break;
                 case R.id.action_settings1:
-                    Utils.toast(MainActivity2.this, "setting");
+                    Utils.toast(MainActivity2.this, "action_settings1");
                     break;
                 case R.id.action_settings2:
-                    Utils.toast(MainActivity2.this, "setting");
+                    Utils.toast(MainActivity2.this, "action_settings2");
                     break;
                 case R.id.action_search:
-                    Utils.toast(MainActivity2.this, "setting");
+                    Utils.toast(MainActivity2.this, "action_search");
                     break;
             }
 
