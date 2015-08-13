@@ -58,6 +58,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 		tv_login.setOnClickListener(this);
 		TextView tv_need_help = (TextView) findViewById(R.id.tv_need_help);
 		tv_need_help.setOnClickListener(this);
+		TextView tv_back = (TextView) findViewById(R.id.tv_back);
+		tv_back.setOnClickListener(this);
+
+
 		if (getIntentFlag() == Constant.LOGINOUT_FLAG) {
 			showDialog();
 		}
@@ -89,6 +93,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 				break;
 			case R.id.tv_need_help:
 				startActivity(new Intent(context,ReqVerifyCodeActivity.class));
+				break;
+			case R.id.tv_back:
+				finish();
 				break;
 		}
 	}
