@@ -12,8 +12,8 @@ package com.huntor.mscrm.app2.utils;
  */
 public final class Constant {
     //==============强制登出标示===================
-    public static final String LOGINOUT = "LOGINOUT";
-    public static final int LOGINOUT_FLAG = 100;
+    public static final String LOGOUT = "LOGINOUT";
+    public static final int LOGOUT_FLAG = 100;
     public static final boolean DEBUG = true;
     public static final String IMAGE_CACHE_PATH = "/mscrm/"; // 缓存图片路径
     public static final String VOICE_CACHE_PATH = "/mscrm/voice/";//缓存声音路径
@@ -52,6 +52,7 @@ public final class Constant {
     public static final String PREFERENCE_QRCODE = "qrcode";
     public static final String PREFERENCE_NUMBER = "number";
     public static final String PREFERENCE_PSW = "psw";
+    public static final String PREFERENCE_PSW_RELOGIN = "psw_relogin";
     public static final String PREFERENCE_USER_ID = "userId";
     public static final String PREFERENCE_EMP_ID = "empId";
     public static final String PREFERENCE_EMP_NAME = "empName";

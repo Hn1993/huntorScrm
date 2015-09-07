@@ -176,7 +176,7 @@ public class PreferenceUtils {
 
 	public static void clearUser(Context context){
 		PreferenceUtils.clearString(context, Constant.PREFERENCE_EMP_NAME);
-		PreferenceUtils.clearString(context, Constant.PREFERENCE_NUMBER);
+		//PreferenceUtils.clearString(context, Constant.PREFERENCE_NUMBER);
 		PreferenceUtils.clearString(context, Constant.PREFERENCE_PSW);
 		PreferenceUtils.clearInt(context, Constant.PREFERENCE_EMP_ID);
 	}

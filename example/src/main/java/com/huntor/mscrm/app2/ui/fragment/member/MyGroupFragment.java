@@ -26,6 +26,7 @@ import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.ui.component.XListView;
 import com.huntor.mscrm.app2.ui.fragment.base.BaseFragment;
 import com.huntor.mscrm.app2.utils.Constant;
+import com.huntor.mscrm.app2.utils.MyLogger;
 import com.huntor.mscrm.app2.utils.PreferenceUtils;
 import com.huntor.mscrm.app2.utils.Utils;
 
@@ -43,8 +44,6 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
 	private PopupWindow pw;
 	private MyGroupAdapter adapter;
 	private View ret;
-	private RelativeLayout imgLeftCorner;
-	private IconTextView itv_add;
 	private BaseActivity activity;
 
 	@Override
@@ -59,21 +58,18 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
 	}
 
 	private void initView() {
-		imgLeftCorner = (RelativeLayout) ret.findViewById(R.id.img_left_corner);
-		imgLeftCorner.setVisibility(View.VISIBLE);
+
 		mListView = (XListView) ret.findViewById(R.id.list_my_group);
 		mListView.setPullRefreshEnable(false);
 		mListView.setPullLoadEnable(false);
 		mNoContentHint = (TextView) ret.findViewById(R.id.no_content_hint);
-		itv_add = (IconTextView) ret.findViewById(R.id.add_group_symbol_imag);
+
 		adapter = new MyGroupAdapter(getActivity());
 		mListView.setAdapter(adapter);
 		activity = (BaseActivity) getActivity();
 	}
 
 	public void setListener() {
-		imgLeftCorner.setOnClickListener(this);
-		itv_add.setOnClickListener(this);
 		mListView.setOnItemClickListener(this);
 		mListView.setOnItemLongClickListener(this);
 	}
@@ -347,7 +343,7 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
 						} else if (response.getRetCode() == BaseResponse.RET_HTTP_STATUS_ERROR) {
 							//updateAdapter(response.targetLists);
 						} else {
-							Utils.toast(activity, response.getRetInfo() + "");
+							MyLogger.i(TAG,"response.getRetInfo(): "+response.getRetInfo());
 						}
 						if (activity != null) {
 							activity.dismissCustomDialog();
@@ -389,9 +385,9 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
 				manager.popBackStack();
 				transaction.remove(this);
 				break;
-			case R.id.add_group_symbol_imag://创建分组
+		/*	case R.id.add_group_symbol_imag://创建分组
 				addTargetName();
-				break;
+				break;*/
 		}
 		transaction.commit();
 	}

@@ -1,5 +1,7 @@
 package com.huntor.mscrm.app2.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -52,8 +54,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
     private android.app.FragmentManager fragmentManager;
 
     private PushMessageManager messageManager;
-    private Button mButton;
-    private TextView txtOnlineMessageNumber;
+    private AlertDialog offLineDialog;
 
 
     public static MainActivity2 mainActivity2;
@@ -68,6 +69,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
             this.startService(serviceIntent);
         }
         findViews();
+        createOffLineDialog();
 
         toolbar.setTitle("现场交互");//设置Toolbar标题
         //toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
@@ -185,6 +187,55 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         super.onPause();
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        int logout_flag = intent.getIntExtra(Constant.LOGOUT, 0) ;
+        if(logout_flag == Constant.LOGOUT_FLAG) {
+            showOffLineDialog();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        messageManager.unregisterOnReceivedPushMessageListener(opl);
+        dismissOffLineDialog();
+        super.onDestroy();
+    }
+
+    public void showOffLineDialog() {
+        if (offLineDialog != null)
+            offLineDialog.show();
+    }
+
+    public void dismissOffLineDialog() {
+        if (offLineDialog != null)
+            offLineDialog.dismiss();
+    }
+
+    private void createOffLineDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity2.this);
+        offLineDialog = builder.create();
+        offLineDialog.setMessage("你的账号已经在其他手机上登录");
+        offLineDialog.setTitle("下线通知");
+        offLineDialog.setCancelable(false);
+        offLineDialog.setButton(DialogInterface.BUTTON_POSITIVE, "重新登录", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Intent intent = new Intent(MainActivity2.this, LoginActivity.class);
+                intent.putExtra(Constant.LOGOUT, Constant.LOGOUT_FLAG);
+                startActivity(intent);
+            }
+        });
+        offLineDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "取消登录", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                logout();
+            }
+        });
+    }
+
     /**
      * 初始化数据
      */
@@ -282,37 +333,6 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
 
     }
 
-
-//    private Boolean has_update = false;
-//    //友盟更新
-//    private void checkUpdate(final boolean isManual) {
-//        String new_version = tv_new_version.getText().toString();
-//        if (isManual && !TextUtils.isEmpty(new_version)) {
-//            UmengUpdateAgent.forceUpdate(context);
-//            return;
-//        }
-//        UmengUpdateAgent.setUpdateAutoPopup(false);
-//        UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
-//            @Override
-//            public void onUpdateReturned(int updateStatus, UpdateResponse updateResponse) {
-//                switch (updateStatus) {
-//                    case UpdateStatus.Yes:
-//                        has_update = true;
-//                        UmengUpdateAgent.showUpdateDialog(context, updateResponse);
-//                        break;
-//                    case UpdateStatus.No:
-//                        has_update = false;
-//                        if (isManual) {
-//                            Utils.toast(context, "没有更新！");
-//                        }
-//                        break;
-//                }
-//                tv_new_version.setVisibility(has_update ? View.VISIBLE : View.GONE);
-//                tv_new_version.setText(has_update ? "新" : "");
-//            }
-//        });
-//        UmengUpdateAgent.update(context);
-//    }
 
     private boolean isLogin;
 

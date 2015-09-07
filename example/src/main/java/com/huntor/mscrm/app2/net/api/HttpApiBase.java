@@ -19,6 +19,7 @@ import com.huntor.mscrm.app2.net.CustomHttpClient;
 import com.huntor.mscrm.app2.net.HttpRequest;
 import com.huntor.mscrm.app2.push.PushMessageReceiverService;
 import com.huntor.mscrm.app2.ui.LoginActivity;
+import com.huntor.mscrm.app2.ui.MainActivity2;
 import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.utils.Constant;
 import com.huntor.mscrm.app2.utils.MyLogger;
@@ -327,6 +328,7 @@ public abstract class HttpApiBase {
                 baseResponse.setRetCode(BaseResponse.RET_RESULT_STATUS_ERROR);
                 baseResponse.setRetInfo(obj.getString("msg"));
                 //失败的情况   发现其他设备登录的时候被干掉
+                MyLogger.e(TAG,"logout: "+result);
                 if (TextUtils.equals(result, "101")) {
                     logout();
                 }
@@ -340,11 +342,12 @@ public abstract class HttpApiBase {
     private void logout() {
         Intent serviceIntent = new Intent(mContext, PushMessageReceiverService.class);
         mContext.stopService(serviceIntent);
-        //PreferenceUtils.clearUser(mContext);
-        Intent intent = new Intent(mContext, LoginActivity.class);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra(Constant.LOGINOUT, Constant.LOGINOUT_FLAG);
+        String pwd = PreferenceUtils.getString(mContext, Constant.PREFERENCE_PSW, "");
+        PreferenceUtils.putString(mContext, Constant.PREFERENCE_PSW_RELOGIN, pwd);
+        PreferenceUtils.clearString(mContext, Constant.PREFERENCE_PSW);
+        Intent intent = new Intent(mContext, MainActivity2.class);
+        intent.putExtra(Constant.LOGOUT, Constant.LOGOUT_FLAG);
         mContext.startActivity(intent);
-        ((BaseActivity) mContext).finish();
     }
+
 }
