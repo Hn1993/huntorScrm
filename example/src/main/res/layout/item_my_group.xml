@@ -15,7 +15,7 @@
         <ImageView
                 android:id="@+id/iv_my_group_head"
                 android:src="@drawable/my_group_header"
-                style="@style/member_head_icon_style"
+                style="@style/member_header"
                 />
 
         <TextView
