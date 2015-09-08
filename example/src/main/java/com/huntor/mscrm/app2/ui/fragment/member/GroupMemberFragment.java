@@ -83,7 +83,7 @@ public class GroupMemberFragment extends BaseFragment implements View.OnClickLis
 
     private void setListener() {
         ret.findViewById(R.id.img_left_corner).setOnClickListener(this);
-        ret.findViewById(R.id.add_member_symbol_imag).setOnClickListener(this);
+        //ret.findViewById(R.id.add_member_symbol_imag).setOnClickListener(this);
         mListView.setXListViewListener(this);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -276,7 +276,7 @@ public class GroupMemberFragment extends BaseFragment implements View.OnClickLis
                 transaction.commit();
 
                 break;
-            case R.id.add_member_symbol_imag://添加粉丝
+            /*case R.id.add_member_symbol_imag://添加粉丝
                 transaction.addToBackStack(null);
                 Bundle bundle = new Bundle();
                 bundle.putInt("targetListId", mTargetListId);
@@ -296,7 +296,7 @@ public class GroupMemberFragment extends BaseFragment implements View.OnClickLis
                     }
                 });
 
-                break;
+                break;*/
         }
     }
 

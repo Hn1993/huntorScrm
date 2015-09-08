@@ -42,7 +42,7 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends BaseActivity implements View.OnClickListener {
     private String TAG = "MainActivity2";
-    public  Toolbar toolbar;
+    public  static Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView lvLeftMenu;

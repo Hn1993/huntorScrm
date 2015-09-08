@@ -70,7 +70,7 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
         // Inflate the layout for this fragment
         View ret = inflater.inflate(R.layout.fragment_my_member_new, container, false);
         //toolbar= (Toolbar) findViewById(R.id.toolbar);
-        this.toolbar=MainActivity2.mainActivity2.toolbar;
+        toolbar=MainActivity2.toolbar;
         Typeface typeFace =Typeface.createFromAsset(getActivity().getAssets(),"fonts/KhmerUI.ttf");
         newFansView = (TextView) ret.findViewById(R.id.text_number_people_new_fans);
         newFansView.setTypeface(typeFace);

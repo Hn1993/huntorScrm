@@ -61,7 +61,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 
 		TextView title = (TextView) view.findViewById(R.id.title);
 		mListView = (XListView) view.findViewById(R.id.group_member_listview);
-		itv_add = (IconTextView) view.findViewById(R.id.add_member_symbol_imag);
+		//itv_add = (IconTextView) view.findViewById(R.id.add_member_symbol_imag);
 		mListView.setPullRefreshEnable(false);
 		mListView.setPullLoadEnable(false);
 		mFanList = new ArrayList<Fans>();
@@ -132,7 +132,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 	//设置监听事件
 	private void setListener() {
 		view.findViewById(R.id.img_left_corner).setOnClickListener(this);
-		view.findViewById(R.id.add_member_symbol_imag).setOnClickListener(this);
+		//view.findViewById(R.id.add_member_symbol_imag).setOnClickListener(this);
 		mListView.setXListViewListener(this);
 		mListView.setOnItemLongClickListener(this);
 		//复选框点击事件监听
@@ -158,7 +158,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 				transaction.remove(this);
 			transaction.commit();
 				break;
-			case R.id.add_member_symbol_imag://添加粉丝
+			/*case R.id.add_member_symbol_imag://添加粉丝
 				if (mAdapter.isCheckBoxShow) {
 					if (itv_add.getText().toString().equals("取消")) {
 						mAdapter.clearCheckedItems();
@@ -211,7 +211,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 						}
 					});
 				}
-				break;
+				break;*/
 		}
 	}
 
