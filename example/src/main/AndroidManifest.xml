@@ -213,7 +213,7 @@
         <activity
                 android:screenOrientation="portrait"
                 android:name="com.huntor.mscrm.app2.ui.CompileTagActivity"
-
+                android:windowSoftInputMode="adjustResize|stateHidden"
                 >
         </activity>
     </application>
