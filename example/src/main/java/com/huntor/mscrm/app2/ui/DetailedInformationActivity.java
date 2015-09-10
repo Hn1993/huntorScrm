@@ -119,6 +119,8 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     private TextView viewpager2_fans_age;
 
     private ImageView image_people_head_2;
+
+    private TextView member_tag_2;//tag
     /**
      * viewpager3的会员交易信息
      */
@@ -484,6 +486,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             return;
         }
         try {
+            RelativeLayout comile_tag= (RelativeLayout) viewlist.get(1).findViewById(R.id.detaileinfo_tag_2);
+            comile_tag.setOnClickListener(this);
+            member_tag_2= (TextView) viewlist.get(1).findViewById(R.id.member_tag_2);
             viewpager2_fans_name = (TextView) viewlist.get(1).findViewById(R.id.menber_address_name_2);
             if (fan.realName == null || "".equals(fan.realName)) {
 
@@ -1067,9 +1072,29 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 viewpager2_fans_age.setText("40以上");
                 mPopWindow.dismiss();
                 break;
+            case R.id.detaileinfo_tag_2:
+                Intent intent=new Intent(DetailedInformationActivity.this,CompileTagActivity.class);
+                startActivityForResult(intent,1000);
+                break;
         }
     }
+    private ArrayList<String> tagList;//标签集合
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e(TAG,"onActivityResult");
+        tagList=data.getStringArrayListExtra("tag");
+        Log.e(TAG,"tagList.size"+tagList.size());
+        StringBuffer sb=new StringBuffer();
+        if (tagList==null){
+            tagList=new ArrayList<>();
+        }
+        for (int i=0;i<tagList.size();i++){
+            sb.append(tagList.get(i)+",");
+        }
+        String tag=sb.substring(0,sb.length()-1);
+        member_tag_2.setText(tag);
 
+    }
 
     private ImageView genderManImageView, genderWomanImageView, genderNoImageView;
 

@@ -212,8 +212,8 @@
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name="com.huntor.mscrm.app2.ui.ImageActivity"
-                android:label="@string/show_image_window"
+                android:name="com.huntor.mscrm.app2.ui.CompileTagActivity"
+
                 >
         </activity>
     </application>
