@@ -1,16 +1,32 @@
 package com.huntor.mscrm.app2.ui.fragment.member;
 
 
-import android.app.*;
+import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.Service;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.*;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
-import android.widget.*;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import com.github.clans.fab.FloatingActionButton;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.MyGroupAdapter;
 import com.huntor.mscrm.app2.model.Target;
@@ -45,28 +61,66 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
 	private MyGroupAdapter adapter;
 	private View ret;
 	private BaseActivity activity;
+	private int mPreviousVisibleItem;
 
 	@Override
-
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
 		ret = inflater.inflate(R.layout.fragment_my_group, container, false);
 		initView();
 		setListener();
+		showFAB();
 		getLocalTargetList();
 		getTargetlist();
 		return ret;
 	}
 
-	private void initView() {
+	private void showFAB() {
+		final FloatingActionButton fab = (FloatingActionButton) ret.findViewById(R.id.fab);
+		fab.hide(false);
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				fab.show(true);
+				fab.setShowAnimation(AnimationUtils.loadAnimation(activity, R.anim.show_from_bottom));
+				fab.setHideAnimation(AnimationUtils.loadAnimation(activity, R.anim.hide_to_bottom));
+			}
+		}, 300);
 
+		fab.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				addTargetName();
+				//startActivity(new Intent(MainActivity.this, FloatingMenusActivity.class));
+			}
+		});
+
+		mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
+
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+				if (firstVisibleItem > mPreviousVisibleItem) {
+					fab.hide(true);
+				} else if (firstVisibleItem < mPreviousVisibleItem) {
+					fab.show(true);
+				}
+				mPreviousVisibleItem = firstVisibleItem;
+			}
+		});
+	}
+
+
+	private void initView() {
+		activity = (BaseActivity) getActivity();
 		mListView = (XListView) ret.findViewById(R.id.list_my_group);
 		mListView.setPullRefreshEnable(false);
 		mListView.setPullLoadEnable(false);
 		mNoContentHint = (TextView) ret.findViewById(R.id.no_content_hint);
-
 		adapter = new MyGroupAdapter(getActivity());
 		mListView.setAdapter(adapter);
-		activity = (BaseActivity) getActivity();
+
 	}
 
 	public void setListener() {

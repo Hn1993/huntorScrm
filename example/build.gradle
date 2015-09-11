@@ -33,13 +33,14 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':library')
+    compile project(':lib_clans_fab')
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.github.wangjiegulu:AndroidBucket:1.0.2'
     compile 'com.github.wangjiegulu:AndroidInject:1.0.2'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.joanzapata.android:android-iconify:1.0.9'
     compile 'com.rengwuxian.materialedittext:library:2.0.3'
-    compile project(':library')
     compile files('libs/android-async-http-1.4.5.jar')
     compile files('libs/core-3.2.0.jar')
     compile files('libs/gson-2.2.4.jar')
