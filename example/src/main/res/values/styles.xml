@@ -379,6 +379,18 @@
     </style>
 
 
+    <style name="dialog_input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/activity_login_edit_height</item>
+        <item name="android:layout_marginLeft">@dimen/activity_login_text_marginLeft</item>
+        <item name="android:layout_marginRight">@dimen/activity_login_text_marginLeft</item>
+        <item name="android:layout_marginTop">@dimen/activity_login_edit_top</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLength">12</item>
+    </style>
+
     <!--fab-->
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">

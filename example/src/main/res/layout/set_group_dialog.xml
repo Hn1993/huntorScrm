@@ -23,16 +23,23 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"/>
 
-        <EditText
+        <!--<EditText
                 android:id="@+id/et_group_name"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:hint="请输入分组名称"
+                android:hint="@string/please_enter_groupname"
                 android:textSize="@dimen/title_text_size"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"/>-->
+
+        <com.huntor.mscrm.app2.view.EditText.ColorUnderLineEditText
+            style="@style/dialog_input"
+            android:hint="@string/please_enter_groupname"
+            android:id="@+id/et_group_name"
+
+             />
 
     </LinearLayout>
 

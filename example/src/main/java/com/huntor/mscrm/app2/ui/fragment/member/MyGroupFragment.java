@@ -45,6 +45,7 @@ import com.huntor.mscrm.app2.utils.Constant;
 import com.huntor.mscrm.app2.utils.MyLogger;
 import com.huntor.mscrm.app2.utils.PreferenceUtils;
 import com.huntor.mscrm.app2.utils.Utils;
+import com.huntor.mscrm.app2.view.EditText.ColorUnderLineEditText;
 
 import java.util.List;
 
@@ -460,7 +461,8 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
         dialog.show();
 
         //TextView tv_title = (TextView) view.findViewById(R.id.tv_title);
-        final EditText et_group_name = (EditText) view.findViewById(R.id.et_group_name);
+        //final EditText et_group_name = (EditText) view.findViewById(R.id.et_group_name);
+        final ColorUnderLineEditText et_group_name = (ColorUnderLineEditText) view.findViewById(R.id.et_group_name);
 
         Button btn_ok = (Button) view.findViewById(R.id.btn_ok);
         Button btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
