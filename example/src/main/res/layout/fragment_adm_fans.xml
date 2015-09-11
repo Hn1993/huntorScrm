@@ -1,53 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="@color/white"
-        >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base_title_height"
-            android:background="@color/login_bg"
-            >
-
-        <RelativeLayout
-                style="@style/layout_left_corner"
-                android:id="@+id/img_left_corner">
-            <ImageView
-                    style="@style/img_title_common_style"
-                    />
-        </RelativeLayout>
-
-        <TextView
-                android:id="@+id/text_base_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="新增粉丝"
-                android:layout_toRightOf="@+id/img_left_corner"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/base_title_text_size"
-                />
-
-        <Button
-                android:id="@+id/sure_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@null"
-                android:textSize="@dimen/base_title_text_size"
-                android:text="确定"/>
-    </RelativeLayout>
-
-    <!-- TODO: Update blank fragment layout -->
-    <!--<ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>-->
     <TextView
             android:id="@+id/no_content_hint"
             android:layout_width="match_parent"
@@ -59,8 +15,25 @@
             android:visibility="gone"/>
 
     <com.huntor.mscrm.app2.ui.component.XListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null" />
 
-</LinearLayout>
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_done"
+        app:fab_size="normal"
+        app:fab_shadowColor="@color/shadowColor"
+        app:fab_colorNormal="@color/colorPrimary"
+        app:fab_colorPressed="@color/colorPrimary_Pressed"
+        app:fab_colorRipple="@color/colorPrimary_Ripple"
+        app:fab_elevationCompat="4dp" />
+
+</FrameLayout>

@@ -1,12 +1,26 @@
 package com.huntor.mscrm.app2.ui.fragment.member;
 
-import android.app.*;
+import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.IconTextView;
+import android.widget.TextView;
+
+import com.github.clans.fab.FloatingActionButton;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.GroupMemberAdapter2;
 import com.huntor.mscrm.app2.adapter.GroupMemberAdapter2.onCheckItemListener;
@@ -19,6 +33,7 @@ import com.huntor.mscrm.app2.net.api.ApiGetAllFansId;
 import com.huntor.mscrm.app2.net.api.ApiGetTargetList;
 import com.huntor.mscrm.app2.provider.api.ApiFixedGroupFansListDb;
 import com.huntor.mscrm.app2.ui.DetailedInformationActivity;
+import com.huntor.mscrm.app2.ui.MainActivity2;
 import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.ui.component.XListView;
 import com.huntor.mscrm.app2.ui.fragment.base.BaseFragment;
@@ -41,10 +56,10 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 	private BaseActivity activity;
 	private String mGroupName;
 	private RefreshCallback refreshCallback;
-
 	protected static final int ORDER_BY_DEFAULT = 3;//排序字段
-	//1.顺序  2。逆序
-	protected static final int ORDER_FLAG = 2;//排序标识
+	protected static final int ORDER_FLAG = 2;//排序标识 1.顺序  2。逆序
+	private Toolbar toolbar;
+	private int mPreviousVisibleItem;
 
 	public void setRefreshCallback(RefreshCallback refreshCallback) {
 		this.refreshCallback = refreshCallback;
@@ -54,17 +69,19 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.fragment_group_member, container, false);
 		initView();
+		showFAB();
+		setListener();
+		loadLocalData();
+		loadData();
 		return view;
 	}
 
 	private void initView() {
-
-		TextView title = (TextView) view.findViewById(R.id.title);
+		toolbar= MainActivity2.toolbar;
 		mListView = (XListView) view.findViewById(R.id.group_member_listview);
-		//itv_add = (IconTextView) view.findViewById(R.id.add_member_symbol_imag);
 		mListView.setPullRefreshEnable(false);
 		mListView.setPullLoadEnable(false);
-		mFanList = new ArrayList<Fans>();
+		mFanList = new ArrayList<>();
 		mAdapter = new GroupMemberAdapter2(getActivity(), mFanList);
 		mListView.setAdapter(mAdapter);
 		mPageNum = 1;
@@ -74,15 +91,44 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 		if (bundle != null) {
 			mTargetListId = bundle.getInt("targetListId");
 			mGroupName = bundle.getString("name");
-			title.setText(mGroupName);
+			toolbar.setTitle(mGroupName);
 		}
-
-		setListener();
-		loadLocalData();
-		loadData();
 	}
 
+	private void showFAB() {
+		final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+		fab.hide(false);
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				fab.show(true);
+				fab.setShowAnimation(AnimationUtils.loadAnimation(activity, R.anim.show_from_bottom));
+				fab.setHideAnimation(AnimationUtils.loadAnimation(activity, R.anim.hide_to_bottom));
+			}
+		}, 300);
 
+		fab.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				addFans();
+			}
+		});
+
+		mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+				if (firstVisibleItem > mPreviousVisibleItem) {
+					fab.hide(true);
+				} else if (firstVisibleItem < mPreviousVisibleItem) {
+					fab.show(true);
+				}
+				mPreviousVisibleItem = firstVisibleItem;
+			}
+		});
+	}
 	private void loadLocalData(){
 		List<Fans> fans = ApiFixedGroupFansListDb.getFixedGroupFansList(activity, mTargetListId);
 		updateAdapter(fans, false);
@@ -131,7 +177,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 
 	//设置监听事件
 	private void setListener() {
-		view.findViewById(R.id.img_left_corner).setOnClickListener(this);
+		//view.findViewById(R.id.img_left_corner).setOnClickListener(this);
 		//view.findViewById(R.id.add_member_symbol_imag).setOnClickListener(this);
 		mListView.setXListViewListener(this);
 		mListView.setOnItemLongClickListener(this);
@@ -153,12 +199,12 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 		final FragmentManager manager = getFragmentManager();
 		final FragmentTransaction transaction = manager.beginTransaction();
 		switch (v.getId()) {
-			case R.id.img_left_corner://左上角返回
+			/*case R.id.img_left_corner://左上角返回
 				manager.popBackStack();
 				transaction.remove(this);
 			transaction.commit();
-				break;
-			/*case R.id.add_member_symbol_imag://添加粉丝
+				break;*/
+			/*case R.id.fab://添加粉丝
 				if (mAdapter.isCheckBoxShow) {
 					if (itv_add.getText().toString().equals("取消")) {
 						mAdapter.clearCheckedItems();
@@ -177,42 +223,46 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 						}
 					}
 				} else {
-
-					HttpRequestController.getAllFansId(activity, mTargetListId, false, new HttpResponseListener<ApiGetAllFansId.ApiGetAllFansIdResponse>() {
-						@Override
-						public void onResult(ApiGetAllFansId.ApiGetAllFansIdResponse response) {
-							if (response.getRetCode() == BaseResponse.RET_HTTP_STATUS_OK) {
-								if (response.allFansId.ids != null) {
-									MyLogger.i(TAG, "response.allFansId.ids: " + response.allFansId.ids);
-
-									Bundle bundle = new Bundle();
-									bundle.putInt("targetListId", mTargetListId);
-									AdmFansFragment2 admFansFragment = new AdmFansFragment2();
-									admFansFragment.setArguments(bundle);
-									admFansFragment.setData(response.allFansId.ids, mGroupName, new AdmFansFragment2.RefreshCallback() {
-										@Override
-										public void onResult(List<Fans> addedFans) {
-											//onRefresh();
-											mFanList.addAll(addedFans);
-											mAdapter.notifyDataSetChanged();
-											if (refreshCallback != null) {
-												refreshCallback.onResult(mTargetListId, mFanList.size());
-											}
-										}
-									});
-									transaction.add(R.id.frame_main, admFansFragment, Constant.ADM_FANS);
-									transaction.addToBackStack(null);
-									transaction.commit();
-
-								}
-							}else{
-							   	Utils.toast(activity,response.getRetInfo());
-							}
-						}
-					});
+					addFans();
 				}
 				break;*/
 		}
+	}
+
+	private void addFans() {
+		HttpRequestController.getAllFansId(activity, mTargetListId, false, new HttpResponseListener<ApiGetAllFansId.ApiGetAllFansIdResponse>() {
+			@Override
+			public void onResult(ApiGetAllFansId.ApiGetAllFansIdResponse response) {
+				if (response.getRetCode() == BaseResponse.RET_HTTP_STATUS_OK) {
+					if (response.allFansId.ids != null) {
+						MyLogger.i(TAG, "response.allFansId.ids: " + response.allFansId.ids);
+
+						Bundle bundle = new Bundle();
+						bundle.putInt("targetListId", mTargetListId);
+						AdmFansFragment2 admFansFragment = new AdmFansFragment2();
+						admFansFragment.setArguments(bundle);
+						admFansFragment.setData(response.allFansId.ids, mGroupName, new AdmFansFragment2.RefreshCallback() {
+							@Override
+							public void onResult(List<Fans> addedFans) {
+								//onRefresh();
+								mFanList.addAll(addedFans);
+								mAdapter.notifyDataSetChanged();
+								if (refreshCallback != null) {
+									refreshCallback.onResult(mTargetListId, mFanList.size());
+								}
+							}
+						});
+						FragmentManager manager = getFragmentManager();
+						FragmentTransaction transaction = manager.beginTransaction();
+						transaction.add(R.id.fl_content, admFansFragment, Constant.ADM_FANS);
+						transaction.addToBackStack(null);
+						transaction.commit();
+					}
+				} else {
+					Utils.toast(activity, response.getRetInfo());
+				}
+			}
+		});
 	}
 
 
@@ -266,7 +316,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 					@Override
 					public void onResult(ApiFansTargetListRemove.ApiFansTargetListRemoveResponse response) {
 						if (response.getRetCode() == BaseResponse.RET_HTTP_STATUS_OK) {
-							itv_add.setText(R.string.icon_text_plus);
+							//itv_add.setText(R.string.icon_text_plus);
 							mFanList.removeAll(mAdapter.mCheckedItems);
 							mAdapter.clearCheckedItems();
 							mAdapter.notifyDataSetChanged();
@@ -301,7 +351,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 	//XListView条目长按事件
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-		itv_add.setText("取消");
+		//itv_add.setText("取消");
 		mAdapter.isCheckBoxShow = true;
 		mAdapter.notifyDataSetChanged();
 		return true;
@@ -320,10 +370,10 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
 		int checkedItems = mAdapter.mCheckedItems.size();
 		//Log.i(TAG, "checkedItems:"+checkedItems +" ----- "+ fans.nickName);
 		if (checkedItems > 0) {
-			itv_add.setVisibility(View.VISIBLE);
-			itv_add.setText("删除(" + checkedItems + ")");
+			//itv_add.setVisibility(View.VISIBLE);
+			//itv_add.setText("删除(" + checkedItems + ")");
 		} else {
-			itv_add.setText("取消");
+			//itv_add.setText("取消");
 		}
 	}
 

@@ -1,9 +1,9 @@
 package com.huntor.mscrm.app2.provider;
 
-import java.util.HashMap;
-import java.util.List;
-
-import android.content.*;
+import android.content.ContentProvider;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,10 +11,11 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
-import com.huntor.mscrm.app2.utils.Constant;
+
 import com.huntor.mscrm.app2.utils.MyLogger;
 import com.huntor.mscrm.app2.utils.PinYinUtils;
-import com.huntor.mscrm.app2.utils.PreferenceUtils;
+
+import java.util.HashMap;
 
 /**
  * 这里使用ContentProvider，是为了为数据的访问提供一个统一的接口，方便客户端的操作，同时可以使用CursorLoader进行数据的加载
@@ -848,9 +849,9 @@ public class MSCRMProvider extends ContentProvider {
      * @return 与该uri匹配的表名
      */
     private static String getTable(Uri uri) {
-        String tableName = null;
-        MyLogger.e(TAG, "uri.getPath()=" + uri.getPath());
-        MyLogger.e(TAG, "mUriMatcher.match(uri) = " + mUriMatcher.match(uri));
+        String tableName ;
+        MyLogger.i(TAG, "uri.getPath()=" + uri.getPath());
+        MyLogger.i(TAG, "mUriMatcher.match(uri) = " + mUriMatcher.match(uri));
         switch (mUriMatcher.match(uri)) {
             //消息记录
             case MESSAGE:

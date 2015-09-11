@@ -2,10 +2,8 @@ package com.huntor.mscrm.app2.ui.fragment.member;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +11,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
 import com.huntor.mscrm.app2.R;
-import com.huntor.mscrm.app2.adapter.AdmFansAdapter;
 import com.huntor.mscrm.app2.adapter.AdmFansAdapter2;
 import com.huntor.mscrm.app2.model.Fans;
 import com.huntor.mscrm.app2.net.BaseResponse;
@@ -22,7 +20,6 @@ import com.huntor.mscrm.app2.net.HttpRequestController;
 import com.huntor.mscrm.app2.net.HttpResponseListener;
 import com.huntor.mscrm.app2.net.api.ApiAddFansTargetlist;
 import com.huntor.mscrm.app2.net.api.ApiFansGroup;
-import com.huntor.mscrm.app2.ui.DetailedInformationActivity;
 import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.ui.component.XListView;
 import com.huntor.mscrm.app2.ui.fragment.base.BaseFragment;
@@ -31,7 +28,6 @@ import com.huntor.mscrm.app2.utils.MyLogger;
 import com.huntor.mscrm.app2.utils.PreferenceUtils;
 import com.huntor.mscrm.app2.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -70,16 +66,18 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 		mTargetListId = bundle.getInt("targetListId");
 		activity = (BaseActivity) getActivity();
 
-		mCheckedList = new LinkedList<Fans>();
-		mAdapterList = new LinkedList<Fans>();
+		mCheckedList = new LinkedList<>();
+		mAdapterList = new LinkedList<>();
 
-		mConfirmBtn = (Button) mRoot.findViewById(R.id.sure_btn);
-		tv_title = (TextView) mRoot.findViewById(R.id.text_base_title);
+		//mConfirmBtn = (Button) mRoot.findViewById(R.id.sure_btn);
+		//tv_title = (TextView) mRoot.findViewById(R.id.text_base_title);
+
 		no_content_hint = (TextView) mRoot.findViewById(R.id.no_content_hint);
-		mConfirmBtn.setVisibility(View.GONE);
-		tv_title.setText("分组管理(" + mGroupIDs.size() + ")");
-		mConfirmBtn.setOnClickListener(this);
-		mRoot.findViewById(R.id.img_left_corner).setOnClickListener(this);
+		//mConfirmBtn.setVisibility(View.GONE);
+		//tv_title.setText("分组管理(" + mGroupIDs.size() + ")");
+		//mConfirmBtn.setOnClickListener(this);
+		//mRoot.findViewById(R.id.img_left_corner).setOnClickListener(this);
+
 		mListView = (XListView) mRoot.findViewById(R.id.listview);
 		mListView.setPullLoadEnable(false);
 		mListView.setPullRefreshEnable(false);
@@ -107,7 +105,7 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.sure_btn:
+			/*case R.id.sure_btn:
 				if (mCheckedList.size() > 0) {
 					int[] fansId = new int[mCheckedList.size()];
 					for (int i = 0; i < mCheckedList.size(); i++) {
@@ -118,11 +116,10 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 				} else {
 					Utils.toast(getActivity(), "请选择要添加的粉丝！");
 				}
-
 				break;
 			case R.id.img_left_corner:
 				finish();
-				break;
+				break;*/
 		}
 	}
 
@@ -151,7 +148,7 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 				mCheckedList.remove(fans);
 				totalList--;
 			}
-			tv_title.setText("分组管理(" + totalList + ")");
+			//tv_title.setText("分组管理(" + totalList + ")");
 		}
 	}
 

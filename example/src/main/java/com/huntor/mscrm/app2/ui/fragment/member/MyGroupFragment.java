@@ -53,7 +53,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * 我的分组
  */
-public class MyGroupFragment extends BaseFragment implements View.OnClickListener, GroupMemberFragment.RefreshCallBack, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+public class MyGroupFragment extends BaseFragment implements View.OnClickListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private static final String TAG = "MyGroupFragment";
     private XListView mListView;
@@ -170,7 +170,7 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
         bundle.putString("name", target.name);
         GroupMemberFragment2 fragment = new GroupMemberFragment2();
         fragment.setArguments(bundle);
-        transaction.add(R.id.frame_main, fragment, Constant.GROUP_MEMBER);
+        transaction.add(R.id.fl_content, fragment, Constant.GROUP_MEMBER);
         fragment.setRefreshCallback(new GroupMemberFragment2.RefreshCallback() {
             @Override
             public void onResult(int targetListId, int groupSize) {
@@ -500,7 +500,7 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
                     @Override
                     public void onResult(ApiCreateTargetlist.ApiCreateTargetlistResponse response) {
                         if (response.getRetCode() == BaseResponse.RET_HTTP_STATUS_OK) {
-                            mCurrentIndex = adapter.getCount() + 1;
+                            //mCurrentIndex = adapter.getCount() + 1;
                             getTargetlist();
                             Utils.toast(getActivity(), "添加成功！");
                         } else {
@@ -511,11 +511,5 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
 
     }
 
-    /**
-     * 刷新回调
-     */
-    @Override
-    public void refresh() {
-        getTargetlist();
-    }
+
 }

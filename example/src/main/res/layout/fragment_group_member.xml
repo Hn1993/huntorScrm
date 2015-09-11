@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.huntor.mscrm.app2.ui.component.XListView
+        android:id="@+id/group_member_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        >
+        android:clickable="true"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null" />
+    
 
-        <com.huntor.mscrm.app2.ui.component.XListView
-                android:id="@+id/group_member_listview"
-                android:divider="@null"
-                android:clickable="true"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_add_white_24dp"
+        app:fab_size="normal"
+        app:fab_shadowColor="@color/shadowColor"
+        app:fab_colorNormal="@color/colorPrimary"
+        app:fab_colorPressed="@color/colorPrimary_Pressed"
+        app:fab_colorRipple="@color/colorPrimary_Ripple"
+        app:fab_elevationCompat="4dp" />
 
-</RelativeLayout>
+</FrameLayout>

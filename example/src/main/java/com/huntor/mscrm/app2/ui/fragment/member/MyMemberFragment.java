@@ -1,6 +1,5 @@
 package com.huntor.mscrm.app2.ui.fragment.member;
 
-
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -12,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.model.Data;
@@ -22,7 +20,6 @@ import com.huntor.mscrm.app2.net.HttpResponseListener;
 import com.huntor.mscrm.app2.net.api.ApiFansGroupCount;
 import com.huntor.mscrm.app2.provider.api.ApiFansGroupCountDb;
 import com.huntor.mscrm.app2.ui.MainActivity2;
-import com.huntor.mscrm.app2.ui.fragment.SearchFragment;
 import com.huntor.mscrm.app2.ui.fragment.base.BaseFragment;
 import com.huntor.mscrm.app2.utils.Constant;
 import com.huntor.mscrm.app2.utils.MyLogger;
