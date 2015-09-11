@@ -62,6 +62,26 @@
                 android:id="@+id/menber_address_text_2"
                 android:layout_below="@id/view_line3" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/detaileinfo_tag_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/member_item_text_name"
+                android:text="标签"
+                android:id="@+id/contact_biaoqian" />
+            <View
+                style="@style/item_divider_common_style"
+                android:layout_below="@id/contact_biaoqian"
+                android:id="@+id/view_line4" />
+
+            <TextView
+                android:text="女"
+                style="@style/member_item_text_time"
+                android:id="@+id/member_tag_2"
+                android:layout_below="@id/view_line4" />
+        </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout

@@ -9,9 +9,10 @@ public class Login implements Serializable{
 	private static final long serialVersionUID = 1L;
 	public int id;
 	public String secret;
+	public String token;
 	@Override
 	public String toString() {
-		return "Login [id=" + id + ", secret=" + secret + "]";
+		return "Login [id=" + id + ", secret=" + secret + ",token="+token+"]";
 	}
 	
 }

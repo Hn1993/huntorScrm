@@ -41,6 +41,11 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.joanzapata.android:android-iconify:1.0.9'
     compile 'com.rengwuxian.materialedittext:library:2.0.3'
+<<<<<<< HEAD
+=======
+    compile 'com.android.support:percent:22.2.0'
+    compile project(':library')
+>>>>>>> d48130a5ffbc83e7c3a7988493b42433e6d8a607
     compile files('libs/android-async-http-1.4.5.jar')
     compile files('libs/core-3.2.0.jar')
     compile files('libs/gson-2.2.4.jar')

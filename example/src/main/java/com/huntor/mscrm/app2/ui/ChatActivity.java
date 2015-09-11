@@ -628,6 +628,7 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.layout_chat_title://点击title跳转到详情界面
                 Intent detailInformationIntent = new Intent(this, DetailedInformationActivity.class);
                 detailInformationIntent.putExtra(Constant.FANS_ID, fan_id);
+
                 startActivity(detailInformationIntent);
                 break;
             case R.id.edit_chat_send://表情按钮
