@@ -139,7 +139,9 @@ public final class Constant {
     public static final String HTTP_REQUEST_ALL_FANS_ID_LIST = HTTP_ROOT_URL + "/fans/targetlist/listall/only_id"; //查询所有粉丝 不分页
 
     public static final String BAR_CODE_CONTENT = "bar_code_content";
-
+    public static final String HTTP_REQUEST_TAG_CREAT = "http://58.67.199.171:30015/api/v1/tags/create";
+    public static final String HTTP_REQUEST_TAG_QUERY = "http://58.67.199.171:30015/api/v1/tags/query";
+    public static final String HTTP_REQUEST_TAG_DELETE = "http://58.67.199.171:30015/api/v1/tags/delete";
     // 缓存文件夹
     public static final String CACHE_DIR = "mscrm/";
 
