@@ -9,6 +9,7 @@ import android.app.Service;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ import com.huntor.mscrm.app2.net.api.ApiDeleteTargetList;
 import com.huntor.mscrm.app2.net.api.ApiFansTargetListUpdate;
 import com.huntor.mscrm.app2.net.api.ApiFansTargetLists;
 import com.huntor.mscrm.app2.provider.api.ApiTargetListDb;
+import com.huntor.mscrm.app2.ui.MainActivity2;
 import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.ui.component.XListView;
 import com.huntor.mscrm.app2.ui.fragment.base.BaseFragment;
@@ -63,6 +65,7 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
     private View ret;
     private BaseActivity activity;
     private int mPreviousVisibleItem;
+    private Toolbar toolbar;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -115,6 +118,7 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
 
     private void initView() {
         activity = (BaseActivity) getActivity();
+        toolbar= MainActivity2.toolbar;
         mListView = (XListView) ret.findViewById(R.id.list_my_group);
         mListView.setPullRefreshEnable(false);
         mListView.setPullLoadEnable(false);
@@ -152,6 +156,12 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
         view.startAnimation(set);
     }
 
+    @Override
+    public void onResume() {
+        //toolbar.setTitle("我的分组");
+        super.onResume();
+    }
+
     /**
      * ListView条目点击事件
      *
@@ -174,15 +184,19 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
         fragment.setRefreshCallback(new GroupMemberFragment2.RefreshCallback() {
             @Override
             public void onResult(int targetListId, int groupSize) {
-                List<Target> data = adapter.getData();
-                for (int i = 0; i < data.size(); i++) {
-                    Target target = data.get(i);
-                    if (target.id == targetListId) {
-                        target.count = groupSize;
-                        adapter.notifyDataSetChanged();
-                        break;
+                toolbar.setTitle("我的分组");
+                if (groupSize != -1) {
+                    List<Target> data = adapter.getData();
+                    for (int i = 0; i < data.size(); i++) {
+                        Target target = data.get(i);
+                        if (target.id == targetListId) {
+                            target.count = groupSize;
+                            adapter.notifyDataSetChanged();
+                            break;
+                        }
                     }
                 }
+
             }
         });
         transaction.addToBackStack(null);

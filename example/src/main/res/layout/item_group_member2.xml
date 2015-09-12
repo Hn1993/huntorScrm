@@ -34,7 +34,7 @@
                 android:id="@+id/tv_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/huntor_bacground"
                 android:textSize="16sp"
                 android:layout_weight="6"
                 android:layout_marginStart="20dp"

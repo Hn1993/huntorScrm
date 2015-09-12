@@ -26,6 +26,7 @@ public final class Constant {
     public static final String INTERACTION = "interaction";
     public static final String INTERACTION_ONLINE = "interaction_online";
     public static final String MY_MEMBER = "mymember";
+
     public static final String SEARCH = "search";
     public static final String LAST_REFRESH_ALLFANS_TIME = "last_refresh_allfans_time";
     public static final String HAS_UPDATE = "has_update";

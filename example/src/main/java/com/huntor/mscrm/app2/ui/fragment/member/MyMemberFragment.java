@@ -54,6 +54,7 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onResume() {
+        toolbar.setTitle("我的会员");
         super.onResume();
         //getFanGroupCount();
     }
@@ -215,7 +216,7 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
             case R.id.layout_fragment_mymember_my_group://我的分组
                 clearBackStack();
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.fl_content, new MyGroupFragment(), Constant.MY_MEMBER);
+                transaction.replace(R.id.fl_content, new MyGroupFragment(), Constant.MY_GROUP);
                 toolbar.setTitle("我的分组");
                 break;
             case R.id.layout_fragment_mymember_other_group://其他分组

@@ -3,15 +3,20 @@ package com.huntor.mscrm.app2.ui.fragment.member;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.AdmFansAdapter2;
 import com.huntor.mscrm.app2.model.Fans;
@@ -20,6 +25,7 @@ import com.huntor.mscrm.app2.net.HttpRequestController;
 import com.huntor.mscrm.app2.net.HttpResponseListener;
 import com.huntor.mscrm.app2.net.api.ApiAddFansTargetlist;
 import com.huntor.mscrm.app2.net.api.ApiFansGroup;
+import com.huntor.mscrm.app2.ui.MainActivity2;
 import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.ui.component.XListView;
 import com.huntor.mscrm.app2.ui.fragment.base.BaseFragment;
@@ -52,6 +58,9 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 	private TextView tv_title;
 	private TextView no_content_hint;
 	private int empID;
+	private Toolbar toolbar;
+	private FloatingActionButton fab;
+	private int mPreviousVisibleItem;
 
 	@Nullable
 	@Override
@@ -65,19 +74,11 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 		Bundle bundle = getArguments();
 		mTargetListId = bundle.getInt("targetListId");
 		activity = (BaseActivity) getActivity();
-
 		mCheckedList = new LinkedList<>();
 		mAdapterList = new LinkedList<>();
-
-		//mConfirmBtn = (Button) mRoot.findViewById(R.id.sure_btn);
-		//tv_title = (TextView) mRoot.findViewById(R.id.text_base_title);
-
+		toolbar = MainActivity2.toolbar;
+		toolbar.setTitle("分组管理(" + mGroupIDs.size() + ")");
 		no_content_hint = (TextView) mRoot.findViewById(R.id.no_content_hint);
-		//mConfirmBtn.setVisibility(View.GONE);
-		//tv_title.setText("分组管理(" + mGroupIDs.size() + ")");
-		//mConfirmBtn.setOnClickListener(this);
-		//mRoot.findViewById(R.id.img_left_corner).setOnClickListener(this);
-
 		mListView = (XListView) mRoot.findViewById(R.id.listview);
 		mListView.setPullLoadEnable(false);
 		mListView.setPullRefreshEnable(false);
@@ -88,9 +89,38 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 		mAdapter.setOnListViewItemClickListener(this);
 		mListView.setAdapter(mAdapter);
 		empID = PreferenceUtils.getInt(getActivity(), Constant.PREFERENCE_EMP_ID, 0);
+		showFAB();
 		getAllFans();
 	}
 
+
+	private void showFAB() {
+		fab = (FloatingActionButton) mRoot.findViewById(R.id.fab);
+		fab.hide(false);
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				fab.show(true);
+				fab.setShowAnimation(AnimationUtils.loadAnimation(activity, R.anim.show_from_bottom));
+				fab.setHideAnimation(AnimationUtils.loadAnimation(activity, R.anim.hide_to_bottom));
+			}
+		}, 300);
+		fab.setOnClickListener(this);
+		mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+				if (firstVisibleItem > mPreviousVisibleItem) {
+					fab.hide(true);
+				} else if (firstVisibleItem < mPreviousVisibleItem) {
+					fab.show(true);
+				}
+				mPreviousVisibleItem = firstVisibleItem;
+			}
+		});
+	}
 	public void setData(List<Integer> ids, String groupName, RefreshCallback refCallBack) {
 		this.mGroupIDs = ids;
 		this.refCallBack = refCallBack;
@@ -105,7 +135,7 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			/*case R.id.sure_btn:
+			case R.id.fab:
 				if (mCheckedList.size() > 0) {
 					int[] fansId = new int[mCheckedList.size()];
 					for (int i = 0; i < mCheckedList.size(); i++) {
@@ -117,9 +147,6 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 					Utils.toast(getActivity(), "请选择要添加的粉丝！");
 				}
 				break;
-			case R.id.img_left_corner:
-				finish();
-				break;*/
 		}
 	}
 
@@ -268,7 +295,9 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 					@Override
 					public void onResult(ApiAddFansTargetlist.ApiAddFansTargetlistResponse response) {
 						if (response.getRetCode() == BaseResponse.RET_HTTP_STATUS_OK) {
-							refCallBack.onResult(mCheckedList);
+							if(refCallBack != null){
+								refCallBack.onResult(mCheckedList);
+							}
 						} else {
 							Utils.toast(getActivity(), response.getRetInfo() + "");
 						}
@@ -294,5 +323,12 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 	 */
 	public interface RefreshCallback {
 		void onResult(List<Fans> addedFans);
+	}
+
+	@Override
+	public void onDestroyView() {
+		MyLogger.i(TAG,"onDestroyView");
+		refCallBack.onResult(null);
+		super.onDestroyView();
 	}
 }
