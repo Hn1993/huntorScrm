@@ -11,10 +11,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.DrawLayoutLeftAdapter;
@@ -29,13 +32,13 @@ import com.huntor.mscrm.app2.push.PushMessageManager;
 import com.huntor.mscrm.app2.push.PushMessageReceiverService;
 import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.ui.fragment.interaction.InteractionLocaleFragment;
+import com.huntor.mscrm.app2.ui.fragment.member.GroupMemberFragment2;
 import com.huntor.mscrm.app2.ui.fragment.member.MyMemberFragment;
 import com.huntor.mscrm.app2.ui.fragment.online.InteractionOnlineFragment;
 import com.huntor.mscrm.app2.utils.Constant;
 import com.huntor.mscrm.app2.utils.MyLogger;
 import com.huntor.mscrm.app2.utils.PreferenceUtils;
 import com.huntor.mscrm.app2.utils.Utils;
-
 
 import java.util.ArrayList;
 
@@ -46,23 +49,19 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView lvLeftMenu;
-
-
     private ArrayList<Integer> drawLeftList;
     private DrawLayoutLeftAdapter mAdapter;
-
     private android.app.FragmentManager fragmentManager;
-
     private PushMessageManager messageManager;
     private AlertDialog offLineDialog;
 
 
-    public static MainActivity2 mainActivity2;
+    public static MainActivity2 context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        mainActivity2=this;
+        context=MainActivity2.this;
         isLogined();
         if (isLogin) {
             Intent serviceIntent = new Intent(this, PushMessageReceiverService.class);
@@ -75,7 +74,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         //toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);
-        toolbar.setOnMenuItemClickListener(menuLitener_toolbar);//设置menu
+        //toolbar.setOnMenuItemClickListener(menuLitener_toolbar);//设置menu
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -118,10 +117,9 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
         lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
-
     }
 
-    Toolbar.OnMenuItemClickListener menuLitener_toolbar = new Toolbar.OnMenuItemClickListener() {
+  /*  Toolbar.OnMenuItemClickListener menuLitener_toolbar = new Toolbar.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
@@ -140,10 +138,9 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                     Utils.toast(MainActivity2.this, "action_search");
                     break;
             }
-
             return true;
         }
-    };
+    };*/
 
     //退出到登陆界面
     public void logout() {
@@ -157,7 +154,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -165,11 +162,27 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         int id = item.getItemId();
         switch (id) {
             case R.id.action_settings:
-                return true;
+                Utils.toast(MainActivity2.this, "action_settings");
+                break;
+            case R.id.action_settings1:
+                Utils.toast(MainActivity2.this, "action_settings1");
+                break;
+            case R.id.action_settings2:
+                //退出登陆
+                //Utils.toast(MainActivity2.this, "action_settings2");
+                logout();
+                break;
             case R.id.action_search:
-                return true;
+                Utils.toast(MainActivity2.this, "action_search");
+                break;
         }
+        //return true;
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -260,7 +273,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                     InteractionLocaleFragment itf = new InteractionLocaleFragment();
                     transaction.replace(R.id.fl_content, itf);
                     toolbar.setTitle("现场交互");
-                    MyLogger.i(TAG,"现场交互");
+                    MyLogger.i(TAG, "现场交互");
                 } else if (i == 1) {
                     clearBackStack();
                     InteractionOnlineFragment otf = new InteractionOnlineFragment();
@@ -270,7 +283,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                     MyMemberFragment mbf = new MyMemberFragment();
                     transaction.replace(R.id.fl_content, mbf);
                     toolbar.setTitle("我的会员");
-                    MyLogger.i(TAG,"我的会员");
+                    MyLogger.i(TAG, "我的会员");
                 } else if (i == 3) {//添加其他功能
 
                 }
@@ -313,6 +326,21 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
      */
     @Override
     public void onBackPressed() {
+        GroupMemberFragment2 fragment = (GroupMemberFragment2) fragmentManager.findFragmentByTag(Constant.GROUP_MEMBER);
+
+        if (fragment != null) {
+            MyLogger.i(TAG, "GroupMemberFragment2 is not null");
+            if (fragment.mAdapter.isCheckBoxShow) {
+                MainActivity2.toolbar.setTitle(fragment.mGroupName);
+                MyLogger.i(TAG, "mAdapter.isCheckBoxShow:"+fragment.mAdapter.isCheckBoxShow);
+                fragment.mAdapter.clearCheckedItems();
+                fragment.mAdapter.notifyDataSetChanged();
+                fragment.FabStatus = GroupMemberFragment2.Status.ADD;
+                fragment.fab.setImageResource(R.drawable.ic_add_white_24dp);
+                return;
+            }
+        }
+
 
         //1,获取当前的毫秒数
         long currentTime = System.currentTimeMillis();
