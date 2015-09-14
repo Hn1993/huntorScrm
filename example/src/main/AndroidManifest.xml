@@ -216,6 +216,11 @@
                 android:windowSoftInputMode="adjustResize|stateHidden"
                 >
         </activity>
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.huntor.mscrm.app2.ui.SearchActivity"
+            >
+        </activity>
     </application>
 
 </manifest>
