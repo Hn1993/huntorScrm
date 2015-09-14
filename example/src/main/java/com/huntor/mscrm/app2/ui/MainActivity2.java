@@ -1,14 +1,17 @@
 package com.huntor.mscrm.app2.ui;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -51,7 +54,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
     private ListView lvLeftMenu;
     private ArrayList<Integer> drawLeftList;
     private DrawLayoutLeftAdapter mAdapter;
-    private android.app.FragmentManager fragmentManager;
+    private FragmentManager fragmentManager;
     private PushMessageManager messageManager;
     private AlertDialog offLineDialog;
 
@@ -154,11 +157,28 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);//在菜单中找到对应控件的item
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        MyLogger.d("Tag", "menu create");
+        MenuItemCompat.setOnActionExpandListener(menuItem, new MenuItemCompat.OnActionExpandListener() {//设置打开关闭动作监听
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                Toast.makeText(MainActivity2.this, "onExpand", Toast.LENGTH_LONG).show();
+                return true;
+            }
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                Toast.makeText(MainActivity2.this, "Collapse", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id = item.getItemId();
         switch (id) {
             case R.id.action_settings:
@@ -173,7 +193,11 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                 logout();
                 break;
             case R.id.action_search:
-                Utils.toast(MainActivity2.this, "action_search");
+                //Utils.toast(MainActivity2.this, "action_search");
+                /*FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.addToBackStack(Constant.SEARCH);
+                transaction.add(R.id.frame_main, new SearchFragment(), Constant.SEARCH);
+                transaction.commitAllowingStateLoss();*/
                 break;
         }
         //return true;
