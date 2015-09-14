@@ -166,8 +166,9 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
             case R.id.action_settings:
                 Utils.toast(MainActivity2.this, "action_settings");
                 break;
-            case R.id.action_settings1:
-                Utils.toast(MainActivity2.this, "action_settings1");
+            case R.id.action_settings_signature:
+                Utils.toast(MainActivity2.this, "action_settings_signature");
+                startActivity(new Intent(this,SetTailsActivity.class));
                 break;
             case R.id.action_settings2:
                 //退出登陆
@@ -186,6 +187,9 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_MENU){
+            return false;
+        }
         return super.onKeyDown(keyCode, event);
     }
 

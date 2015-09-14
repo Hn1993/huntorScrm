@@ -1,23 +1,20 @@
 package com.huntor.mscrm.app2.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.utils.Constant;
 import com.huntor.mscrm.app2.utils.PreferenceUtils;
 import com.huntor.mscrm.app2.utils.Utils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 
 public class SetTailsActivity extends BaseActivity implements View.OnClickListener {
@@ -31,7 +28,7 @@ public class SetTailsActivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.activity_set_tails);
         setTitle(getResources().getString(R.string.setting_tails));
 
-       // mEditTails = (MaterialEditText) findViewById(R.id.edit_set_tails);
+        mEditTails = (MaterialEditText) findViewById(R.id.edit_set_tails);
         ImageView mConfirm = (ImageView) findViewById(R.id.btn_set_tails_confirm);
         RelativeLayout leftCorner = (RelativeLayout) findViewById(R.id.img_left_corner);
 

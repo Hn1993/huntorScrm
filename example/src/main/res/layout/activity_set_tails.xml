@@ -11,7 +11,7 @@
         <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/base_title_height"
-                android:background="@color/login_bg"
+                android:background="@color/huntor_bacground"
                 >
 
                 <RelativeLayout
@@ -54,7 +54,7 @@
                 android:hint="@string/please_set_tails"
                 app:met_clearButton="true"
                 app:met_baseColor="@color/gray"
-                app:met_primaryColor="@color/login_bg"
+                app:met_primaryColor="@color/huntor_bacground"
                 app:met_underlineColor="@color/gray"
                 app:met_errorColor="@color/material_error_color"
                 app:met_textColor="@color/black"

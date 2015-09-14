@@ -6,14 +6,15 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
-    <item android:id="@+id/action_settings1"
-        android:title="@string/action_settings"
+    <item android:id="@+id/action_settings_signature"
+        android:title="@string/settings_signature"
         android:orderInCategory="100"
         app:showAsAction="never" />
     <item android:id="@+id/action_settings2"
         android:title="@string/logout"
         android:orderInCategory="100"
         app:showAsAction="never" />
+
     <item android:id="@+id/action_search"
         android:title="@string/action_search"
         android:orderInCategory="80"
