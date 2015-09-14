@@ -1,90 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/list_item_height"
-        android:minHeight="@dimen/list_item_height"
-        android:background="@color/white"
-        android:descendantFocusability="blocksDescendants"
-        >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:minHeight="@dimen/list_item_height">
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_centerVertical="true"
-            >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <CheckBox
-                android:id="@+id/cb_item"
-                android:layout_width="20dp"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/selector_checkbox_bg"
-                android:button="@null"
-                android:layout_height="20dp"/>
+            android:id="@+id/cb_item"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/selector_checkbox_bg"
+            android:button="@null" />
 
         <ImageView
-                android:id="@+id/iv_head"
-                style="@style/head_icon_style"
-                android:src="@drawable/fragment_mymember_my_group"
-                />
+            android:id="@+id/iv_head"
+            style="@style/head_icon_style"
+            android:src="@drawable/fragment_mymember_my_group" />
 
         <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/huntor_bacground"
-                android:textSize="16sp"
-                android:layout_weight="6"
-                android:layout_marginStart="20dp"
-                android:text="@string/my_group_name_test"
-                android:singleLine="true"
-                />
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_weight="6"
+            android:singleLine="true"
+            android:text="@string/my_group_name_test"
+            android:textColor="@color/huntor_bacground"
+            android:textSize="16sp" />
 
         <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4">
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                >
+                android:layout_alignParentEnd="true"
+                android:text="@string/my_group_update_test"
+                android:textColor="@color/huntor_bacground" />
 
             <TextView
-                    android:id="@+id/tv_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/my_group_update_test"
-                    />
-
-            <TextView
-                    android:id="@+id/tv_grade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_time"
-                    android:layout_alignParentEnd="true"
-                    android:background="@drawable/shape_contact_list_user_grade"
-                    android:text="@string/user_grade_buyed"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="3dp"
-                    android:paddingBottom="2dp"
-                    android:paddingTop="2dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    />
+                android:id="@+id/tv_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/tv_time"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/shape_contact_list_user_grade"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp"
+                android:text="@string/user_grade_buyed"
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/right_corner"
-                android:layout_marginEnd="18dp"
-                android:layout_marginStart="5dp"
-                />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/right_corner" />
 
     </LinearLayout>
 
-    <View
-            style="@style/item_divider_common_style"
-            />
+    <View style="@style/item_divider_common_style" />
 </RelativeLayout>

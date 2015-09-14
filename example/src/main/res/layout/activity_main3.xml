@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:fitsSystemWindows="true">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
     <!--Toolbar-->
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <ImageView
-                android:layout_width="@dimen/drawerlayout_left_huntor_image"
-                android:layout_height="match_parent"
-                android:background="@color/huntor"/>
+            android:layout_width="@dimen/drawerlayout_left_huntor_image"
+            android:layout_height="match_parent"
+            android:background="@color/huntor" />
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/abc_action_bar_default_height_material"
             android:background="@color/huntor_bacground"
+            android:minHeight="@dimen/abc_action_bar_default_height_material"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/BaseAppTheme"/>
+            app:theme="@style/BaseAppTheme" />
         <!--<include layout="@layout/layout_toolbar"/>-->
     </LinearLayout>
 
+
+
     <!--DrawerLayout-->
-    <include layout="@layout/layout_drawerlayout"/>
+    <include layout="@layout/layout_drawerlayout" />
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.huntor.mscrm.app2.ui;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -51,7 +52,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
     private ListView lvLeftMenu;
     private ArrayList<Integer> drawLeftList;
     private DrawLayoutLeftAdapter mAdapter;
-    private android.app.FragmentManager fragmentManager;
+    private FragmentManager fragmentManager;
     private PushMessageManager messageManager;
     private AlertDialog offLineDialog;
 
@@ -159,6 +160,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id = item.getItemId();
         switch (id) {
             case R.id.action_settings:
@@ -174,6 +176,8 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.action_search:
                 Utils.toast(MainActivity2.this, "action_search");
+                Intent intent = new Intent(this,SearchActivity.class);
+                startActivity(intent);
                 break;
         }
         //return true;

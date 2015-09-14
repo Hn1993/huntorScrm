@@ -53,8 +53,7 @@ public class SearchFragment extends BaseFragment implements  AdapterView.OnItemC
 	private void initView() {
 		context = (BaseActivity) getActivity();
 		imgLeftCorner = (ImageView) ret.findViewById(R.id.img_left_corner);
-		//et_searchkey = (MaterialEditText) ret.findViewById(R.id.et_searchkey);
-
+		et_searchkey = (MaterialEditText) ret.findViewById(R.id.et_searchkey);
 		mListView = (XListView) ret.findViewById(R.id.list_search_fans);
 		mListView.setPullRefreshEnable(false);
 		mListView.setPullLoadEnable(false);

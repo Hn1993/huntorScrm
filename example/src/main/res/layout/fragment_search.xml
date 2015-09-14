@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
 
-    <TextView
+        <TextView
             android:id="@+id/no_content_hint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -15,46 +15,49 @@
             android:gravity="center"
             android:visibility="gone"/>
 
-    <LinearLayout
+        <LinearLayout
             android:id="@+id/ll_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base_title_height"
             android:layout_alignParentTop="true"
-            android:background="@color/login_bg"
+            android:background="@color/colorPrimary"
             android:orientation="horizontal">
 
 
-        <ImageView
-                android:id="@+id/img_left_corner"
-                android:layout_height="match_parent"
-                android:layout_width="63dp"
-                android:src="@drawable/left_corner"
-                android:scaleX="0.6"
-                android:scaleY="0.6"
-                />
+                <ImageView
+                    android:id="@+id/img_left_corner"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/left_corner"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
+                    />
+           <!-- <ImageView
+                android:id="@+id/search"
+                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:src="@drawable/search"
+                />-->
 
-            <!--
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/et_searchkey"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginEnd="20dp"
-                android:hint="@string/search"
-                android:textSize="15sp"
-                app:met_bottomTextSize="0sp"
-                app:met_clearButton="true"
-                app:met_baseColor="@color/white"
-                app:met_primaryColor="@color/white"
-                app:met_underlineColor="@color/white"
-                app:met_errorColor="@color/material_error_color"
-                app:met_textColor="@color/white"
-                app:met_maxCharacters="20"
-                />
-            -->
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/et_searchkey"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="@string/search"
+                    android:textSize="15sp"
+                    app:met_bottomTextSize="0sp"
+                    app:met_clearButton="true"
+                    app:met_baseColor="@color/white"
+                    app:met_primaryColor="@color/white"
+                    app:met_underlineColor="@color/white"
+                    app:met_errorColor="@color/material_error_color"
+                    app:met_textColor="@color/white"
+                    app:met_maxCharacters="20"
+                    />
+        </LinearLayout>
 
-    </LinearLayout>
-
-    <com.huntor.mscrm.app2.ui.component.XListView
+        <com.huntor.mscrm.app2.ui.component.XListView
             android:id="@+id/list_search_fans"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

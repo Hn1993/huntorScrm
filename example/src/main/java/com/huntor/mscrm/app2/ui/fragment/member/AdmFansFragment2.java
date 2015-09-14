@@ -271,8 +271,6 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 			if(fans.size()>0){
 				mAdapterList.addAll(fans);
 				mAdapter.notifyDataSetChanged();
-				mConfirmBtn.setVisibility(mAdapterList.size() > 0 ? View.VISIBLE : View.GONE);
-
 			}else{
 				//Utils.toast(activity,"没有更多粉丝！" );
 				//getAllFans();
