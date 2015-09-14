@@ -164,10 +164,10 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         int id = item.getItemId();
         switch (id) {
             case R.id.action_settings:
-                Utils.toast(MainActivity2.this, "action_settings");
+                //Utils.toast(MainActivity2.this, "action_settings");
                 break;
             case R.id.action_settings_signature:
-                Utils.toast(MainActivity2.this, "action_settings_signature");
+                //Utils.toast(MainActivity2.this, "action_settings_signature");
                 startActivity(new Intent(this,SetTailsActivity.class));
                 break;
             case R.id.action_settings2:
@@ -176,7 +176,7 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
                 logout();
                 break;
             case R.id.action_search:
-                Utils.toast(MainActivity2.this, "action_search");
+                //Utils.toast(MainActivity2.this, "action_search");
                 Intent intent = new Intent(this,SearchActivity.class);
                 startActivity(intent);
                 break;
