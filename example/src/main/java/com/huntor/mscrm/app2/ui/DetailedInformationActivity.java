@@ -501,6 +501,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             member_tag_2= (TextView) viewlist.get(1).findViewById(R.id.member_tag_2);
             tagQuery(member_tag_2);
             viewpager2_fans_name = (TextView) viewlist.get(1).findViewById(R.id.menber_address_name_2);
+            Log.e(TAG,"fan.name========="+fan.realName);
             if (fan.realName == null || "".equals(fan.realName)) {
 
                 viewpager2_fans_name.setText("暂无");
@@ -510,8 +511,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             }
             //性别
             viewpager2_fans_gender = (TextView) viewlist.get(1).findViewById(R.id.menber_address_text_2);
+            Log.e(TAG,"fan.gender========="+fan.gender);
             if (fan.gender != null) {
-                Log.e(TAG,"fan.gender========="+fan.gender);
+                //Log.e(TAG,"fan.gender========="+fan.gender);
                 if ("m".equals(fan.gender)) {
                     viewpager2_fans_gender.setText("男");
                 } else if ("f".equals(fan.gender)) {

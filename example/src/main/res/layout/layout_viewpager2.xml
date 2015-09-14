@@ -21,7 +21,7 @@
                 android:id="@+id/view_line1" />
 
             <TextView
-                android:text="13812341234"
+                android:text=""
                 style="@style/member_item_text_time"
                 android:id="@+id/menber_phone_text_2"
                 android:layout_below="@id/view_line1" />
@@ -39,7 +39,7 @@
                 android:id="@+id/view_line2" />
 
             <TextView
-                android:text="未知"
+                android:text=""
                 style="@style/member_item_text_time"
                 android:id="@+id/menber_mail_text_2"
                 android:layout_below="@id/view_line2" />
@@ -57,7 +57,7 @@
                 android:id="@+id/view_line3" />
 
             <TextView
-                android:text="女"
+                android:text=""
                 style="@style/member_item_text_time"
                 android:id="@+id/menber_address_text_2"
                 android:layout_below="@id/view_line3" />
@@ -77,7 +77,7 @@
                 android:id="@+id/view_line4" />
 
             <TextView
-                android:text="女"
+                android:text=""
                 style="@style/member_item_text_time"
                 android:id="@+id/member_tag_2"
                 android:layout_below="@id/view_line4" />
