@@ -501,19 +501,29 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             member_tag_2= (TextView) viewlist.get(1).findViewById(R.id.member_tag_2);
             tagQuery(member_tag_2);
             viewpager2_fans_name = (TextView) viewlist.get(1).findViewById(R.id.menber_address_name_2);
-            Log.e(TAG,"fan.name========="+fan.realName);
-            if (fan.realName == null || "".equals(fan.realName)) {
-
-                viewpager2_fans_name.setText("暂无");
+//            Log.e(TAG, "fan.name=========" + fan.realName);
+//            Log.e(TAG,"fan="+fan);
+//            Log.e(TAG,"fangender ="+fan.gender);
+//            Log.e(TAG,"fan phone1="+fan.phone1);
+//            Log.e(TAG,"fan occupation="+fan.occupation);
+            viewpager2_fans_job = (TextView) viewlist.get(1).findViewById(R.id.menber_mail_text_2);
+            if (fan.occupation == null||"".equals(fan.occupation)) {
+                viewpager2_fans_job.setText("");
             } else {
+                viewpager2_fans_job.setText(fan.occupation);
+            }
 
-                viewpager2_fans_name.setText(fan.realName);
+            viewpager2_fans_tel = (TextView) viewlist.get(1).findViewById(R.id.menber_phone_text_2);
+            if (fan.phone1 == null ||"".equals(fan.phone1)) {
+                viewpager2_fans_tel.setText("");
+            } else {
+                viewpager2_fans_tel.setText(fan.phone1);
             }
             //性别
             viewpager2_fans_gender = (TextView) viewlist.get(1).findViewById(R.id.menber_address_text_2);
-            Log.e(TAG,"fan.gender========="+fan.gender);
-            if (fan.gender != null) {
-                //Log.e(TAG,"fan.gender========="+fan.gender);
+            if(fan.gender == null || "".equals(fan.gender)){
+                viewpager2_fans_gender.setText("");
+            }else {
                 if ("m".equals(fan.gender)) {
                     viewpager2_fans_gender.setText("男");
                 } else if ("f".equals(fan.gender)) {
@@ -521,32 +531,19 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 } else {
                     viewpager2_fans_gender.setText("未知");
                 }
+            }
+            if (fan.realName == null || "".equals(fan.realName)) {
+                viewpager2_fans_name.setText("暂无");
             } else {
-                viewpager2_fans_gender.setText("暂无");
+                viewpager2_fans_name.setText(fan.realName);
             }
 
-            viewpager2_fans_job = (TextView) viewlist.get(1).findViewById(R.id.menber_mail_text_2);
-            if (fan.occupation != null) {
-                viewpager2_fans_job.setText(fan.occupation);
-            } else {
-                viewpager2_fans_job.setText("暂无");
-            }
-            //viewpager2_fans_email.setText("暂无");
+            Log.e(TAG,"fan.gender========="+fan.gender);
             //账户信息的电话
-            viewpager2_fans_tel = (TextView) viewlist.get(1).findViewById(R.id.menber_phone_text_2);
-            if (fan.phone1 == null) {
-                if (fan.phone2 == null) {
-                    if (fan.phone3 == null) {
-                        viewpager2_fans_tel.setText("暂无");
-                    } else {
-                        viewpager2_fans_tel.setText(fan.phone3);
-                    }
-                } else {
-                    viewpager2_fans_tel.setText(fan.phone2);
-                }
-            } else {
-                viewpager2_fans_tel.setText(fan.phone1);
-            }
+
+
+
+
 
             viewpager2_fans_age = (TextView) viewlist.get(1).findViewById(R.id.menber_age_text_2);
             if(fan.ageGroup==0){
