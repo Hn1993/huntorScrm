@@ -1,5 +1,30 @@
 package com.huntor.mscrm.app2.net.api;
 
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.util.Log;
+
+import com.huntor.mscrm.app2.R;
+import com.huntor.mscrm.app2.net.BaseRequestParams;
+import com.huntor.mscrm.app2.net.BaseResponse;
+import com.huntor.mscrm.app2.net.CustomHttpClient;
+import com.huntor.mscrm.app2.net.HttpRequest;
+import com.huntor.mscrm.app2.push.PushMessageReceiverService;
+import com.huntor.mscrm.app2.ui.MainActivity2;
+import com.huntor.mscrm.app2.utils.Constant;
+import com.huntor.mscrm.app2.utils.MyLogger;
+import com.huntor.mscrm.app2.utils.PreferenceUtils;
+import com.huntor.mscrm.app2.utils.Utils;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.protocol.HTTP;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -8,36 +33,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import android.content.Intent;
-import com.huntor.mscrm.app2.R;
-import com.huntor.mscrm.app2.net.BaseRequestParams;
-import com.huntor.mscrm.app2.net.BaseResponse;
-import com.huntor.mscrm.app2.net.CustomHttpClient;
-import com.huntor.mscrm.app2.net.HttpRequest;
-import com.huntor.mscrm.app2.push.PushMessageReceiverService;
-import com.huntor.mscrm.app2.ui.LoginActivity;
-import com.huntor.mscrm.app2.ui.MainActivity2;
-import com.huntor.mscrm.app2.ui.component.BaseActivity;
-import com.huntor.mscrm.app2.utils.Constant;
-import com.huntor.mscrm.app2.utils.MyLogger;
-import com.huntor.mscrm.app2.utils.PreferenceUtils;
-import com.huntor.mscrm.app2.utils.Utils;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
-import org.json.JSONObject;
-
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
 
 
 /**
@@ -344,7 +339,7 @@ public abstract class HttpApiBase {
         mContext.stopService(serviceIntent);
         String pwd = PreferenceUtils.getString(mContext, Constant.PREFERENCE_PSW, "");
         PreferenceUtils.putString(mContext, Constant.PREFERENCE_PSW_RELOGIN, pwd);
-        PreferenceUtils.clearString(mContext, Constant.PREFERENCE_PSW);
+        //PreferenceUtils.clearString(mContext, Constant.PREFERENCE_PSW);
         Intent intent = new Intent(mContext, MainActivity2.class);
         intent.putExtra(Constant.LOGOUT, Constant.LOGOUT_FLAG);
         mContext.startActivity(intent);

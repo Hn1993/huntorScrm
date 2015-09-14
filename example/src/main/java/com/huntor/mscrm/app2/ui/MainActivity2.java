@@ -187,8 +187,11 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        MyLogger.i(TAG,"keyCode: "+keyCode);
+
         if(keyCode == KeyEvent.KEYCODE_MENU){
-            return false;
+            MyLogger.i(TAG,"KEYCODE_MENU  = 82;");
+            return true;
         }
         return super.onKeyDown(keyCode, event);
     }

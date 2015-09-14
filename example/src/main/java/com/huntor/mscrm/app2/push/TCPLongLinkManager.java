@@ -6,29 +6,38 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Ack;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
-import com.huntor.mscrm.app2.model.*;
+import com.huntor.mscrm.app2.model.FanInfo;
+import com.huntor.mscrm.app2.model.Login;
+import com.huntor.mscrm.app2.model.MessageContext;
+import com.huntor.mscrm.app2.model.MessageRecordModel;
+import com.huntor.mscrm.app2.model.PullMessageNote;
+import com.huntor.mscrm.app2.model.Response;
+import com.huntor.mscrm.app2.model.SendMessage;
+import com.huntor.mscrm.app2.model.ShakeModle;
 import com.huntor.mscrm.app2.net.BaseResponse;
 import com.huntor.mscrm.app2.net.api.ApiFans;
-import com.huntor.mscrm.app2.net.api.HttpApiBase;
 import com.huntor.mscrm.app2.provider.api.ApiFansInFoDb;
 import com.huntor.mscrm.app2.provider.api.ApiMessageRecordDb;
 import com.huntor.mscrm.app2.ui.MainActivity2;
-import com.huntor.mscrm.app2.utils.*;
-import com.umeng.analytics.MobclickAgent;
-import org.json.JSONArray;
+import com.huntor.mscrm.app2.utils.Constant;
+import com.huntor.mscrm.app2.utils.MyLogger;
+import com.huntor.mscrm.app2.utils.PreferenceUtils;
+import com.huntor.mscrm.app2.utils.Utils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONString;
 
-import java.io.File;
 import java.net.URISyntaxException;
-import java.util.*;
-import java.util.jar.JarEntry;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 
 public class TCPLongLinkManager {
@@ -241,15 +250,12 @@ public class TCPLongLinkManager {
 
 
     public void outLogin(){
-
-
         String pwd = PreferenceUtils.getString(context ,Constant.PREFERENCE_PSW,"") ;
         PreferenceUtils.putString(context,Constant.PREFERENCE_PSW_RELOGIN,pwd);
-        PreferenceUtils.clearString(context, Constant.PREFERENCE_PSW);
+        //PreferenceUtils.clearString(context, Constant.PREFERENCE_PSW);
         Intent intent = new Intent(context, MainActivity2.class);
         intent.putExtra(Constant.LOGOUT, Constant.LOGOUT_FLAG);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
         context.startActivity(intent);
     }
     /****
