@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.*;
 import android.view.animation.*;
 import android.widget.*;
+import com.google.gson.Gson;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.*;
 
@@ -37,12 +38,19 @@ import com.huntor.mscrm.app2.ui.component.BaseActivity;
 import com.huntor.mscrm.app2.ui.component.MySlideListView;
 import com.huntor.mscrm.app2.ui.component.MyViewPager;
 import com.huntor.mscrm.app2.utils.*;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wangjie.wavecompat.WaveCompat;
 import com.wangjie.wavecompat.WaveDrawable;
 import com.wangjie.wavecompat.WaveTouchHelper;
+import org.apache.http.Header;
 import org.apache.http.protocol.HTTP;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -182,6 +190,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         initData();
         initview();
         findImage();
+
     }
 
     private void initData() {
@@ -483,13 +492,16 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
      */
     public void initviewpager2Info(FanInfo fan) {
         if (fan == null) {
+            Log.e(TAG,"fan is null");
             return;
         }
         try {
             RelativeLayout comile_tag= (RelativeLayout) viewlist.get(1).findViewById(R.id.detaileinfo_tag_2);
             comile_tag.setOnClickListener(this);
             member_tag_2= (TextView) viewlist.get(1).findViewById(R.id.member_tag_2);
+            tagQuery(member_tag_2);
             viewpager2_fans_name = (TextView) viewlist.get(1).findViewById(R.id.menber_address_name_2);
+            Log.e(TAG,"fan.name========="+fan.realName);
             if (fan.realName == null || "".equals(fan.realName)) {
 
                 viewpager2_fans_name.setText("暂无");
@@ -499,7 +511,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             }
             //性别
             viewpager2_fans_gender = (TextView) viewlist.get(1).findViewById(R.id.menber_address_text_2);
+            Log.e(TAG,"fan.gender========="+fan.gender);
             if (fan.gender != null) {
+                //Log.e(TAG,"fan.gender========="+fan.gender);
                 if ("m".equals(fan.gender)) {
                     viewpager2_fans_gender.setText("男");
                 } else if ("f".equals(fan.gender)) {
@@ -1074,7 +1088,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 break;
             case R.id.detaileinfo_tag_2:
                 Intent intent=new Intent(DetailedInformationActivity.this,CompileTagActivity.class);
-                startActivityForResult(intent,1000);
+                intent.putStringArrayListExtra("tags", tags);
+                intent.putExtra("fan_id",fans_id);
+                startActivityForResult(intent, 1000);
                 break;
         }
     }
@@ -1082,19 +1098,65 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.e(TAG,"onActivityResult");
-        tagList=data.getStringArrayListExtra("tag");
-        Log.e(TAG,"tagList.size"+tagList.size());
-        StringBuffer sb=new StringBuffer();
-        if (tagList==null){
-            tagList=new ArrayList<>();
-        }
-        for (int i=0;i<tagList.size();i++){
-            sb.append(tagList.get(i)+",");
-        }
-        String tag=sb.substring(0,sb.length()-1);
-        member_tag_2.setText(tag);
-
+//        tagList=data.getStringArrayListExtra("tag");
+//        Log.e(TAG,"tagList.size"+tagList.size());
+//        StringBuffer sb=new StringBuffer();
+//        if (tagList==null){
+//            tagList=new ArrayList<>();
+//        }
+//        for (int i=0;i<tagList.size();i++){
+//            sb.append(tagList.get(i)+",");
+//        }
+//        String tag=sb.substring(0,sb.length()-1);
+//        member_tag_2.setText(tag);
+          tagQuery(member_tag_2);
     }
+    ArrayList<String> tags;
+    private void tagQuery(final TextView textView){
+        AsyncHttpClient httpClient=new AsyncHttpClient();
+        httpClient.setTimeout(1000);
+        String url=Constant.HTTP_REQUEST_TAG_QUERY+"?fan_id="+fans_id;
+        httpClient.get(url, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
+                Gson gson =new Gson();
+                Log.e(TAG, "tagQquery请求成功" + response.toString());
+                for (int i=0;i<response.length();i++){
+                    JSONObject object= (JSONObject) response.opt(i);
+                    try {
+                        Object o=object.get("fan");
+                        QueryTag queryTag=gson.fromJson(o.toString(),QueryTag.class);
+                        tags=queryTag.tags;
+                        StringBuffer sb=new StringBuffer();
+                        if (tags==null){
+                            tags=new ArrayList<>();
+                        }
+                        for (int j=0;j<tags.size();j++){
+                            sb.append(tags.get(j)+",");
+                        }
+                        if(sb!=null&&sb.length()>=1){
+                            String tag=sb.substring(0,sb.length()-1);
+                            textView.setText(tag);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                Log.e(TAG, "tagQquery请求失败"+errorResponse.toString());
+            }
+        });
+    }
+
+
+
+
 
     private ImageView genderManImageView, genderWomanImageView, genderNoImageView;
 

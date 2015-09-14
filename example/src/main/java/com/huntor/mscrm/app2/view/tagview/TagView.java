@@ -223,6 +223,7 @@ public class TagView extends RelativeLayout {
 						TagView.this.remove(position);
 						if (mDeleteListener != null) {
 							mDeleteListener.onTagDeleted(tag, position);
+							
 						}
 					}
 				});
