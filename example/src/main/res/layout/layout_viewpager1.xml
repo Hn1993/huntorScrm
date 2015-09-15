@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+             xmlns:fab="http://schemas.android.com/apk/res-auto"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
              android:background="@color/default_bacground">
     <LinearLayout
         android:orientation="vertical"
@@ -86,6 +87,48 @@
 
         </RelativeLayout>
     </LinearLayout>
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/menu1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                fab:menu_labels_ellipsize="end"
+                fab:menu_labels_singleLine="true"
+                fab:menu_backgroundColor="#ccffffff"
+                fab:menu_fab_label=""
+                fab:menu_colorNormal="#1F257B"
+                fab:menu_colorPressed="#1f557b"
+                fab:menu_colorRipple="#1F257B">
+            <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/send_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/send_message"
+                    fab:fab_size="mini"
+                    fab:fab_label="发消息"
+                    fab:fab_colorNormal="#1F257B"
+                    fab:fab_colorPressed="#1f557b"
+                    fab:fab_colorRipple="#1F257B"/>
+            <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/join_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/join_group"
+                    fab:fab_size="mini"
+                    fab:fab_label="加入分组"
+                    fab:fab_colorNormal="#1F257B"
+                    fab:fab_colorPressed="#1f557b"
+                    fab:fab_colorRipple="#1F257B"/>
+        </com.github.clans.fab.FloatingActionMenu>
+    </RelativeLayout>
+
+
 
     <RelativeLayout
         android:visibility="gone"

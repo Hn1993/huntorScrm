@@ -21,6 +21,8 @@ import android.util.Log;
 import android.view.*;
 import android.view.animation.*;
 import android.widget.*;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.gson.Gson;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.*;
@@ -105,9 +107,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     //交互次数
     private TextView viewpager1_fans_interactionTimes;
     //发消息
-    private Button viewpager1_send_message;
+    private FloatingActionButton viewpager1_send_message;
     //加入分组
-    private Button viewpager1_into_group;
+    private FloatingActionButton viewpager1_into_group;
 
     private List<FanInfo.PurchaseIntents> want_list;
 
@@ -364,10 +366,10 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             return;
         }
         //加入分组和发消息的按钮
-        viewpager1_send_message = (Button) findViewById(R.id.send_message);
+        viewpager1_send_message = (FloatingActionButton) viewlist.get(0).findViewById(R.id.send_message);
         viewpager1_send_message.setClickable(true);
         viewpager1_send_message.setOnClickListener(this);
-        viewpager1_into_group = (Button)findViewById(R.id.join_group);
+        viewpager1_into_group = (FloatingActionButton)viewlist.get(0).findViewById(R.id.join_group);
         viewpager1_into_group.setOnClickListener(this);
 
         viewpager1_fans_image = (ImageView) findViewById(R.id.image_people_head);
@@ -693,7 +695,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 case 0:
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
-                    mImageView.setVisibility(View.VISIBLE);
+                    mImageView.setVisibility(View.GONE);
 //                    detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
 //                    detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
 //                    detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
@@ -1275,7 +1277,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     /**
      * 新app的水波纹点击事件
      */
-
+    private FloatingActionButton mButton,mButton2;
     private WaveCompat.mCallBack callBack;//接口的回调
     private RelativeLayout mRelativeLayout;
     ImageView mImageView;//点击出现水波纹效果
@@ -1296,6 +1298,33 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 mRelativeLayout.setVisibility(View.VISIBLE);
             }
         };
+
+//        final FloatingActionMenu menu1 = (FloatingActionMenu) findViewById(R.id.menu1);
+//        final FloatingActionButton programFab1 = (FloatingActionButton) findViewById(R.id.send_message);
+//        programFab1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//
+//        final FloatingActionButton programFab2 =(FloatingActionButton) findViewById(R.id.join_group);
+//        programFab2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//        menu1.setOnMenuButtonClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (menu1.isOpened()) {
+//
+//                }
+//                menu1.toggle(true);
+//            }
+//        });
+
     }
     @Override
     public void onWaveTouchUp(View view, Point locationInView, Point locationInScreen) {
