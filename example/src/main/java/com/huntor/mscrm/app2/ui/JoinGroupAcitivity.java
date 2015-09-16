@@ -133,11 +133,11 @@ public class JoinGroupAcitivity extends BaseActivity implements AdapterView.OnIt
                             mTargetList = new ArrayList<FanInfo.TargetList>();
                             mTargetList = response.fanInfo.targetLists;
                             if (mTargetList == null) {
-                                Log.i("加入分组", "response.fanInfo.targetLists is null" + response.fanInfo.targetLists);
+                                //Log.i("加入分组", "response.fanInfo.targetLists is null" + response.fanInfo.targetLists);
                             } else {
-                                Log.i("加入分组", "response.fanInfo.targetLists is not null" + response.fanInfo.targetLists.size());
+                                //Log.i("加入分组", "response.fanInfo.targetLists is not null" + response.fanInfo.targetLists.size());
                                 for (int i = 0; i < mTargetList.size(); i++) {
-                                    Log.i("加入分组", "mTargetList.name" + mTargetList.get(i).name);
+                                    //Log.i("加入分组", "mTargetList.name" + mTargetList.get(i).name);
                                 }
                             }
                             //Log.i("黄安","mTargetList"+mTargetList.size());
