@@ -343,7 +343,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
                             mAdapter.clearCheckedItems();
                             mAdapter.notifyDataSetChanged();
                             MyLogger.i(TAG,"mFanList: "+mFanList.size());
-
+                            mGroupCount = mFanList.size();
                             toolbar.setTitle(mGroupName+"("+(mFanList.size())+")");
                             Utils.toast(getActivity(), "删除成功！");
                             if (refreshCallback != null) {
