@@ -24,15 +24,11 @@
             <TextView
                 style="@style/member_text"
                 android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
-<<<<<<< HEAD
                 android:textColor="@color/gray"
                 android:text="新增粉丝"
                 />
-=======
-                android:text="在线交互粉丝"
-                android:textColor="@color/gray" />
 
->>>>>>> 76d1c24fca3ba8d21b642bc72dcff41c84e83920
+
             <TextView
                 android:id="@+id/text_number_people_new_fans"
                 android:layout_width="wrap_content"
