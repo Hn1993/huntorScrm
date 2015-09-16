@@ -21,6 +21,8 @@ import android.util.Log;
 import android.view.*;
 import android.view.animation.*;
 import android.widget.*;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.gson.Gson;
 import com.huntor.mscrm.app2.R;
 import com.huntor.mscrm.app2.adapter.*;
@@ -105,9 +107,9 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     //交互次数
     private TextView viewpager1_fans_interactionTimes;
     //发消息
-    private Button viewpager1_send_message;
+    private FloatingActionButton viewpager1_send_message;
     //加入分组
-    private Button viewpager1_into_group;
+    private FloatingActionButton viewpager1_into_group;
 
     private List<FanInfo.PurchaseIntents> want_list;
 
@@ -364,10 +366,10 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             return;
         }
         //加入分组和发消息的按钮
-        viewpager1_send_message = (Button) findViewById(R.id.send_message);
+        viewpager1_send_message = (FloatingActionButton) viewlist.get(0).findViewById(R.id.send_message);
         viewpager1_send_message.setClickable(true);
         viewpager1_send_message.setOnClickListener(this);
-        viewpager1_into_group = (Button)findViewById(R.id.join_group);
+        viewpager1_into_group = (FloatingActionButton)viewlist.get(0).findViewById(R.id.join_group);
         viewpager1_into_group.setOnClickListener(this);
 
         viewpager1_fans_image = (ImageView) findViewById(R.id.image_people_head);
@@ -501,19 +503,29 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             member_tag_2= (TextView) viewlist.get(1).findViewById(R.id.member_tag_2);
             tagQuery(member_tag_2);
             viewpager2_fans_name = (TextView) viewlist.get(1).findViewById(R.id.menber_address_name_2);
-            Log.e(TAG,"fan.name========="+fan.realName);
-            if (fan.realName == null || "".equals(fan.realName)) {
-
-                viewpager2_fans_name.setText("暂无");
+//            Log.e(TAG, "fan.name=========" + fan.realName);
+//            Log.e(TAG,"fan="+fan);
+//            Log.e(TAG,"fangender ="+fan.gender);
+//            Log.e(TAG,"fan phone1="+fan.phone1);
+//            Log.e(TAG,"fan occupation="+fan.occupation);
+            viewpager2_fans_job = (TextView) viewlist.get(1).findViewById(R.id.menber_mail_text_2);
+            if (fan.occupation == null||"".equals(fan.occupation)) {
+                viewpager2_fans_job.setText("");
             } else {
+                viewpager2_fans_job.setText(fan.occupation);
+            }
 
-                viewpager2_fans_name.setText(fan.realName);
+            viewpager2_fans_tel = (TextView) viewlist.get(1).findViewById(R.id.menber_phone_text_2);
+            if (fan.phone1 == null ||"".equals(fan.phone1)) {
+                viewpager2_fans_tel.setText("");
+            } else {
+                viewpager2_fans_tel.setText(fan.phone1);
             }
             //性别
             viewpager2_fans_gender = (TextView) viewlist.get(1).findViewById(R.id.menber_address_text_2);
-            Log.e(TAG,"fan.gender========="+fan.gender);
-            if (fan.gender != null) {
-                //Log.e(TAG,"fan.gender========="+fan.gender);
+            if(fan.gender == null || "".equals(fan.gender)){
+                viewpager2_fans_gender.setText("");
+            }else {
                 if ("m".equals(fan.gender)) {
                     viewpager2_fans_gender.setText("男");
                 } else if ("f".equals(fan.gender)) {
@@ -521,32 +533,19 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 } else {
                     viewpager2_fans_gender.setText("未知");
                 }
+            }
+            if (fan.realName == null || "".equals(fan.realName)) {
+                viewpager2_fans_name.setText("暂无");
             } else {
-                viewpager2_fans_gender.setText("暂无");
+                viewpager2_fans_name.setText(fan.realName);
             }
 
-            viewpager2_fans_job = (TextView) viewlist.get(1).findViewById(R.id.menber_mail_text_2);
-            if (fan.occupation != null) {
-                viewpager2_fans_job.setText(fan.occupation);
-            } else {
-                viewpager2_fans_job.setText("暂无");
-            }
-            //viewpager2_fans_email.setText("暂无");
+            Log.e(TAG,"fan.gender========="+fan.gender);
             //账户信息的电话
-            viewpager2_fans_tel = (TextView) viewlist.get(1).findViewById(R.id.menber_phone_text_2);
-            if (fan.phone1 == null) {
-                if (fan.phone2 == null) {
-                    if (fan.phone3 == null) {
-                        viewpager2_fans_tel.setText("暂无");
-                    } else {
-                        viewpager2_fans_tel.setText(fan.phone3);
-                    }
-                } else {
-                    viewpager2_fans_tel.setText(fan.phone2);
-                }
-            } else {
-                viewpager2_fans_tel.setText(fan.phone1);
-            }
+
+
+
+
 
             viewpager2_fans_age = (TextView) viewlist.get(1).findViewById(R.id.menber_age_text_2);
             if(fan.ageGroup==0){
@@ -696,7 +695,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 case 0:
 //                    relativeLayout.setVisibility(View.GONE);
 //                    buy_more.setVisibility(View.GONE);
-                    mImageView.setVisibility(View.VISIBLE);
+                    mImageView.setVisibility(View.GONE);
 //                    detaileinfo_social.setTextColor(getResources().getColor(R.color.title_selected));
 //                    detaileinfo_details.setTextColor(getResources().getColor(R.color.title));
 //                    detaileinfo_deal.setTextColor(getResources().getColor(R.color.title));
@@ -1278,7 +1277,7 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     /**
      * 新app的水波纹点击事件
      */
-
+    private FloatingActionButton mButton,mButton2;
     private WaveCompat.mCallBack callBack;//接口的回调
     private RelativeLayout mRelativeLayout;
     ImageView mImageView;//点击出现水波纹效果
@@ -1299,6 +1298,33 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                 mRelativeLayout.setVisibility(View.VISIBLE);
             }
         };
+
+//        final FloatingActionMenu menu1 = (FloatingActionMenu) findViewById(R.id.menu1);
+//        final FloatingActionButton programFab1 = (FloatingActionButton) findViewById(R.id.send_message);
+//        programFab1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//
+//        final FloatingActionButton programFab2 =(FloatingActionButton) findViewById(R.id.join_group);
+//        programFab2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//        menu1.setOnMenuButtonClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (menu1.isOpened()) {
+//
+//                }
+//                menu1.toggle(true);
+//            }
+//        });
+
     }
     @Override
     public void onWaveTouchUp(View view, Point locationInView, Point locationInScreen) {
