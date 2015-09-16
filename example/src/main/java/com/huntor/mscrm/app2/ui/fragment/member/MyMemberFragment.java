@@ -87,7 +87,7 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
         ret.findViewById(R.id.layout_fragment_mymember_high_user).setOnClickListener(this);
         ret.findViewById(R.id.layout_fragment_mymember_buyed_user).setOnClickListener(this);
         ret.findViewById(R.id.layout_fragment_mymember_my_group).setOnClickListener(this);
-        ret.findViewById(R.id.layout_fragment_mymember_other_group).setOnClickListener(this);
+        //ret.findViewById(R.id.layout_fragment_mymember_other_group).setOnClickListener(this);
 
 //        ret.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -219,17 +219,12 @@ public class MyMemberFragment extends BaseFragment implements View.OnClickListen
                 transaction.replace(R.id.fl_content, new MyGroupFragment(), Constant.MY_GROUP);
                 toolbar.setTitle("我的分组");
                 break;
-            case R.id.layout_fragment_mymember_other_group://其他分组
+            /*case R.id.layout_fragment_mymember_other_group://其他分组
                 clearBackStack();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.fl_content, new MyGroupFragment(), Constant.MY_MEMBER);
                 toolbar.setTitle("其他分组");
-                break;
-//            case R.id.iv_search:
-//                clearBackStack();
-//                transaction.addToBackStack(Constant.SEARCH);
-//                transaction.add(R.id.frame_main, new SearchFragment(), Constant.SEARCH);
-//                break;
+                break;*/
         }
         transaction.commit();
     }

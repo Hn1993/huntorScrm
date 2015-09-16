@@ -163,9 +163,9 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
 
         int id = item.getItemId();
         switch (id) {
-            case R.id.action_settings:
+            /*case R.id.action_settings:
                 //Utils.toast(MainActivity2.this, "action_settings");
-                break;
+                break;*/
             case R.id.action_settings_signature:
                 //Utils.toast(MainActivity2.this, "action_settings_signature");
                 startActivity(new Intent(this,SetTailsActivity.class));
@@ -342,7 +342,8 @@ public class MainActivity2 extends BaseActivity implements View.OnClickListener 
         if (fragment != null) {
             MyLogger.i(TAG, "GroupMemberFragment2 is not null");
             if (fragment.mAdapter.isCheckBoxShow) {
-                MainActivity2.toolbar.setTitle(fragment.mGroupName);
+                //MainActivity2.toolbar.setTitle(fragment.mGroupName);
+                MainActivity2.toolbar.setTitle(fragment.mGroupName+"("+fragment.mGroupCount+")");
                 MyLogger.i(TAG, "mAdapter.isCheckBoxShow:"+fragment.mAdapter.isCheckBoxShow);
                 fragment.mAdapter.clearCheckedItems();
                 fragment.mAdapter.notifyDataSetChanged();
