@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -48,14 +47,12 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 	private View mRoot;
 	private final int SINGLE_PAGE_LOAD_COUNT = 30;
 	private int mPageNum = 1;
-	private Button mConfirmBtn;
 	private List<Integer> mGroupIDs;
 	private List<Fans> mAdapterList;
 	private List<Fans> mCheckedList;
 	private BaseActivity activity;
 	private RefreshCallback refCallBack;
 	private String groupName;
-	private TextView tv_title;
 	private TextView no_content_hint;
 	private int empID;
 	private Toolbar toolbar;
@@ -77,7 +74,11 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 		mCheckedList = new LinkedList<>();
 		mAdapterList = new LinkedList<>();
 		toolbar = MainActivity2.toolbar;
-		toolbar.setTitle("分组管理(" + mGroupIDs.size() + ")");
+
+//		toolbar.setTitle("分组管理(" + mGroupIDs.size() + ")");
+//		toolbar.setTitle("添加粉丝(" + mGroupIDs.size() + ")");
+		toolbar.setTitle("添加粉丝");
+
 		no_content_hint = (TextView) mRoot.findViewById(R.id.no_content_hint);
 		mListView = (XListView) mRoot.findViewById(R.id.listview);
 		mListView.setPullLoadEnable(false);
@@ -175,7 +176,7 @@ public class AdmFansFragment2 extends BaseFragment implements View.OnClickListen
 				mCheckedList.remove(fans);
 				totalList--;
 			}
-			//tv_title.setText("分组管理(" + totalList + ")");
+			toolbar.setTitle(mCheckedList.size()>0?"添加粉丝(已选择:" + mCheckedList.size() + ")":"添加粉丝");
 		}
 	}
 

@@ -178,13 +178,13 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
         Bundle bundle = new Bundle();
         bundle.putInt("targetListId", target.id);
         bundle.putString("name", target.name);
+        bundle.putInt("size", target.count);
         GroupMemberFragment2 fragment = new GroupMemberFragment2();
         fragment.setArguments(bundle);
         transaction.add(R.id.fl_content, fragment, Constant.GROUP_MEMBER);
         fragment.setRefreshCallback(new GroupMemberFragment2.RefreshCallback() {
             @Override
             public void onResult(int targetListId, int groupSize) {
-                toolbar.setTitle("我的分组");
                 if (groupSize != -1) {
                     List<Target> data = adapter.getData();
                     for (int i = 0; i < data.size(); i++) {
@@ -195,6 +195,8 @@ public class MyGroupFragment extends BaseFragment implements View.OnClickListene
                             break;
                         }
                     }
+                } else {
+                    toolbar.setTitle("我的分组");
                 }
 
             }

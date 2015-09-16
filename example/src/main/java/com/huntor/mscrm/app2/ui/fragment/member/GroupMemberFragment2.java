@@ -61,6 +61,8 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
     public Toolbar toolbar;
     private int mPreviousVisibleItem;
     public FloatingActionButton fab;
+    public int mGroupCount;
+
     public enum Status {ADD, CANCEL, DELETE}
     public Status FabStatus = Status.ADD;
 
@@ -94,7 +96,8 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
         if (bundle != null) {
             mTargetListId = bundle.getInt("targetListId");
             mGroupName = bundle.getString("name");
-            toolbar.setTitle(mGroupName);
+            mGroupCount = bundle.getInt("size");
+            toolbar.setTitle(mGroupName+"("+mGroupCount+")");
         }
     }
 
@@ -215,6 +218,7 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
                     fab.setImageResource(R.drawable.ic_add_white_24dp);
                     mAdapter.clearCheckedItems();
                     mAdapter.notifyDataSetChanged();
+                    toolbar.setTitle(mGroupName + "(" + mGroupCount + ")");
                 }
                 if (FabStatus == Status.DELETE) {
                     MyLogger.i(TAG,"FabStatus: DELETE");
@@ -249,13 +253,15 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
                         admFansFragment.setData(response.allFansId.ids, mGroupName, new AdmFansFragment2.RefreshCallback() {
                             @Override
                             public void onResult(List<Fans> addedFans) {
-                                toolbar.setTitle(mGroupName);
                                 if(addedFans != null){
                                     mFanList.addAll(addedFans);
                                     mAdapter.notifyDataSetChanged();
+                                    mGroupCount = mFanList.size();
                                     if (refreshCallback != null) {
                                         refreshCallback.onResult(mTargetListId, mFanList.size());
                                     }
+                                }else{
+                                    toolbar.setTitle(mGroupName + "(" + mGroupCount + ")");
                                 }
                             }
                         });
@@ -336,6 +342,9 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
                             mFanList.removeAll(mAdapter.mCheckedItems);
                             mAdapter.clearCheckedItems();
                             mAdapter.notifyDataSetChanged();
+                            MyLogger.i(TAG,"mFanList: "+mFanList.size());
+                            mGroupCount = mFanList.size();
+                            toolbar.setTitle(mGroupName+"("+(mFanList.size())+")");
                             Utils.toast(getActivity(), "删除成功！");
                             if (refreshCallback != null) {
                                 refreshCallback.onResult(mTargetListId, mFanList.size());
@@ -389,11 +398,12 @@ public class GroupMemberFragment2 extends BaseFragment implements View.OnClickLi
         if (checkedItems > 0) {
             FabStatus = Status.DELETE;
             fab.setImageResource(R.drawable.ic_delete);
-            toolbar.setTitle(mGroupName + "(" + checkedItems + ")");
+            toolbar.setTitle(mGroupName + "(已选择:" + checkedItems + ")");
         } else {
             FabStatus = Status.CANCEL;
             fab.setImageResource(R.drawable.ic_close);
-            toolbar.setTitle(mGroupName);
+            //toolbar.setTitle(mGroupName);
+            toolbar.setTitle(mGroupName+"("+mGroupCount+")");
         }
     }
 
