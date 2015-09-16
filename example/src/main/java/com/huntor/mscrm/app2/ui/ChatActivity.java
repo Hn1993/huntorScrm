@@ -87,7 +87,7 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
     private String title;
     private int groupId;
     //==========================================
-    private TextView txtChatExtraimg;
+    private TextView txtChatExtraimg,titleText;
     private ImageView imgetest;//此控件仅供测试使用，到时删除
     private ImageView imgRecord;
     private TextView btn_record;
@@ -123,6 +123,8 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
      */
     @SuppressLint("SimpleDateFormat")
     private void initViews() {
+
+
         mListView = (DropdownListView) findViewById(R.id.message_chat_listview);
         sd = new SimpleDateFormat("MM-dd HH:mm");
         MyLogger.e(TAG, "initViews info=" + infos.toString());
@@ -388,7 +390,10 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
                                 fanModel.realName = response.fanInfo.realName;
                                 fanModel.nickName = response.fanInfo.nickName;
                                 title = fanModel.nickName;
-                                setTitle(title);
+                                Log.e("title", title);
+                                titleText.setText(title);
+
+                                //setTitle(title);
                                 fanModel.province = response.fanInfo.province;
                                 fanModel.city = response.fanInfo.city;
                                 fanModel.followStatus = response.fanInfo.followStatus;
@@ -459,7 +464,9 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
                     getFansDetail(fan_id);
                 } else {
                     title = fanModel.nickName;
-                    setTitle(title);
+                    //setTitle(title);
+                    Log.e("title",title);
+                    titleText.setText(title);
                     imgHeadUrl = fanModel.avatar;
                     ImageLoader imageLoader = ImageLoader.getInstance();
                     imageLoader.displayImage(imgHeadUrl, imgHead, options);
@@ -534,7 +541,9 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener, 
         }
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(imgHeadUrl, imgHead, options);
-        setTitle(title);
+        //setTitle(title);
+        titleText = (TextView)findViewById(R.id.text_base_title);
+        titleText.setText(title);
     }
 
     DisplayImageOptions options = new DisplayImageOptions.Builder()
