@@ -22,7 +22,7 @@
                 style="@style/member_text"
                 android:layout_marginLeft="@dimen/drawerlayout_mian_text_marginLeft"
                 android:textColor="@color/gray"
-                android:text="在线交互粉丝"
+                android:text="新增粉丝"
                 />
             <TextView
                 android:id="@+id/text_number_people_new_fans"

@@ -388,12 +388,11 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         }
 
         viewpager1_fans_name = (TextView) findViewById(R.id.people_name);
-        if (fan.nickName != null || ("null".equals(fan.nickName))) {
-            viewpager1_fans_name.setText(fan.nickName);
+        if (fan.realName != null || ("null".equals(fan.realName))) {
+            viewpager1_fans_name.setText(fan.realName);
         } else {
             viewpager1_fans_name.setText("暂无");
         }
-
 
         viewpager1_attention_time = (TextView) findViewById(R.id.people_time);
         long subscribeTime = fan.subscribeTime;
@@ -417,13 +416,19 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
         //粉丝所在城市
         //viewpager1_fans_city = (TextView) viewlist.get(0).findViewById(R.id.member_provice_1);
         viewpager1_fans_city = (TextView) viewlist.get(0).findViewById(R.id.member_provice_1);
-        Log.i("黄安", "粉丝城市" + fan.city);
+        //Log.i("黄安", "粉丝城市" + fan.city);
         if (("").equals(fan.city) || fan.city == null || ("null").equals(fan.city)) {
             viewpager1_fans_city.setText("暂无");
         } else {
             viewpager1_fans_city.setText(fan.city);
         }
-
+        //粉丝昵称
+        TextView viewpager1_fans_nickName = (TextView) viewlist.get(0).findViewById(R.id.member_nickName_1);
+        if (("").equals(fan.nickName) || fan.nickName == null ) {
+            viewpager1_fans_nickName.setText("暂无");
+        } else {
+            viewpager1_fans_nickName.setText(fan.nickName);
+        }
 
         viewpager1_fans_interaction = (TextView) viewlist.get(0).findViewById(R.id.interation_time_before_1);
         if (fan.lastInteractionTime != 0) {

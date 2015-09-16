@@ -71,7 +71,7 @@ public class CompileTagActivity extends BaseActivity implements View.OnClickList
         //tagList=new ArrayList<>();
         for (int i=0;i<tagList.size();i++){
             Tag tag=new Tag(tagList.get(i));
-            tag.layoutColor = Color.parseColor("#858CED");
+            tag.layoutColor = Color.parseColor("#1f257b");
             tag.isDeletable = true;
             tag.layoutBorderSize = 1f;
             tagView.addTag(tag);
@@ -158,7 +158,7 @@ public class CompileTagActivity extends BaseActivity implements View.OnClickList
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 Log.e(TAG, "post成功" +new String(bytes));
                 Tag tag2=new Tag(content);
-                tag2.layoutColor = Color.parseColor("#858CED");
+                tag2.layoutColor = Color.parseColor("#1f257b");
                 tag2.isDeletable = true;
                 tag2.layoutBorderSize = 1f;
                 tagView.addTag(tag2);
