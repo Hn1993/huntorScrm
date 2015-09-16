@@ -70,7 +70,7 @@
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:textSize="@dimen/fragment_fansinfo_viewpager_tab_textsize"
-                    android:text="会员详情"
+                    android:text="社交信息"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
@@ -85,7 +85,7 @@
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:textSize="@dimen/fragment_fansinfo_viewpager_tab_textsize"
-                    android:text="联系方式"
+                    android:text="账户信息"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
@@ -98,7 +98,7 @@
                 android:layout_height="match_parent">
                 <TextView
                     android:textSize="@dimen/fragment_fansinfo_viewpager_tab_textsize"
-                    android:text="购买意向"
+                    android:text="交易信息"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
