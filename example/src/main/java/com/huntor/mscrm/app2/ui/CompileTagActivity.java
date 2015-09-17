@@ -64,7 +64,7 @@ public class CompileTagActivity extends BaseActivity implements View.OnClickList
         tagView.setOnTagDeleteListener(new OnTagDeleteListener() {
             @Override
             public void onTagDeleted(Tag tag, int position) {
-                tagDelate(tag.text);
+                tagDelate(tag);
             }
         });
         findViewById(R.id.img_left_corner).setOnClickListener(this);
@@ -120,20 +120,21 @@ public class CompileTagActivity extends BaseActivity implements View.OnClickList
         super.onBackPressed();
     }
 
-    private void tagDelate(String content){
+    private void tagDelate(final Tag content){
         Log.e(TAG,"tagDelate");
         Log.e(TAG,"tagDelate===content="+content);
         Log.e(TAG,"tagDelate===fan_id="+fan_id);
         AsyncHttpClient httpClient=new AsyncHttpClient();
-        httpClient.setTimeout(1000);
+        httpClient.setTimeout(10000);
         String url= Constant.HTTP_REQUEST_TAG_DELETE;
         RequestParams params = new RequestParams();
         params.put("fan_id",String.valueOf(fan_id));
-        params.put("tags",content);
+        params.put("tags",content.text);
         httpClient.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 Log.e(TAG, "post成功" + new String(bytes));
+
             }
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
@@ -148,7 +149,7 @@ public class CompileTagActivity extends BaseActivity implements View.OnClickList
     private void tagCreat(final String content){
         Log.e(TAG,"tagCreat");
         AsyncHttpClient httpClient=new AsyncHttpClient();
-        httpClient.setTimeout(1000);
+        httpClient.setTimeout(10000);
         String url= Constant.HTTP_REQUEST_TAG_CREAT;
         RequestParams params = new RequestParams();
         params.put("fan_id",String.valueOf(fan_id));

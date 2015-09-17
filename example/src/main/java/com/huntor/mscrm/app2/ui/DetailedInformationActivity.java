@@ -1102,23 +1102,12 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.e(TAG,"onActivityResult");
-//        tagList=data.getStringArrayListExtra("tag");
-//        Log.e(TAG,"tagList.size"+tagList.size());
-//        StringBuffer sb=new StringBuffer();
-//        if (tagList==null){
-//            tagList=new ArrayList<>();
-//        }
-//        for (int i=0;i<tagList.size();i++){
-//            sb.append(tagList.get(i)+",");
-//        }
-//        String tag=sb.substring(0,sb.length()-1);
-//        member_tag_2.setText(tag);
           tagQuery(member_tag_2);
     }
     ArrayList<String> tags;
     private void tagQuery(final TextView textView){
         AsyncHttpClient httpClient=new AsyncHttpClient();
-        httpClient.setTimeout(1000);
+        httpClient.setTimeout(10000);
         String url=Constant.HTTP_REQUEST_TAG_QUERY+"?fan_id="+fans_id;
         httpClient.get(url, new JsonHttpResponseHandler() {
             @Override
@@ -1141,7 +1130,12 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
                         }
                         if(sb!=null&&sb.length()>=1){
                             String tag=sb.substring(0,sb.length()-1);
+                            //textView.setText("");
+                            Log.e(TAG,"tag===not null======="+sb);
                             textView.setText(tag);
+                        }else {
+                            Log.e(TAG,"tag===null======="+sb);
+                            textView.setText("");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -1304,31 +1298,6 @@ public class DetailedInformationActivity extends BaseActivity implements View.On
             }
         };
 
-//        final FloatingActionMenu menu1 = (FloatingActionMenu) findViewById(R.id.menu1);
-//        final FloatingActionButton programFab1 = (FloatingActionButton) findViewById(R.id.send_message);
-//        programFab1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
-//        final FloatingActionButton programFab2 =(FloatingActionButton) findViewById(R.id.join_group);
-//        programFab2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//        menu1.setOnMenuButtonClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (menu1.isOpened()) {
-//
-//                }
-//                menu1.toggle(true);
-//            }
-//        });
 
     }
     @Override
